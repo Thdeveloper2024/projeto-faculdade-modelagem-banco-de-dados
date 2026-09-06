@@ -1,20 +1,23 @@
-# Entrega 1 — Modelo Conceitual (DER)
-### Modelagem de um sistema de gestão de informações para uma organização de pequeno porte
-
-> Este arquivo é o esqueleto do **README.md** do repositório GitHub do seu grupo.
-> Preencha cada seção abaixo. Não apague os títulos — apenas substitua as instruções em *itálico* pelo conteúdo do seu projeto.
-> O **DER** é anexado separadamente ao repositório (em imagem), mas sua justificativa entra neste README.
->
-> **A organização escolhida pode ser de qualquer natureza:** empresa com fins lucrativos (livraria, lanchonete, pet shop), ONG, associação comunitária, cooperativa, instituições religiosas/comunitárias como igrejas, terreiros de religiões de matriz africana (candomblé, umbanda) ou outras. O que muda de um tipo para outro são os processos e as regras específicas — a estrutura do trabalho (levantamento de requisitos, modelagem conceitual, DER) é a mesma para todas. Termos como "empresa" e "negócio" usados abaixo devem ser lidos de forma ampla, no sentido técnico de modelagem de dados (ex.: "regras de negócio" = regras de funcionamento da organização, seja ela comercial, religiosa ou social).
->
-> **Importante:** a organização precisa **existir de fato** — não é permitido inventar uma organização fictícia. O levantamento de requisitos e regras de negócio deve ser feito por meio de **pesquisa de campo na própria organização** (visitas, entrevistas com responsáveis, observação dos processos reais), então o grupo só deve escolher uma organização à qual **realmente tenha acesso**. Ao escolher, tomem cuidado com o porte: **nem tão pequena** que não gere dados suficiente para o trabalho (poucos processos, poucas entidades), **nem tão grande/complexa** que fique inviável de modelar nesta primeira etapa do curso.
-
----
-
 # Modelagem de Banco de-Dados Para Empreiteira EJS
 
 ## Introdução
-Problema, objetivos e delimitação
+
+Atualmente, a empresa apresenta um baixo número de obras em andamento e não possui redes sociais ou um site ativo para divulgação de seus serviços e obras realizadas. Além disso, a empresa enfrenta dificuldades no gerenciamento dos horários de entrada e saída dos funcionários, o que pode ocasionar divergências no controle das horas trabalhadas e, consequentemente, nos pagamentos realizados aos colaboradores.
+
+Outro problema identificado está relacionado ao controle dos pagamentos realizados aos funcionários e aos colaboradores terceirizados. Como os pagamentos são realizados pela responsável financeira da empresa e, em algumas situações, não são devidamente registrados, torna-se difícil verificar posteriormente quais colaboradores já receberam seus pagamentos, os respectivos valores e quais pagamentos ainda estão pendentes. Essa falta de controle pode ocasionar dificuldades na organização financeira e administrativa da empresa.
+
+O objetivo do grupo é realizar a atualização e implementação de um site para a empresa, tornando-o ativo e utilizando-o como ferramenta de divulgação de seus serviços e obras realizadas. Dessa forma, busca-se criar uma presença digital para a empresa e, futuramente, possibilitar investimentos em marketing digital, ampliando seu alcance ao público da internet e contribuindo para a captação de novos clientes e obras.
+
+Além da divulgação, o projeto terá como objetivo implementar funcionalidades de gerenciamento dos horários de entrada e saída dos funcionários, permitindo um melhor controle das horas trabalhadas. Também será desenvolvida uma funcionalidade para o registro e gerenciamento dos pagamentos realizados aos funcionários e colaboradores terceirizados, permitindo consultar os valores pagos e identificar possíveis pagamentos pendentes.
+
+O projeto será delimitado à refatoração e atualização do site já existente da empresa, tornando-o funcional e adequado para a divulgação de seus serviços e obras. Também serão desenvolvidas funcionalidades específicas para o gerenciamento dos horários de entrada e saída dos funcionários e para o registro e controle dos pagamentos realizados aos funcionários e colaboradores terceirizados.
+
+Para o armazenamento e gerenciamento dessas informações, será desenvolvido um banco de dados responsável por registrar os dados relacionados aos funcionários, horários, pagamentos e demais informações necessárias para o funcionamento das funcionalidades propostas.
+
+Dessa forma, o projeto estará concentrado na refatoração do site existente, na implementação das funcionalidades de gerenciamento e no desenvolvimento do banco de dados, não abrangendo, nesta etapa, outros sistemas ou funcionalidades que não estejam diretamente relacionados aos objetivos definidos.
+
+
+
 
 ## Desenvolvimento
 

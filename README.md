@@ -11,8 +11,7 @@
 
 ---
 
-# Título
-O título deve ser específico e descritivo, refletindo com precisão o escopo do projeto realizado. Títulos genéricos não são aceitos. O título deve identificar claramente a organização modelada e o objetivo técnico do trabalho (ex.: "Modelagem de Banco de Dados para Livraria ABC"). Um bom título facilita a identificação e recuperação do trabalho no repositório e demonstra propriedade sobre o projeto.
+# Modelagem de Banco de-Dados Para Empreiteira EJS
 
 ## Introdução
 Problema, objetivos e delimitação

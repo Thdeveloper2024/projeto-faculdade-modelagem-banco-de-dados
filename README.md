@@ -33,9 +33,8 @@ Dessa forma, o projeto estará concentrado na refatoração do site existente, n
 ---
 
 ### Processos de Negócio
-*(vale 10% — Dimensão Procedimental)*
 
-- **Principais processos mapeados:** *ex.: cadastro de clientes/beneficiários/fiéis, controle de estoque ou doações, vendas ou arrecadação, emissão de pedidos ou solicitações, entregas ou distribuição, organização de eventos/rituais/mutirões.*
+- **Principais processos mapeados:** *Cadastrar obras e funcionários, gerenciar frequência dos funcionários, gerenciar pagamentos realizados e gerenciar tarefas das obras.*
 - **Fluxogramas:** *represente visualmente pelo menos os processos-chave (imagens anexadas). Deve ficar claro o fluxo de cada processo e como eles se integram entre si.*
 
 ---
@@ -44,7 +43,13 @@ Dessa forma, o projeto estará concentrado na refatoração do site existente, n
 *(esta seção e a Seção 4 "Regras de Negócio" DIVIDEM 7,5% na dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na organização/documentação)*
 
 #### Requisitos Funcionais
-*O que o sistema precisa FAZER (ex.: "o sistema deve permitir registrar uma venda").*
+
+* **RF-01:** O sistema deve permitir o cadastro de funcionários, armazenando dados como nome, cargo, CPF e salário.
+* **RF-02:** O sistema deve permitir o cadastro de obras, registrando o endereço, descrição, horários de entrada/saída e tempos estimados.
+* **RF-03:** O sistema deve registrar a alocação de funcionários em obras específicas para controlar a frequência e as horas devidas/extras.
+* **RF-04:** O sistema deve registrar e gerenciar os pagamentos efetuados aos funcionários (valores brutos, descontados, líquidos e formas de pagamento).
+* **RF-05:** O sistema deve permitir a criação e o gerenciamento de tarefas vinculadas a cada obra, acompanhando a data de execução, descrição e status.
+* **RF-06:** O sistema deve permitir a associação de ícones personalizados para categorizar visualmente os tipos de serviço prestado.*
 
 #### Requisitos Não Funcionais
 *Características de qualidade (ex.: desempenho, segurança, usabilidade, disponibilidade).*

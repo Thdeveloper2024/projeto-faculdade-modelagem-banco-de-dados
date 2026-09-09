@@ -16,18 +16,20 @@ Para o armazenamento e gerenciamento dessas informações, será desenvolvido um
 
 Dessa forma, o projeto estará concentrado na refatoração do site existente, na implementação das funcionalidades de gerenciamento e no desenvolvimento do banco de dados, não abrangendo, nesta etapa, outros sistemas ou funcionalidades que não estejam diretamente relacionados aos objetivos definidos.
 
-
-
-
 ## Desenvolvimento
 
 ### Caracterização da Organização
-*(vale 7,5% — Dimensão Conceitual)*
 
 - **Nome e natureza da organização:** *qual organização real o grupo escolheu (com acesso garantido para pesquisa de campo) — pode ser uma empresa (livraria, lanchonete, pet shop), uma ONG, uma associação comunitária ou outra instituição.*
-- **Contexto e porte:** *com ou sem fins lucrativos; tamanho da operação; número de pessoas envolvidas (funcionários, voluntários, membros, fiéis); volume de atividades (vendas, atendimentos, doações, rituais, eventos).*
-- **Problemas e necessidades identificados:** *qual é a "crise operacional" — o que está desorganizado hoje (planilhas soltas, papel, falta de controle de estoque/doações/cadastros, etc.)?*
-- **Justificativa da escolha:** *por que essa organização foi escolhida e por que ela é um bom caso para o projeto?*
+  
+- **Contexto e porte:** Empresa com fins lucrativos atuando no setor de construção civil e empreitadas. A operação é de médio porte, contando com um volume constante de até 3 obras simultâneas. A equipe envolve cerca de 18 colaboradores no total, sendo composta por 1 engenheirs civil (responsável pela administração e criaão de orçamentos) e 17 operários de campo, divididos entre mestres obras, pedreiros e serventes. O volume mensal de atividades inclui a gestão de dezenas de tarefas por obra e o processamento de folha de pagamento e custos operacionais recorrentes.
+  
+- **Problemas e necessidades identificados:** A empresa enfrenta sérias dificuldades na gestão e acompanhamento das tarefas diárias em cada canteiro de obras. Há também um problema crítico no controle de ponto e assiduidade dos colaboradores, visto que atrasos frequentes ocorrem sem o devido registro ou compensação de horas de trabalho. Por fim, a ausência de um sistema centralizado gera falhas na consolidação dos pagamentos e na mensuração correta das horas extras e devidas de cada funcionário.
+  
+- **Problemas e necessidades identificados:** A empresa enfrenta dificuldades no controle de assiduidade e pontualidade dos colaboradores, visto que atrasos frequentes ocorrem nos canteiros de obras sem o devido registro ou compensação de horas devidas. Além disso, a organização sofre com a falta de presença digital e divulgação de seus serviços, pois a ausência de redes sociais e de um catálogo estruturado de fotos das obras concluídas impede a captação de novos clientes e o reconhecimento do seu portfólio no mercado.
+  
+- **Justificativa da escolha:** A escolha desta organização baseou-se no fato de ela apresentar problemas operacionais e de comunicação altamente típicos em pequenas e médias empresas do setor de construção civil. O grupo identificou que o porte da empreiteira oferece um cenário ideal e uma oportunidade favorável para a aplicação prática dos conceitos de modelagem de banco de dados, permitindo desenhar uma solução escalável que resolve gargalos reais de gestão de pessoal e de catalogação de portfólio.
+ 
 - **Evidências da organização:** *comprove que a organização existe e que o grupo teve acesso a ela — ex.: fotos do local/da visita, link da organização no Google (Google Maps/Google Meu Negócio, site, rede social), endereço completo e forma de contato (telefone, e-mail, responsável pela organização).*
 
 ---
@@ -40,7 +42,6 @@ Dessa forma, o projeto estará concentrado na refatoração do site existente, n
 ---
 
 ### Requisitos do Sistema
-*(esta seção e a Seção 4 "Regras de Negócio" DIVIDEM 7,5% na dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na organização/documentação)*
 
 #### Requisitos Funcionais
 
@@ -52,7 +53,12 @@ Dessa forma, o projeto estará concentrado na refatoração do site existente, n
 * **RF-06:** O sistema deve permitir a associação de ícones personalizados para categorizar visualmente os tipos de serviço prestado.*
 
 #### Requisitos Não Funcionais
-*Características de qualidade (ex.: desempenho, segurança, usabilidade, disponibilidade).*
+
+* **RNF-01 (Segurança):** O sistema deve garantir controle de acesso por nível de usuário, permitindo que apenas o setor administrativo e financeiro visualizem e alterem os registros da tabela FINANCEIRO.
+* **RNF-02 (Usabilidade/Portabilidade):** A interface do sistema deve ser responsiva e otimizada para dispositivos móveis (smartphones e tablets), facilitando o uso por mestres de obras e engenheiros diretamente no canteiro de obras.
+* **RNF-03 (Disponibilidade):** O sistema deve ser baseado em nuvem e possuir uma taxa de disponibilidade de no mínimo 99,5% (Uptime), garantindo acesso contínuo aos dados da obra.
+* **RNF-04 (Desempenho):** O tempo de resposta para a consulta de alocação de funcionários e status de tarefas não deve ultrapassar 3 segundos sob condições normais de conexão com a internet.
+
 
 ---
 

@@ -1,5 +1,7 @@
 # Modelagem de Banco de Dados Para Empreiteira EJS
 
+!!!
+
 ## Introdução
 
 Atualmente, a empresa apresenta um baixo número de obras em andamento e não possui redes sociais ou um site ativo para divulgação de seus serviços e obras realizadas. Além disso, a empresa enfrenta dificuldades no gerenciamento dos horários de entrada e saída dos funcionários, o que pode ocasionar divergências no controle das horas trabalhadas e, consequentemente, nos pagamentos realizados aos colaboradores.

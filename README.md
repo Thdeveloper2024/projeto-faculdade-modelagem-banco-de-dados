@@ -1,6 +1,5 @@
 # Modelagem de Banco de Dados Para Empreiteira EJS
 
-!!!
 
 ## Introdução
 

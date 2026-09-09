@@ -1,4 +1,4 @@
-# Modelagem de Banco de-Dados Para Empreiteira EJS
+# Modelagem de Banco de Dados Para Empreiteira EJS
 
 ## Introdução
 

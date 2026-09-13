@@ -19,9 +19,11 @@ Dessa forma, o projeto estará concentrado na refatoração do site existente, n
 
 ## Desenvolvimento
 
+Começamos o projeto fazendo uma pequena analise de problemas e achando soluções para os problemas que a empresa tinha, diante da analise fizemos um desenho basico de como poderia montar a extrutura e como salvar os dados, e depois disso criamos o dicionario de dados baseados nesse rascunho, depois disso fomos ajustando o reade-me, no reade-me descrevemos todos os passos do projeto.
+
 ### Caracterização da Organização
 
-- **Nome e natureza da organização:** *qual organização real o grupo escolheu (com acesso garantido para pesquisa de campo) — pode ser uma empresa (livraria, lanchonete, pet shop), uma ONG, uma associação comunitária ou outra instituição.*
+- **Nome e natureza da organização:** *ERENILDO JOSE DA SILVA CONTRUCAO - ME / Prestação de serviços na construção civil, com foco em aplicação de revestimentos, resinas e reformas em geral. *
   
 - **Contexto e porte:** Empresa com fins lucrativos atuando no setor de construção civil e empreitadas. A operação é de médio porte, contando com um volume constante de até 3 obras simultâneas. A equipe envolve cerca de 18 colaboradores no total, sendo composta por 1 engenheirs civil (responsável pela administração e criaão de orçamentos) e 17 operários de campo, divididos entre mestres obras, pedreiros e serventes. O volume mensal de atividades inclui a gestão de dezenas de tarefas por obra e o processamento de folha de pagamento e custos operacionais recorrentes.
   
@@ -29,7 +31,7 @@ Dessa forma, o projeto estará concentrado na refatoração do site existente, n
   
 - **Justificativa da escolha:** A escolha desta organização baseou-se no fato de ela apresentar problemas operacionais e de comunicação altamente típicos em pequenas e médias empresas do setor de construção civil. O grupo identificou que o porte da empreiteira oferece um cenário ideal e uma oportunidade favorável para a aplicação prática dos conceitos de modelagem de banco de dados, permitindo desenhar uma solução escalável que resolve gargalos reais de gestão de pessoal e de catalogação de portfólio.
  
-- **Evidências da organização:** *comprove que a organização existe e que o grupo teve acesso a ela — ex.: fotos do local/da visita, link da organização no Google (Google Maps/Google Meu Negócio, site, rede social), endereço completo e forma de contato (telefone, e-mail, responsável pela organização).*
+- **Evidências da organização:** *Site: https://empreiteira-ejs.vercel.app/index.html / Telefone: 11 98606-9654 / Instagram: https://www.instagram.com/ejs.empreiteira?igsh=MTdxcGNqZXpuNzcydQ%3D%3D&utm_source=qr*
 
 ---
 
@@ -64,23 +66,131 @@ Dessa forma, o projeto estará concentrado na refatoração do site existente, n
 ### Regras de Negócio
 *(esta seção DIVIDE com a Seção 3 "Requisitos do Sistema" os mesmos 7,5% da dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na documentação. "Regras de negócio" é o termo técnico usado em modelagem de dados para as regras de funcionamento de qualquer organização, com ou sem fins lucrativos)*
 
-- **Regras operacionais:** *condições que a organização impõe (ex.: "um pedido só pode ser fechado se houver estoque disponível", "uma doação só pode ser registrada com identificação do doador", "um ritual só pode ser agendado se o espaço estiver disponível").*
-- **Restrições organizacionais:** *limitações que afetam o modelo (ex.: políticas internas, prazos, exigências legais, normas religiosas ou estatutárias) — e por que elas importam.*
+- **Regras operacionais:** *A modelagem do sistema de gestão de informações da Empreiteira EJS deverá considerar as regras operacionais relacionadas ao gerenciamento das obras e à execução dos serviços.
+
+Cada obra deverá estar vinculada a um cliente, permitindo identificar o contratante e organizar as informações relacionadas aos serviços solicitados.
+
+Uma obra poderá contemplar diferentes tipos de serviços, como demolição, alvenaria, hidráulica, elétrica, forros de gesso, drywall e limpeza pós-obra, de acordo com as necessidades identificadas.
+
+Os serviços deverão estar relacionados aos profissionais ou às equipes responsáveis por sua execução, considerando a participação tanto dos colaboradores internos quanto das equipes terceirizadas.
+
+O acompanhamento das obras deverá permitir a organização das informações referentes aos serviços executados e ao andamento das atividades.
+
+Essas regras são importantes para estabelecer os relacionamentos entre as entidades do banco de dados, garantindo que as informações sobre clientes, obras, serviços e equipes sejam organizadas de maneira consistente.
+*
+- **Restrições organizacionais:** *A modelagem do sistema de gestão de informações da Empreiteira EJS deverá considerar as características e limitações da organização, especialmente em relação à execução das obras e à participação dos profissionais envolvidos.
+
+Uma das principais restrições está relacionada à existência de equipes internas e terceirizadas, que participam da execução dos serviços. Dessa forma, o modelo deverá permitir a identificação dos profissionais e das equipes responsáveis pelas atividades, diferenciando os serviços executados por equipes próprias daqueles realizados por terceiros.
+
+Outra restrição está relacionada à diversidade de serviços oferecidos pela empresa, como demolição, alvenaria, hidráulica, elétrica, forros de gesso, drywall e limpeza pós-obra. O modelo deverá permitir o registro de diferentes serviços vinculados a uma mesma obra, considerando suas particularidades.
+
+Além disso, o projeto será limitado à gestão das informações relacionadas aos clientes, obras, serviços e equipes envolvidas, não abrangendo todos os processos administrativos da organização.
+
+Essas restrições são importantes para garantir que a modelagem represente adequadamente a realidade da empresa, evitando informações desnecessárias e permitindo uma estrutura organizada e adequada às necessidades identificadas.
+*
 
 ---
 
-### Dicionário de Dados Conceitual (Preliminar)
-*(vale 10% — Dimensão Procedimental)*
+# Dicionário de Dados — Sistema de Gestão de Obras
 
-Para cada entidade identificada, liste:
+## 1. Visão geral
 
-| Atributo | Descrição | Regra de negócio associada |
-|----------|-----------|------------------------------|
-| *nome do atributo* | *o que ele representa* | *se houver alguma regra (obrigatoriedade, valores possíveis, etc.)* |
+O sistema tem como objetivo organizar informações de funcionários, obras, pagamentos, tarefas e ícones utilizados na interface.
 
-*Mantenha o dicionário organizado e padronizado (mesmo formato de tabela para todas as entidades).*
+O modelo apresenta cinco entidades: **FUNCIONARIO**, **FINANCEIRO**, **OBRA**, **TAREFA_OBRA** e **ICONE**.
 
-**Atenção à privacidade:** se forem usados exemplos de valores para ilustrar os atributos, esses exemplos devem ser **fictícios** — não utilize dados reais de clientes, fiéis, beneficiários, doadores ou funcionários da organização (nomes, CPFs, contatos etc.), mesmo que tenham sido observados durante a pesquisa de campo. Os exemplos devem apenas ser **coerentes com as operações reais** observadas.
+## 2. Entidades e atributos
+
+### 2.1 FUNCIONARIO
+
+Armazena os dados dos funcionários.
+
+| Atributo                    | Descrição                                                | Tipo sugerido       |
+| --------------------------- | -------------------------------------------------------- | ------------------- |
+| `id_funcionario`            | Identificador único do funcionário.                      | INT, chave primária |
+| `nome_funcionario`          | Nome completo do funcionário.                            | VARCHAR(150)        |
+| `cpf`                       | CPF do funcionário.                                      | CHAR(11)            |
+| `cargo`                     | Cargo ou função exercida.                                | VARCHAR(100)        |
+| `salario_definido`          | Salário definido para o funcionário.                     | DECIMAL(10,2)       |
+| `data_recebimento_salario`  | Data prevista ou registrada para recebimento do salário. | DATE                |
+| `nome_empresa_terceirizada` | Nome da empresa terceirizada relacionada ao funcionário. | VARCHAR(150)        |
+| `cnpj_empresa`              | CNPJ da empresa terceirizada.                            | CHAR(14)            |
+| `beneficios_funcionarios`   | Benefícios associados ao funcionário.                    | TEXT                |
+
+### 2.2 FINANCEIRO
+
+Registra informações de pagamentos e valores relacionados aos funcionários.
+
+| Atributo                 | Descrição                                                        | Tipo sugerido       |
+| ------------------------ | ---------------------------------------------------------------- | ------------------- |
+| `id_operacao`            | Identificador único da operação financeira.                      | INT, chave primária |
+| `valor_pago`             | Valor efetivamente pago.                                         | DECIMAL(10,2)       |
+| `data_pagamento`         | Data em que o pagamento foi realizado.                           | DATE                |
+| `comprovante_pagamento`  | Referência ou caminho do comprovante de pagamento.               | VARCHAR(255)        |
+| `forma_pagamento`        | Forma utilizada para realizar o pagamento.                       | VARCHAR(50)         |
+| `valor_bruto`            | Valor total antes de descontos.                                  | DECIMAL(10,2)       |
+| `valor_descontado`       | Valor total dos descontos aplicados.                             | DECIMAL(10,2)       |
+| `valor_liquido`          | Valor final após os descontos.                                   | DECIMAL(10,2)       |
+| `status_pagamento`       | Situação do pagamento.                                           | VARCHAR(30)         |
+| `horas_extras`           | Quantidade de horas extras registradas.                          | DECIMAL(5,2)        |
+| `horas_funcionario_deve` | Quantidade de horas que o funcionário deve, conforme o diagrama. | DECIMAL(5,2)        |
+
+### 2.3 OBRA
+
+Armazena as informações principais de cada obra.
+
+| Atributo          | Descrição                                         | Tipo sugerido       |
+| ----------------- | ------------------------------------------------- | ------------------- |
+| `id_obra`         | Identificador único da obra.                      | INT, chave primária |
+| `nome`            | Nome ou identificação da obra.                    | VARCHAR(150)        |
+| `endereco`        | Endereço onde a obra está localizada.             | VARCHAR(255)        |
+| `tempo_inicio`    | Data ou horário de início da obra.                | DATETIME            |
+| `tempo_fim`       | Data ou horário de término previsto ou realizado. | DATETIME            |
+| `status`          | Situação atual da obra.                           | VARCHAR(30)         |
+| `descricao`       | Descrição geral da obra.                          | TEXT                |
+| `horario_entrada` | Horário de entrada registrado para a obra.        | TIME                |
+| `horario_saida`   | Horário de saída registrado para a obra.          | TIME                |
+
+### 2.4 TAREFA_OBRA
+
+Armazena as tarefas vinculadas às obras.
+
+| Atributo           | Descrição                                  | Tipo sugerido       |
+| ------------------ | ------------------------------------------ | ------------------- |
+| `id_tarefa`        | Identificador único da tarefa.             | INT, chave primária |
+| `nome_tarefa`      | Nome da tarefa.                            | VARCHAR(150)        |
+| `data_execucao`    | Data prevista ou registrada para execução. | DATE                |
+| `descricao_tarefa` | Descrição da tarefa.                       | TEXT                |
+| `status_tarefa`    | Situação atual da tarefa.                  | VARCHAR(30)         |
+
+### 2.5 ICONE
+
+Define os ícones utilizados no sistema.
+
+| Atributo       | Descrição                                 | Tipo sugerido       |
+| -------------- | ----------------------------------------- | ------------------- |
+| `id_icone`     | Identificador único do ícone.             | INT, chave primária |
+| `nome`         | Nome ou identificação do ícone.           | VARCHAR(100)        |
+| `descricao`    | Descrição da finalidade do ícone.         | TEXT                |
+| `imagem_icone` | Referência ou caminho da imagem do ícone. | VARCHAR(255)        |
+
+## 3. Relacionamentos
+
+* **FUNCIONARIO — ADMINISTRA — OBRA:** relaciona funcionários às obras que administram.
+* **FUNCIONARIO — ALOCA — OBRA:** relaciona funcionários às obras em que estão alocados.
+* **FUNCIONARIO — RECEBE — FINANCEIRO:** relaciona funcionários aos registros financeiros de pagamentos.
+* **OBRA — POSSUI — TAREFA_OBRA:** relaciona cada obra às suas tarefas.
+* **TAREFA_OBRA — REPRESENTA — ICONE:** relaciona tarefas aos ícones usados para representá-las.
+
+## 4. Observações sobre o diagrama
+
+O diagrama apresenta alguns pontos que precisam ser confirmados antes da implementação:
+
+1. O atributo `horas_funcionario_deve` aparece parcialmente no diagrama. Foi mantido com essa identificação, mas é importante confirmar o nome completo e o significado.
+2. As cardinalidades de **RECEBE** parecem indicar uma relação de muitos para muitos. Se cada pagamento pertence a apenas um funcionário, o modelo deve ser ajustado para refletir essa regra.
+3. A relação **REPRESENTA** indica que uma tarefa pode estar associada a vários ícones, enquanto cada ícone está associado a uma tarefa. Confirme se essa é a regra desejada.
+4. O diagrama não mostra explicitamente os atributos de chave estrangeira. Na implementação, será necessário definir como os relacionamentos serão armazenados no banco de dados.
+
 
 ---
 

@@ -212,25 +212,50 @@ O ícone pode ser localizado pelo seu **ID (`id_icone`)** ou pelo seu nome.
 ---
 
 ### Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
-*(vale 7,5% na dimensão conceitual)*
 
-- **Entidades reconhecidas:** *liste e justifique brevemente cada uma.*
-- **Atributos e classificações:** *quais atributos pertencem a cada entidade.*
-- **Relacionamentos pertinentes:** *como as entidades se conectam.*
-- **Restrições e políticas organizacionais aplicadas ao modelo.**
+## Entidades reconhecidas
+
+* **FUNCIONARIO:** representa os funcionários cadastrados no sistema.
+* **OBRA:** representa as obras administradas pela empresa.
+* **TAREFA_OBRA:** representa as tarefas realizadas nas obras.
+* **FINANCEIRO:** representa as operações financeiras relacionadas aos funcionários.
+* **ICONE:** representa os ícones utilizados para identificação visual das tarefas no sistema.
+
+## Atributos e classificações
+
+* **FUNCIONARIO:** `cpf`, `nome_funcionario`, `cargo`, `salario_definido`, `data_recebimento_salario`, `nome_empresa_terceirizada`, `cnpj_empresa`, `beneficios_funcionarios`.
+* **OBRA:** `nome`, `endereco`, `tempo_inicio`, `tempo_fim`, `status`, `descricao`, `horario_entrada`, `horario_saida`.
+* **TAREFA_OBRA:** `nome_tarefa`, `data_execucao`, `descricao_tarefa`, `status_tarefa`.
+* **FINANCEIRO:** `id_operacao`, `valor_pago`, `data_pagamento`, `comprovante_pagamento`, `forma_pagamento`, `valor_bruto`, `valor_descontado`, `valor_liquido`, `status_pagamento`, `horas_extras`, `horas_funcionario_deve`.
+* **ICONE:** `id_icone`, `nome`, `descricao`, `imagem_icone`.
+
+As chaves primárias são: `cpf` em **FUNCIONARIO**, `nome` em **OBRA**, `nome_tarefa` em **TAREFA_OBRA**, `id_operacao` em **FINANCEIRO** e `id_icone` em **ICONE**.
+
+## Relacionamentos pertinentes
+
+* **FUNCIONARIO — ADMINISTRA — OBRA:** relaciona funcionários às obras que administram.
+* **FUNCIONARIO — ALOCA — OBRA:** relaciona funcionários às obras em que estão alocados.
+* **FUNCIONARIO — RECEBE — FINANCEIRO:** relaciona funcionários às suas operações financeiras.
+* **OBRA — POSSUI — TAREFA_OBRA:** relaciona as obras às suas respectivas tarefas.
+* **TAREFA_OBRA — REPRESENTA — ICONE:** relaciona as tarefas aos ícones utilizados para representá-las.
+
+## Restrições e políticas organizacionais
+
+* O CPF do funcionário deve ser único.
+* O nome da obra deve identificar uma única obra.
+* O `nome_tarefa` deve identificar uma única tarefa.
+* Cada operação financeira deve possuir um `id_operacao` único.
+* Cada ícone deve possuir um `id_icone` único.
+* As tarefas devem estar relacionadas às respectivas obras.
+* As operações financeiras devem estar relacionadas aos funcionários correspondentes.
+* Os valores financeiros devem manter a consistência entre valor bruto, descontos e valor líquido.
+* Os status de obras, tarefas e pagamentos devem seguir valores padronizados.
 
 ---
 
 ### Diagrama Entidade-Relacionamento (DER)
-*(vale 20% — é o item de maior peso da entrega)*
 
-- Anexe o DER (em imagem).
-- O diagrama deve representar corretamente:
-  - Entidades
-  - Atributos
-  - Relacionamentos
-  - **Cardinalidades**
-- O modelo deve ser **consistente** e já demonstrar potencial de **escalabilidade e integração** (pensando nas próximas etapas do projeto).
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/7a035247-1f93-435d-a587-80d44f638362" />
 
 ---
 

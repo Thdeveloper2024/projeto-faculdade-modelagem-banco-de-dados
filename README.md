@@ -117,22 +117,19 @@ Para melhorar a organização, escalabilidade e integração do banco de dados, 
 
 A entidade **FUNCIONARIO** armazena os dados dos funcionários e colaboradores relacionados à empresa.
 
-O atributo **`id_funcionario`** é utilizado como chave primária do registro.  
-Como o colaborador pode ser identificado por **CPF ou CNPJ**, os atributos `cpf` e `cnpj` são definidos como identificadores únicos alternativos.
+O atributo **`id_funcionario`** é utilizado como chave primária do registro. Como o colaborador pode ser identificado por **CPF ou CNPJ**, os atributos `cpf` e `cnpj` são definidos como identificadores únicos alternativos.
 
-Dessa forma, cada cadastro deverá possuir CPF ou CNPJ, não sendo permitida a duplicidade do documento informado.
-
-| Atributo                    | Descrição                                                                  | Tipo sugerido       |
-| --------------------------- | -------------------------------------------------------------------------- | ------------------- |
-| `id_funcionario`            | Identificador único interno do funcionário ou colaborador.                 | INT, chave primária |
-| `nome_funcionario`          | Nome completo do funcionário ou responsável.                              | VARCHAR(150)        |
-| `cpf`                       | CPF do funcionário, quando se tratar de pessoa física.                     | CHAR(11), UNIQUE    |
-| `cnpj`                      | CNPJ do colaborador ou empresa, quando se tratar de pessoa jurídica.       | CHAR(14), UNIQUE    |
-| `cargo`                     | Cargo ou função exercida pelo funcionário.                                 | VARCHAR(100)        |
-| `salario_definido`          | Salário ou valor definido para o funcionário ou colaborador.               | DECIMAL(10,2)       |
-| `data_recebimento_salario`  | Data prevista ou registrada para o recebimento do salário.                 | DATE                |
-| `nome_empresa_terceirizada` | Nome da empresa terceirizada relacionada ao colaborador, quando aplicável. | VARCHAR(150)        |
-| `beneficios_funcionarios`   | Benefícios associados ao funcionário.                                      | TEXT                |
+| Atributo | Descrição | Tipo sugerido | Regra de negócio associada |
+|---|---|---|---|
+| `id_funcionario` | Identificador único interno do funcionário ou colaborador. | INT, chave primária | Deve ser único e obrigatório. |
+| `nome_funcionario` | Nome completo do funcionário ou responsável. | VARCHAR(150) | Deve ser informado no cadastro. |
+| `cpf` | CPF do funcionário, quando se tratar de pessoa física. | CHAR(11), UNIQUE | Deve ser único quando informado. |
+| `cnpj` | CNPJ do colaborador ou empresa, quando se tratar de pessoa jurídica. | CHAR(14), UNIQUE | Deve ser único quando informado. |
+| `cargo` | Cargo ou função exercida pelo funcionário. | VARCHAR(100) | Deve representar a função exercida. |
+| `salario_definido` | Salário ou valor definido para o funcionário ou colaborador. | DECIMAL(10,2) | Deve possuir valor igual ou superior a zero. |
+| `data_recebimento_salario` | Data prevista ou registrada para o recebimento do salário. | DATE | Deve representar uma data válida. |
+| `nome_empresa_terceirizada` | Nome da empresa terceirizada relacionada ao colaborador, quando aplicável. | VARCHAR(150) | Aplicável somente a colaboradores terceirizados. |
+| `beneficios_funcionarios` | Benefícios associados ao funcionário. | TEXT | Pode ser preenchido quando houver benefícios. |
 
 **Regra de negócio:** cada registro deve possuir um `id_funcionario` único e deverá ser identificado por CPF ou CNPJ. O CPF e o CNPJ, quando informados, não poderão estar associados a mais de um cadastro.
 
@@ -144,19 +141,19 @@ A entidade **FINANCEIRO** registra as operações relacionadas aos pagamentos e 
 
 O atributo **`id_pagamento`** é utilizado como chave primária para identificar cada pagamento de forma única.
 
-| Atributo                 | Descrição                                                                | Tipo sugerido                 |
-| ------------------------ | ------------------------------------------------------------------------ | ----------------------------- |
-| `id_pagamento`           | Identificador único do pagamento.                                        | INT, chave primária           |
-| `valor_pago`             | Valor efetivamente pago ao funcionário.                                  | DECIMAL(10,2)                 |
-| `data_pagamento`         | Data em que o pagamento foi realizado.                                   | DATE                          |
-| `comprovante_pagamento`  | Referência ou caminho do comprovante de pagamento.                       | VARCHAR(255)                  |
-| `forma_pagamento`        | Forma utilizada para realizar o pagamento.                               | VARCHAR(50)                   |
-| `valor_bruto`            | Valor total antes dos descontos.                                         | DECIMAL(10,2)                 |
-| `valor_descontado`       | Valor total dos descontos aplicados.                                     | DECIMAL(10,2)                 |
-| `valor_liquido`          | Valor final após a aplicação dos descontos.                              | DECIMAL(10,2)                 |
-| `status_pagamento`       | Situação atual do pagamento.                                             | VARCHAR(30)                   |
-| `horas_extras`           | Quantidade de horas extras registradas.                                  | DECIMAL(5,2)                  |
-| `horas_funcionario_deve` | Quantidade de horas que o funcionário deve, conforme definido no modelo. | DECIMAL(5,2)                  |
+| Atributo | Descrição | Tipo sugerido | Regra de negócio associada |
+|---|---|---|---|
+| `id_pagamento` | Identificador único do pagamento. | INT, chave primária | Deve ser único e obrigatório. |
+| `valor_pago` | Valor efetivamente pago ao funcionário. | DECIMAL(10,2) | Deve representar o valor efetivamente pago. |
+| `data_pagamento` | Data em que o pagamento foi realizado. | DATE | Deve representar uma data válida de pagamento. |
+| `comprovante_pagamento` | Referência ou caminho do comprovante de pagamento. | VARCHAR(255) | Pode ser armazenado quando houver comprovante. |
+| `forma_pagamento` | Forma utilizada para realizar o pagamento. | VARCHAR(50) | Deve indicar a forma utilizada no pagamento. |
+| `valor_bruto` | Valor total antes dos descontos. | DECIMAL(10,2) | Deve ser maior ou igual a zero. |
+| `valor_descontado` | Valor total dos descontos aplicados. | DECIMAL(10,2) | Não pode ser negativo. |
+| `valor_liquido` | Valor final após a aplicação dos descontos. | DECIMAL(10,2) | Deve ser consistente com valor bruto e descontos. |
+| `status_pagamento` | Situação atual do pagamento. | VARCHAR(30) | Deve utilizar status padronizados pelo sistema. |
+| `horas_extras` | Quantidade de horas extras registradas. | DECIMAL(5,2) | Não pode possuir quantidade negativa. |
+| `horas_funcionario_deve` | Quantidade de horas devidas pelo funcionário. | DECIMAL(5,2) | Não pode possuir quantidade negativa. |
 
 **Regra de negócio:** cada pagamento deve possuir um `id_pagamento` único, permitindo que diferentes pagamentos realizados ao mesmo funcionário sejam registrados individualmente.
 
@@ -168,19 +165,19 @@ A entidade **OBRA** armazena as principais informações relacionadas às obras 
 
 O atributo **`id_obra`** é utilizado como chave primária, permitindo identificar cada obra independentemente de seu nome.
 
-| Atributo          | Descrição                                                 | Tipo sugerido                 |
-| ----------------- | --------------------------------------------------------- | ----------------------------- |
-| `id_obra`         | Identificador único da obra.                              | INT, chave primária           |
-| `nome`            | Nome ou identificação descritiva da obra.                 | VARCHAR(150)                  |
-| `endereco`        | Endereço onde a obra está localizada.                     | VARCHAR(255)                  |
-| `tempo_inicio`    | Data ou horário de início da obra.                        | DATETIME                      |
-| `tempo_fim`       | Data ou horário de término previsto ou realizado da obra. | DATETIME                      |
-| `status`          | Situação atual da obra.                                   | VARCHAR(30)                   |
-| `descricao`       | Descrição geral da obra.                                  | TEXT                          |
-| `horario_entrada` | Horário de entrada registrado para a obra.                | TIME                          |
-| `horario_saida`   | Horário de saída registrado para a obra.                  | TIME                          |
+| Atributo | Descrição | Tipo sugerido | Regra de negócio associada |
+|---|---|---|---|
+| `id_obra` | Identificador único da obra. | INT, chave primária | Deve ser único e obrigatório. |
+| `nome` | Nome ou identificação descritiva da obra. | VARCHAR(150) | Deve permitir a identificação da obra pelo usuário. |
+| `endereco` | Endereço onde a obra está localizada. | VARCHAR(255) | Deve representar a localização da obra. |
+| `tempo_inicio` | Data ou horário de início da obra. | DATETIME | Deve representar o início previsto ou realizado. |
+| `tempo_fim` | Data ou horário de término previsto ou realizado da obra. | DATETIME | Não deve ser anterior ao início da obra. |
+| `status` | Situação atual da obra. | VARCHAR(30) | Deve utilizar valores padronizados. |
+| `descricao` | Descrição geral da obra. | TEXT | Deve apresentar informações relevantes sobre a obra. |
+| `horario_entrada` | Horário de entrada registrado para a obra. | TIME | Deve representar um horário válido. |
+| `horario_saida` | Horário de saída registrado para a obra. | TIME | Deve representar um horário válido. |
 
-**Regra de negócio:** cada obra deve possuir um `id_obra` único. O nome da obra é utilizado para sua identificação descritiva, enquanto o identificador numérico garante sua identificação única no banco de dados.
+**Regra de negócio:** cada obra deve possuir um `id_obra` único. O nome da obra é utilizado para sua identificação descritiva.
 
 ---
 
@@ -190,15 +187,15 @@ A entidade **TAREFA_OBRA** armazena as tarefas relacionadas às obras.
 
 O atributo **`id_tarefa_obra`** é utilizado como chave primária para identificar individualmente cada tarefa cadastrada.
 
-| Atributo           | Descrição                                              | Tipo sugerido                 |
-| ------------------ | ------------------------------------------------------ | ----------------------------- |
-| `id_tarefa_obra`   | Identificador único da tarefa da obra.                 | INT, chave primária           |
-| `nome_tarefa`      | Nome da tarefa.                                        | VARCHAR(150)                  |
-| `data_execucao`    | Data prevista ou registrada para a execução da tarefa. | DATE                          |
-| `descricao_tarefa` | Descrição da tarefa a ser realizada.                   | TEXT                          |
-| `status_tarefa`    | Situação atual da tarefa.                              | VARCHAR(30)                   |
+| Atributo | Descrição | Tipo sugerido | Regra de negócio associada |
+|---|---|---|---|
+| `id_tarefa_obra` | Identificador único da tarefa da obra. | INT, chave primária | Deve ser único e obrigatório. |
+| `nome_tarefa` | Nome da tarefa. | VARCHAR(150) | Deve permitir identificar a atividade executada. |
+| `data_execucao` | Data prevista ou registrada para a execução da tarefa. | DATE | Deve representar uma data válida. |
+| `descricao_tarefa` | Descrição da tarefa a ser realizada. | TEXT | Deve detalhar a atividade quando necessário. |
+| `status_tarefa` | Situação atual da tarefa. | VARCHAR(30) | Deve utilizar valores padronizados pelo sistema. |
 
-**Regra de negócio:** cada tarefa deve possuir um `id_tarefa_obra` único. Diferentes tarefas podem possuir nomes semelhantes, pois sua identificação no sistema é realizada pelo identificador numérico.
+**Regra de negócio:** cada tarefa deve possuir um `id_tarefa_obra` único. Diferentes tarefas podem possuir nomes semelhantes, pois sua identificação é realizada pelo identificador numérico.
 
 ---
 
@@ -208,12 +205,12 @@ A entidade **ICONE** define os ícones utilizados para representar informações
 
 O atributo **`id_icone`** é utilizado como chave primária para identificar cada ícone de forma única.
 
-| Atributo       | Descrição                                 | Tipo sugerido                 |
-| -------------- | ----------------------------------------- | ----------------------------- |
-| `id_icone`     | Identificador único do ícone.             | INT, chave primária           |
-| `nome`         | Nome ou identificação do ícone.           | VARCHAR(100)                  |
-| `descricao`    | Descrição da finalidade do ícone.         | TEXT                          |
-| `imagem_icone` | Referência ou caminho da imagem do ícone. | VARCHAR(255)                  |
+| Atributo | Descrição | Tipo sugerido | Regra de negócio associada |
+|---|---|---|---|
+| `id_icone` | Identificador único do ícone. | INT, chave primária | Deve ser único e obrigatório. |
+| `nome` | Nome ou identificação do ícone. | VARCHAR(100) | Deve facilitar a identificação visual do ícone. |
+| `descricao` | Descrição da finalidade do ícone. | TEXT | Pode detalhar a finalidade do recurso visual. |
+| `imagem_icone` | Referência ou caminho da imagem do ícone. | VARCHAR(255) | Deve apontar para o recurso visual correspondente. |
 
 **Regra de negócio:** cada ícone deve possuir um `id_icone` único. O atributo `nome` pode ser utilizado para facilitar sua localização e identificação.
 

@@ -95,77 +95,110 @@ Essas restrições são importantes para garantir que a modelagem represente ade
 
 ## 1. Visão geral
 
-O sistema tem como objetivo organizar informações de funcionários, obras, pagamentos, tarefas e ícones utilizados na interface.
+O sistema tem como objetivo organizar e gerenciar informações relacionadas a funcionários, obras, pagamentos, tarefas e ícones utilizados na interface do sistema.
 
-O modelo apresenta cinco entidades: **FUNCIONARIO**, **FINANCEIRO**, **OBRA**, **TAREFA_OBRA** e **ICONE**.
+O modelo de dados apresenta cinco entidades principais:
+
+* **FUNCIONARIO**
+* **FINANCEIRO**
+* **OBRA**
+* **TAREFA_OBRA**
+* **ICONE**
+
+Cada entidade possui atributos responsáveis por armazenar as informações necessárias para o funcionamento do sistema.
+
+---
 
 ## 2. Entidades e atributos
 
 ### 2.1 FUNCIONARIO
 
-Armazena os dados dos funcionários.
+A entidade **FUNCIONARIO** armazena os dados dos funcionários relacionados à empresa.
 
-| Atributo                    | Descrição                                                | Tipo sugerido       |
-| --------------------------- | -------------------------------------------------------- | ------------------- |
-| `id_funcionario`            | Identificador único do funcionário.                      | INT, chave primária |
-| `nome_funcionario`          | Nome completo do funcionário.                            | VARCHAR(150)        |
-| `cpf`                       | CPF do funcionário.                                      | CHAR(11)            |
-| `cargo`                     | Cargo ou função exercida.                                | VARCHAR(100)        |
-| `salario_definido`          | Salário definido para o funcionário.                     | DECIMAL(10,2)       |
-| `data_recebimento_salario`  | Data prevista ou registrada para recebimento do salário. | DATE                |
-| `nome_empresa_terceirizada` | Nome da empresa terceirizada relacionada ao funcionário. | VARCHAR(150)        |
-| `cnpj_empresa`              | CNPJ da empresa terceirizada.                            | CHAR(14)            |
-| `beneficios_funcionarios`   | Benefícios associados ao funcionário.                    | TEXT                |
+O **CPF** é utilizado como chave primária, sendo o identificador único de cada funcionário.
+
+| Atributo                    | Descrição                                                                  | Tipo sugerido            |
+| --------------------------- | -------------------------------------------------------------------------- | ------------------------ |
+| `cpf`                       | CPF do funcionário e identificador único do funcionário.                   | CHAR(11), chave primária |
+| `nome_funcionario`          | Nome completo do funcionário.                                              | VARCHAR(150)             |
+| `cargo`                     | Cargo ou função exercida pelo funcionário.                                 | VARCHAR(100)             |
+| `salario_definido`          | Salário definido para o funcionário.                                       | DECIMAL(10,2)            |
+| `data_recebimento_salario`  | Data prevista ou registrada para o recebimento do salário.                 | DATE                     |
+| `nome_empresa_terceirizada` | Nome da empresa terceirizada relacionada ao funcionário, quando aplicável. | VARCHAR(150)             |
+| `cnpj_empresa`              | CNPJ da empresa terceirizada, quando aplicável.                            | CHAR(14)                 |
+| `beneficios_funcionarios`   | Benefícios associados ao funcionário.                                      | TEXT                     |
+
+**Regra de negócio:** cada funcionário deve possuir um CPF único, não sendo permitido o cadastro de dois funcionários com o mesmo CPF.
+
+---
 
 ### 2.2 FINANCEIRO
 
-Registra informações de pagamentos e valores relacionados aos funcionários.
+A entidade **FINANCEIRO** registra as operações relacionadas aos pagamentos e valores financeiros dos funcionários.
 
-| Atributo                 | Descrição                                                        | Tipo sugerido       |
-| ------------------------ | ---------------------------------------------------------------- | ------------------- |
-| `id_operacao`            | Identificador único da operação financeira.                      | INT, chave primária |
-| `valor_pago`             | Valor efetivamente pago.                                         | DECIMAL(10,2)       |
-| `data_pagamento`         | Data em que o pagamento foi realizado.                           | DATE                |
-| `comprovante_pagamento`  | Referência ou caminho do comprovante de pagamento.               | VARCHAR(255)        |
-| `forma_pagamento`        | Forma utilizada para realizar o pagamento.                       | VARCHAR(50)         |
-| `valor_bruto`            | Valor total antes de descontos.                                  | DECIMAL(10,2)       |
-| `valor_descontado`       | Valor total dos descontos aplicados.                             | DECIMAL(10,2)       |
-| `valor_liquido`          | Valor final após os descontos.                                   | DECIMAL(10,2)       |
-| `status_pagamento`       | Situação do pagamento.                                           | VARCHAR(30)         |
-| `horas_extras`           | Quantidade de horas extras registradas.                          | DECIMAL(5,2)        |
-| `horas_funcionario_deve` | Quantidade de horas que o funcionário deve, conforme o diagrama. | DECIMAL(5,2)        |
+O **id_operacao** é utilizado como chave primária para identificar cada operação financeira de forma única.
+
+| Atributo                 | Descrição                                                                | Tipo sugerido       |
+| ------------------------ | ------------------------------------------------------------------------ | ------------------- |
+| `id_operacao`            | Identificador único da operação financeira.                              | INT, chave primária |
+| `valor_pago`             | Valor efetivamente pago.                                                 | DECIMAL(10,2)       |
+| `data_pagamento`         | Data em que o pagamento foi realizado.                                   | DATE                |
+| `comprovante_pagamento`  | Referência ou caminho do comprovante de pagamento.                       | VARCHAR(255)        |
+| `forma_pagamento`        | Forma utilizada para realizar o pagamento.                               | VARCHAR(50)         |
+| `valor_bruto`            | Valor total antes dos descontos.                                         | DECIMAL(10,2)       |
+| `valor_descontado`       | Valor total dos descontos aplicados.                                     | DECIMAL(10,2)       |
+| `valor_liquido`          | Valor final após a aplicação dos descontos.                              | DECIMAL(10,2)       |
+| `status_pagamento`       | Situação atual do pagamento.                                             | VARCHAR(30)         |
+| `horas_extras`           | Quantidade de horas extras registradas.                                  | DECIMAL(5,2)        |
+| `horas_funcionario_deve` | Quantidade de horas que o funcionário deve, conforme definido no modelo. | DECIMAL(5,2)        |
+
+**Regra de negócio:** cada operação financeira deve possuir um `id_operacao` único.
+
+---
 
 ### 2.3 OBRA
 
-Armazena as informações principais de cada obra.
+A entidade **OBRA** armazena as principais informações relacionadas às obras administradas pela empresa.
 
-| Atributo          | Descrição                                         | Tipo sugerido       |
-| ----------------- | ------------------------------------------------- | ------------------- |
-| `id_obra`         | Identificador único da obra.                      | INT, chave primária |
-| `nome`            | Nome ou identificação da obra.                    | VARCHAR(150)        |
-| `endereco`        | Endereço onde a obra está localizada.             | VARCHAR(255)        |
-| `tempo_inicio`    | Data ou horário de início da obra.                | DATETIME            |
-| `tempo_fim`       | Data ou horário de término previsto ou realizado. | DATETIME            |
-| `status`          | Situação atual da obra.                           | VARCHAR(30)         |
-| `descricao`       | Descrição geral da obra.                          | TEXT                |
-| `horario_entrada` | Horário de entrada registrado para a obra.        | TIME                |
-| `horario_saida`   | Horário de saída registrado para a obra.          | TIME                |
+De acordo com a regra definida para o modelo, a obra é identificada pelo seu **nome**.
+
+| Atributo          | Descrição                                                 | Tipo sugerido                |
+| ----------------- | --------------------------------------------------------- | ---------------------------- |
+| `nome`            | Nome ou identificação única da obra.                      | VARCHAR(150), chave primária |
+| `endereco`        | Endereço onde a obra está localizada.                     | VARCHAR(255)                 |
+| `tempo_inicio`    | Data ou horário de início da obra.                        | DATETIME                     |
+| `tempo_fim`       | Data ou horário de término previsto ou realizado da obra. | DATETIME                     |
+| `status`          | Situação atual da obra.                                   | VARCHAR(30)                  |
+| `descricao`       | Descrição geral da obra.                                  | TEXT                         |
+| `horario_entrada` | Horário de entrada registrado para a obra.                | TIME                         |
+| `horario_saida`   | Horário de saída registrado para a obra.                  | TIME                         |
+
+**Regra de negócio:** cada obra deve possuir um nome único, utilizado para sua identificação no sistema.
+
+---
 
 ### 2.4 TAREFA_OBRA
 
-Armazena as tarefas vinculadas às obras.
+A entidade **TAREFA_OBRA** armazena as tarefas relacionadas às obras.
 
-| Atributo           | Descrição                                  | Tipo sugerido       |
-| ------------------ | ------------------------------------------ | ------------------- |
-| `id_tarefa`        | Identificador único da tarefa.             | INT, chave primária |
-| `nome_tarefa`      | Nome da tarefa.                            | VARCHAR(150)        |
-| `data_execucao`    | Data prevista ou registrada para execução. | DATE                |
-| `descricao_tarefa` | Descrição da tarefa.                       | TEXT                |
-| `status_tarefa`    | Situação atual da tarefa.                  | VARCHAR(30)         |
+De acordo com a regra definida no modelo, a tarefa é identificada pelo atributo **`nome_tarefa`**.
+
+| Atributo           | Descrição                                              | Tipo sugerido                |
+| ------------------ | ------------------------------------------------------ | ---------------------------- |
+| `nome_tarefa`      | Nome e identificador da tarefa.                        | VARCHAR(150), chave primária |
+| `data_execucao`    | Data prevista ou registrada para a execução da tarefa. | DATE                         |
+| `descricao_tarefa` | Descrição da tarefa a ser realizada.                   | TEXT                         |
+| `status_tarefa`    | Situação atual da tarefa.                              | VARCHAR(30)                  |
+
+**Regra de negócio:** cada tarefa deve possuir um `nome_tarefa` que permita sua identificação no sistema.
+
+---
 
 ### 2.5 ICONE
 
-Define os ícones utilizados no sistema.
+A entidade **ICONE** define os ícones utilizados para representar informações ou tarefas na interface do sistema.
+
+O ícone pode ser localizado pelo seu **ID (`id_icone`)** ou pelo seu nome.
 
 | Atributo       | Descrição                                 | Tipo sugerido       |
 | -------------- | ----------------------------------------- | ------------------- |
@@ -174,23 +207,7 @@ Define os ícones utilizados no sistema.
 | `descricao`    | Descrição da finalidade do ícone.         | TEXT                |
 | `imagem_icone` | Referência ou caminho da imagem do ícone. | VARCHAR(255)        |
 
-## 3. Relacionamentos
-
-* **FUNCIONARIO — ADMINISTRA — OBRA:** relaciona funcionários às obras que administram.
-* **FUNCIONARIO — ALOCA — OBRA:** relaciona funcionários às obras em que estão alocados.
-* **FUNCIONARIO — RECEBE — FINANCEIRO:** relaciona funcionários aos registros financeiros de pagamentos.
-* **OBRA — POSSUI — TAREFA_OBRA:** relaciona cada obra às suas tarefas.
-* **TAREFA_OBRA — REPRESENTA — ICONE:** relaciona tarefas aos ícones usados para representá-las.
-
-## 4. Observações sobre o diagrama
-
-O diagrama apresenta alguns pontos que precisam ser confirmados antes da implementação:
-
-1. O atributo `horas_funcionario_deve` aparece parcialmente no diagrama. Foi mantido com essa identificação, mas é importante confirmar o nome completo e o significado.
-2. As cardinalidades de **RECEBE** parecem indicar uma relação de muitos para muitos. Se cada pagamento pertence a apenas um funcionário, o modelo deve ser ajustado para refletir essa regra.
-3. A relação **REPRESENTA** indica que uma tarefa pode estar associada a vários ícones, enquanto cada ícone está associado a uma tarefa. Confirme se essa é a regra desejada.
-4. O diagrama não mostra explicitamente os atributos de chave estrangeira. Na implementação, será necessário definir como os relacionamentos serão armazenados no banco de dados.
-
+**Regra de negócio:** cada ícone deve possuir um `id_icone` único. O atributo `nome` pode ser utilizado para facilitar sua localização e identificação.
 
 ---
 

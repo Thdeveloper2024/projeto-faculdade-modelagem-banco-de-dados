@@ -115,23 +115,26 @@ Para melhorar a organização, escalabilidade e integração do banco de dados, 
 
 ### 2.1 FUNCIONARIO
 
-A entidade **FUNCIONARIO** armazena os dados dos funcionários relacionados à empresa.
+A entidade **FUNCIONARIO** armazena os dados dos funcionários e colaboradores relacionados à empresa.
 
-O atributo **`id_funcionario`** é utilizado como chave primária, sendo responsável por identificar de forma única cada funcionário no sistema. O CPF continua sendo um dado único do funcionário, porém não é utilizado como chave primária.
+O atributo **`id_funcionario`** é utilizado como chave primária do registro.  
+Como o colaborador pode ser identificado por **CPF ou CNPJ**, os atributos `cpf` e `cnpj` são definidos como identificadores únicos alternativos.
 
-| Atributo                    | Descrição                                                                  | Tipo sugerido                 |
-| --------------------------- | -------------------------------------------------------------------------- | ----------------------------- |
-| `id_funcionario`            | Identificador único do funcionário.                                        | INT, chave primária           |
-| `nome_funcionario`          | Nome completo do funcionário.                                              | VARCHAR(150)                  |
-| `cpf`                       | CPF do funcionário. Deve possuir valor único no sistema.                   | CHAR(11), UNIQUE              |
-| `cargo`                     | Cargo ou função exercida pelo funcionário.                                 | VARCHAR(100)                  |
-| `salario_definido`          | Salário definido para o funcionário.                                       | DECIMAL(10,2)                 |
-| `data_recebimento_salario`  | Data prevista ou registrada para o recebimento do salário.                 | DATE                          |
-| `nome_empresa_terceirizada` | Nome da empresa terceirizada relacionada ao funcionário, quando aplicável. | VARCHAR(150)                  |
-| `cnpj_empresa`              | CNPJ da empresa terceirizada, quando aplicável.                            | CHAR(14)                      |
-| `beneficios_funcionarios`   | Benefícios associados ao funcionário.                                      | TEXT                          |
+Dessa forma, cada cadastro deverá possuir CPF ou CNPJ, não sendo permitida a duplicidade do documento informado.
 
-**Regra de negócio:** cada funcionário deve possuir um `id_funcionario` único. O CPF também deve possuir valor único, não sendo permitido o cadastro de dois funcionários com o mesmo CPF.
+| Atributo                    | Descrição                                                                  | Tipo sugerido       |
+| --------------------------- | -------------------------------------------------------------------------- | ------------------- |
+| `id_funcionario`            | Identificador único interno do funcionário ou colaborador.                 | INT, chave primária |
+| `nome_funcionario`          | Nome completo do funcionário ou responsável.                              | VARCHAR(150)        |
+| `cpf`                       | CPF do funcionário, quando se tratar de pessoa física.                     | CHAR(11), UNIQUE    |
+| `cnpj`                      | CNPJ do colaborador ou empresa, quando se tratar de pessoa jurídica.       | CHAR(14), UNIQUE    |
+| `cargo`                     | Cargo ou função exercida pelo funcionário.                                 | VARCHAR(100)        |
+| `salario_definido`          | Salário ou valor definido para o funcionário ou colaborador.               | DECIMAL(10,2)       |
+| `data_recebimento_salario`  | Data prevista ou registrada para o recebimento do salário.                 | DATE                |
+| `nome_empresa_terceirizada` | Nome da empresa terceirizada relacionada ao colaborador, quando aplicável. | VARCHAR(150)        |
+| `beneficios_funcionarios`   | Benefícios associados ao funcionário.                                      | TEXT                |
+
+**Regra de negócio:** cada registro deve possuir um `id_funcionario` único e deverá ser identificado por CPF ou CNPJ. O CPF e o CNPJ, quando informados, não poderão estar associados a mais de um cadastro.
 
 ---
 

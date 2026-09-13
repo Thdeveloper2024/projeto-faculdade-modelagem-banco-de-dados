@@ -260,9 +260,37 @@ As chaves primárias são: `cpf` em **FUNCIONARIO**, `nome` em **OBRA**, `nome_t
 ---
 
 ### Justificativa Técnica
-*(vale 7,5% — sozinho, é o subcritério de maior peso dentro da Dimensão Conceitual)*
 
-*Explique e defenda as decisões de abstração e modelagem tomadas: por que essas entidades, esses atributos, esses relacionamentos e essas cardinalidades — e não outras alternativas possíveis?*
+A modelagem conceitual foi definida a partir das principais regras de negócio identificadas no contexto da empresa, buscando representar as informações de forma estruturada, evitar redundâncias e possibilitar a evolução do sistema nas próximas etapas.
+
+A entidade **FUNCIONARIO** foi criada para representar os profissionais envolvidos nas atividades da empresa. O **CPF** foi definido como chave primária por permitir a identificação individual de cada funcionário. A escolha de manter os dados profissionais, salariais e de contratação nessa entidade evita que essas informações sejam repetidas em diferentes partes do modelo.
+
+A entidade **OBRA** representa cada obra administrada pela empresa. O atributo **nome** foi adotado como chave primária conforme a regra de identificação definida para o projeto. Informações como endereço, período, status, descrição e horários foram mantidas nessa entidade por serem características próprias da obra. Uma alternativa seria criar entidades separadas para endereço, horários ou status, porém essa decomposição não se mostrou necessária no nível conceitual atual, pois não existem regras de negócio que indiquem a necessidade de tratá-los como objetos independentes.
+
+A entidade **TAREFA_OBRA** foi separada de OBRA porque uma obra é composta por diversas atividades que precisam ser acompanhadas individualmente. O **nome_tarefa** foi definido como chave primária conforme a regra estabelecida. A separação evita armazenar várias tarefas como atributos de uma única obra e permite registrar individualmente a data, descrição e status de cada atividade.
+
+A entidade **FINANCEIRO** foi criada separadamente de FUNCIONARIO porque um funcionário pode possuir diversas operações financeiras durante seu vínculo com a empresa. O **id_operacao** foi definido como chave primária para identificar cada operação individualmente. Essa decisão é mais adequada do que armazenar os valores diretamente em FUNCIONARIO, pois permite representar múltiplos pagamentos e registros financeiros sem duplicar os dados do funcionário.
+
+A entidade **ICONE** foi incluída para centralizar os recursos utilizados na representação visual das tarefas. O **id_icone** foi definido como chave primária, enquanto o **nome** possibilita sua identificação por meio de uma informação descritiva. A criação dessa entidade evita a repetição dos dados do mesmo ícone em diferentes tarefas e permite seu reaproveitamento.
+
+Quanto aos relacionamentos, **FUNCIONARIO — ADMINISTRA — OBRA** possui cardinalidade **N:N**, pois um funcionário pode participar da administração de várias obras e uma obra pode ser administrada por mais de um funcionário. Uma cardinalidade 1:N não representaria adequadamente essa possibilidade.
+
+O relacionamento **FUNCIONARIO — ALOCA — OBRA** também possui cardinalidade **N:N**, porém representa a alocação para execução das atividades. A distinção entre ADMINISTRA e ALOCA é necessária porque são responsabilidades diferentes: um funcionário pode administrar uma obra sem necessariamente estar alocado para sua execução, e diferentes funcionários podem exercer diferentes funções dentro da mesma obra.
+
+O relacionamento **FUNCIONARIO — RECEBE — FINANCEIRO** possui cardinalidade **1:N**, pois um funcionário pode possuir várias operações financeiras, enquanto cada operação financeira está vinculada a um único funcionário. Não foi utilizada uma relação N:N porque uma mesma operação financeira não representa, no modelo atual, um pagamento pertencente simultaneamente a vários funcionários.
+
+O relacionamento **OBRA — POSSUI — TAREFA_OBRA** possui cardinalidade **1:N**, pois uma obra pode possuir várias tarefas, mas cada tarefa pertence a uma obra específica. Essa estrutura permite organizar as atividades dentro do contexto da obra sem transformar as tarefas em atributos repetitivos de OBRA.
+
+O relacionamento **TAREFA_OBRA — REPRESENTA — ICONE** possui cardinalidade **N:1**, pois várias tarefas podem utilizar o mesmo ícone, enquanto cada tarefa utiliza um ícone para sua representação. A criação do relacionamento, em vez da duplicação das informações do ícone em cada tarefa, permite reutilização e facilita futuras alterações.
+
+As restrições de integridade também foram consideradas. As chaves primárias devem identificar unicamente cada ocorrência, enquanto os relacionamentos devem garantir que uma tarefa esteja vinculada a uma obra existente e que uma operação financeira esteja vinculada a um funcionário existente. Os atributos relacionados a valores financeiros também devem manter consistência entre valor bruto, descontos e valor líquido.
+
+A opção por manter determinadas informações como atributos, em vez de transformá-las em entidades independentes, foi baseada no princípio de **abstração adequado ao escopo do sistema**. Uma entidade deve representar um objeto relevante do domínio que possua identidade e participação própria nas regras de negócio. Dessa forma, atributos simples e que não possuem comportamento ou relacionamentos independentes permanecem associados às suas respectivas entidades.
+
+Por fim, o modelo foi estruturado considerando **escalabilidade e integração**. A separação entre funcionários, obras, tarefas, operações financeiras e ícones permite que novas entidades, como clientes, fornecedores, materiais, equipamentos e contratos, sejam incorporadas posteriormente sem comprometer a estrutura principal.
+
+Assim, as decisões adotadas não representam apenas uma divisão dos dados, mas uma tentativa de reproduzir as regras de negócio de forma coerente. As entidades foram definidas conforme os objetos relevantes do domínio, os atributos conforme suas características, os relacionamentos conforme suas dependências e as cardinalidades conforme a quantidade de ocorrências permitida entre as entidades.
+
 
 ---
 

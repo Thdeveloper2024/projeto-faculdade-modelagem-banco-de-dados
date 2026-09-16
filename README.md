@@ -64,7 +64,6 @@ Começamos o projeto fazendo uma pequena analise de problemas e achando soluçõ
 ---
 
 ### Regras de Negócio
-*(esta seção DIVIDE com a Seção 3 "Requisitos do Sistema" os mesmos 7,5% da dimensão conceitual — juntas valem 7,5%, não 7,5% cada — + 4% exclusivos desta seção na documentação. "Regras de negócio" é o termo técnico usado em modelagem de dados para as regras de funcionamento de qualquer organização, com ou sem fins lucrativos)*
 
 - **Regras operacionais:** *A modelagem do sistema de gestão de informações da Empreiteira EJS deverá considerar as regras operacionais relacionadas ao gerenciamento das obras e à execução dos serviços.
 

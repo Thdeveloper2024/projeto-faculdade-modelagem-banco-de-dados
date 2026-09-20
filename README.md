@@ -1,4 +1,4 @@
-# Modelagem de Banco de Dados Para Empreiteira EJS
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/82e8c8e9-0679-468f-88b9-88ef6aad20fa" /># Modelagem de Banco de Dados Para Empreiteira EJS
 
 
 ## Introdução
@@ -259,7 +259,8 @@ As chaves primárias são: `cpf` em **FUNCIONARIO**, `nome` em **OBRA**, `nome_t
 
 ### Diagrama Entidade-Relacionamento (DER)
 
-![Uploading image.png…]()
+<img width="1536" height="1024" alt="diagrama-foto" src="https://github.com/user-attachments/assets/diagrama-foto.png" />
+
 
 
 ---

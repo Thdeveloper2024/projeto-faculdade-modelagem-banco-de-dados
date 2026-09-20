@@ -259,7 +259,7 @@ As chaves primárias são: `cpf` em **FUNCIONARIO**, `nome` em **OBRA**, `nome_t
 
 ### Diagrama Entidade-Relacionamento (DER)
 
-<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/7a035247-1f93-435d-a587-80d44f638362" />
+<img width="1672" height="941" alt="image" src="https://private-user-images.githubusercontent.com/158238703/650964018-7a035247-1f93-435d-a587-80d44f638362.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3ODk4NjA1ODgsIm5iZiI6MTc4OTg2MDI4OCwicGF0aCI6Ii8xNTgyMzg3MDMvNjUwOTY0MDE4LTdhMDM1MjQ3LTFmOTMtNDM1ZC1hNTg3LTgwZDQ0ZjYzODM2Mi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwOTE5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDkxOVQyMzI0NDhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lMTA3NzY5MmEwMGMzNzQ2YTkwNzFiZDUwZTJhMDI4ZThkZTU1MzMxZGVlNWY3YWE1MjU1M2IzZGQyNGMzMmYwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LXR5cGU9aW1hZ2UlMkZwbmcifQ.1MBRoZzaMKNVnfX9GDVMcFc41CpEr7vXbZTd-DSpbDg" />
 
 ---
 

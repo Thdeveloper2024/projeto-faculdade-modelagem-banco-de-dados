@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dicionário de Dados — Sistema de Gestão de Obras | EJS</title>
+<style>
+:root{
+  --navy-deep:#0c1c2e;
+  --navy2:#16283f;
+  --navy-soft:#4d6f94;
+  --paper:#eef0e6;
+  --ink:#1c2b3d;
+  --ink-light:#3d5570;
+  --amber:#c9812f;
+  --amber-dark:#a8661e;
+  --rust:#a23b2c;
+  --cream:#eef0e7;
+  --line-on-paper:rgba(28,43,61,.14);
+  --font-display:'Arial Narrow',Arial,sans-serif;
+  --font-body:Georgia,'Times New Roman',serif;
+  --font-mono:'Courier New',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background-color:var(--navy-deep);
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:34px 34px;
+  color:var(--ink);
+  font-family:var(--font-body);
+}
+aside{
+  position:fixed;top:0;left:0;bottom:0;width:300px;
+  background:linear-gradient(180deg,var(--navy2),var(--navy-deep));
+  color:var(--cream);padding:36px 30px;overflow-y:auto;
+  border-right:3px solid var(--amber-dark);
+}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.brand h1{
+  font-family:var(--font-display);font-size:20px;font-weight:700;
+  letter-spacing:.3px;margin:0;line-height:1.15
+}
+.brand-sub{
+  font-family:var(--font-mono);font-size:10.5px;color:var(--navy-soft);
+  letter-spacing:1.2px;margin:10px 0 34px;padding-bottom:18px;
+  border-bottom:1px solid rgba(255,255,255,.15)
+}
+.index-title{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:2px;
+  color:var(--amber);margin-bottom:14px
+}
+nav.index a{
+  display:flex;align-items:baseline;gap:10px;color:var(--cream);
+  text-decoration:none;font-size:13px;padding:7px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  transition:.15s
+}
+nav.index a:hover{color:var(--amber);padding-left:4px}
+.idx-num{font-family:var(--font-mono);font-size:11px;color:var(--navy-soft);min-width:25px}
+.sidebar-foot{
+  margin-top:38px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);
+  font-family:var(--font-mono);font-size:10px;color:var(--navy-soft);
+  line-height:1.7;letter-spacing:.4px
+}
+main{margin-left:300px;padding:70px 70px 120px;max-width:1180px}
+.sheet{
+  position:relative;background:var(--paper);border:2px solid var(--ink);
+  padding:44px 52px;margin-bottom:70px
+}
+.sheet:before,.sheet:after{
+  content:'+';position:absolute;font-family:var(--font-mono);font-size:22px;
+  color:rgba(255,255,255,.3);line-height:1
+}
+.sheet:before{top:-13px;left:-13px}.sheet:after{bottom:-13px;right:-13px}
+.sheet-header{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:26px;
+  flex-wrap:wrap
+}
+.sheet-header h2,.sheet-header h3{
+  font-family:var(--font-display);font-weight:700;color:var(--ink);
+  margin:0;letter-spacing:.3px
+}
+.sheet-header h2{font-size:30px}.sheet-header h3{font-size:26px}
+table.title-block{border-collapse:collapse;font-family:var(--font-mono);font-size:10.5px}
+table.title-block th,table.title-block td{border:1px solid var(--ink);padding:4px 9px;text-align:left}
+table.title-block th{
+  background:var(--ink);color:var(--paper);text-transform:uppercase;
+  letter-spacing:.6px;font-weight:500
+}
+p.lead{font-size:15px;line-height:1.7;max-width:82ch}
+p.lead b{color:var(--amber-dark)}
+.meta-line{
+  font-family:var(--font-mono);font-size:12px;color:var(--ink-light);
+  letter-spacing:.3px;margin-top:18px
+}
+.legend-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:18px 30px
+}
+.legend-item{
+  border-left:3px solid var(--amber);padding:6px 0 6px 14px;
+  font-size:13.5px;line-height:1.5
+}
+.legend-item b{font-family:var(--font-mono);font-size:12px}
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.attrs{
+  width:100%;table-layout:fixed;border-collapse:collapse;font-size:13px;margin-top:6px
+}
+table.attrs th{
+  background:var(--ink);color:var(--paper);font-family:var(--font-mono);
+  font-size:10.5px;text-transform:uppercase;letter-spacing:.8px;
+  padding:9px 10px;text-align:left;font-weight:500
+}
+table.attrs td{
+  padding:9px 10px;border-bottom:1px solid var(--line-on-paper);
+  vertical-align:top;overflow-wrap:break-word;word-break:break-word
+}
+table.attrs tr:last-child td{border-bottom:2px solid var(--ink)}
+table.attrs th:nth-child(1),table.attrs td:nth-child(1){width:24%}
+table.attrs th:nth-child(2),table.attrs td:nth-child(2){width:15%}
+table.attrs th:nth-child(3),table.attrs td:nth-child(3){width:12%}
+table.attrs th:nth-child(4),table.attrs td:nth-child(4){width:49%}
+td.attr-name{font-family:var(--font-mono);font-size:11.5px}
+td.attr-type{font-size:11.5px;color:var(--ink-light)}
+.tag{
+  display:inline-block;font-family:var(--font-mono);font-size:9.5px;
+  font-weight:600;padding:2px 6px;letter-spacing:.5px
+}
+.tag-pk{background:var(--rust);color:var(--paper)}
+.tag-fk{background:var(--amber-dark);color:var(--paper)}
+.tag-atr{border:1px solid var(--ink-light);color:var(--ink-light)}
+.rel-block{margin-bottom:34px}.rel-block:last-child{margin-bottom:0}
+.rel-block h4{
+  font-family:var(--font-display);font-size:19px;letter-spacing:.4px;
+  margin:0 0 8px;color:var(--ink)
+}
+.rel-card{
+  border:1px solid var(--ink-light);padding:14px 16px;
+  background:rgba(255,255,255,.25);font-family:var(--font-mono);
+  font-size:12px;line-height:1.6
+}
+.rel-card strong{color:var(--rust)}
+.stamp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.stamp{
+  border:3px solid var(--rust);color:var(--rust);padding:16px 18px;
+  transform:rotate(-1deg);
+  background:repeating-linear-gradient(135deg,rgba(162,59,44,.03) 0 6px,transparent 6px 12px)
+}
+.stamp:nth-child(even){transform:rotate(1deg)}
+.stamp .rn-code{
+  font-family:var(--font-display);font-size:24px;font-weight:700;
+  letter-spacing:1px;display:block;margin-bottom:6px
+}
+.stamp p{color:var(--ink);font-family:var(--font-mono);font-size:11px;line-height:1.5;margin:0}
+.note{
+  border-left:4px solid var(--amber);padding:12px 16px;
+  background:rgba(201,129,47,.08);font-size:13.5px;line-height:1.6
+}
+footer{
+  text-align:center;font-family:var(--font-mono);font-size:10.5px;
+  color:var(--navy-soft);padding:10px 0 60px
+}
+@media(max-width:860px){
+  aside{position:static;width:auto;height:auto;border-right:none;border-bottom:3px solid var(--amber-dark)}
+  main{margin-left:0;padding:40px 24px 90px}.sheet{padding:30px 24px}
+  .legend-grid{grid-template-columns:1fr}
+}
+@media print{
+  body{background:var(--paper)}aside{display:none}main{margin-left:0;max-width:none}
+  .sheet{break-inside:avoid;margin-bottom:30px}
+}
+</style>
+</head>
+
+<body>
+<aside>
+  <div class="brand">
+    <svg width="38" height="38" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="21" cy="14" r="6" stroke="#c9812f" stroke-width="2"/>
+      <line x1="21" y1="20" x2="10" y2="37" stroke="#eef0e7" stroke-width="2"/>
+      <line x1="21" y1="20" x2="32" y2="37" stroke="#eef0e7" stroke-width="2"/>
+      <line x1="14.6" y1="33" x2="27.4" y2="33" stroke="#eef0e7" stroke-width="2"/>
+    </svg>
+    <h1>Sistema de Gestão de Obras</h1>
+  </div>
+  <div class="brand-sub">DICIONÁRIO TÉCNICO DE DADOS · EMPREITEIRA EJS</div>
+
+  <div class="index-title">Índice de Folhas</div>
+  <nav class="index">
+    <a href="#visao-geral"><span class="idx-num">00</span>Visão geral</a>
+    <a href="#legenda"><span class="idx-num">01</span>Legenda</a>
+    <a href="#empresa"><span class="idx-num">02</span>Empresa</a>
+    <a href="#pagamentos"><span class="idx-num">03</span>Pagamentos</a>
+    <a href="#funcionarios"><span class="idx-num">04</span>Funcionários</a>
+    <a href="#extras"><span class="idx-num">05</span>Extras</a>
+    <a href="#terceirizadas"><span class="idx-num">06</span>Terceirizadas</a>
+    <a href="#obra"><span class="idx-num">07</span>Obra</a>
+    <a href="#gerenciamento"><span class="idx-num">08</span>Gerenciamento</a>
+    <a href="#tarefa-obra"><span class="idx-num">09</span>Tarefa_Obra</a>
+    <a href="#icone"><span class="idx-num">10</span>Ícone</a>
+    <a href="#relacionamentos"><span class="idx-num">11</span>Relacionamentos</a>
+    <a href="#regras"><span class="idx-num">12</span>Regras de negócio</a>
+    <a href="#modelagem"><span class="idx-num">13</span>Modelagem conceitual</a>
+  </nav>
+
+  <div class="sidebar-foot">
+    MODELO ENTIDADE-RELACIONAMENTO<br>
+    9 ENTIDADES · 8 RELACIONAMENTOS<br>
+    REV. 2.0 · MODELO ATUAL
+  </div>
+</aside>
+
+<main>
+
+<section id="visao-geral" class="sheet">
+  <div class="sheet-header">
+    <h2>Dicionário de Dados</h2>
+    <table class="title-block">
+      <tr><th>Folha</th><td>00</td></tr>
+      <tr><th>Conteúdo</th><td>Visão geral</td></tr>
+    </table>
+  </div>
+  <p class="lead">
+    Este documento apresenta o <b>Dicionário de Dados — Sistema de Gestão de Obras</b> da
+    Empreiteira EJS, organizado de acordo com o modelo atual do projeto. O sistema foi estruturado
+    para centralizar informações administrativas e operacionais relacionadas à empresa,
+    pagamentos, funcionários, horas adicionais, empresas terceirizadas, obras, gerenciamento,
+    tarefas e ícones utilizados pela aplicação.
+  </p>
+  <p class="lead">
+    A entidade <b>EMPRESA</b> ocupa a posição central do modelo. A partir dela são organizadas
+    as entidades <b>PAGAMENTOS</b>, <b>FUNCIONARIOS</b>, <b>TERCEIRIZADAS</b>, <b>OBRA</b> e
+    <b>ICONE</b>. A entidade <b>FUNCIONARIOS</b> possui a entidade dependente <b>EXTRAS</b>,
+    enquanto <b>OBRA</b> possui <b>GERENCIAMENTO</b> e <b>TAREFA_OBRA</b>.
+  </p>
+  <div class="meta-line">9 ENTIDADES · 8 RELACIONAMENTOS · MODELO ATUALIZADO</div>
+</section>
+
+<section id="legenda" class="sheet">
+  <div class="sheet-header">
+    <h3>Legenda</h3>
+    <table class="title-block"><tr><th>Folha</th><td>01</td></tr></table>
+  </div>
+  <div class="legend-grid">
+    <div class="legend-item"><b>PK — Chave Primária</b><br>Atributo que identifica de forma única cada registro da entidade.</div>
+    <div class="legend-item"><b>FK — Chave Estrangeira</b><br>Atributo utilizado para relacionar um registro a outra entidade.</div>
+    <div class="legend-item"><b>ATR — Atributo</b><br>Característica descritiva comum da entidade, como nome, data, valor ou status.</div>
+    <div class="legend-item"><b>1:N — Um para Muitos</b><br>Um registro da primeira entidade pode estar relacionado a vários registros da segunda.</div>
+    <div class="legend-item"><b>1:1 — Um para Um</b><br>Um registro de uma entidade está relacionado a no máximo um registro da outra.</div>
+  </div>
+</section>
+
+<section id="empresa" class="sheet">
+  <div class="sheet-header"><h3>Empresa</h3><table class="title-block"><tr><th>Folha</th><td>02</td></tr><tr><th>Entidade</th><td>EMPRESA</td></tr></table></div>
+  <p class="lead">Representa a organização principal do sistema e serve como origem dos relacionamentos com pagamentos, funcionários, terceirizadas, obras e ícones.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador interno e único da empresa.</td></tr>
+    <tr><td class="attr-name">nome_empresa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome da empresa.</td></tr>
+    <tr><td class="attr-name">cnpj_empresa</td><td class="attr-type">CHAR(14)</td><td><span class="tag tag-atr">ATR</span></td><td>CNPJ da empresa, quando utilizado.</td></tr>
+    <tr><td class="attr-name">razao_social</td><td class="attr-type">VARCHAR(200)</td><td><span class="tag tag-atr">ATR</span></td><td>Razão social oficial da organização.</td></tr>
+    <tr><td class="attr-name">endereco</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Endereço cadastrado da empresa.</td></tr>
+    <tr><td class="attr-name">telefone</td><td class="attr-type">VARCHAR(20)</td><td><span class="tag tag-atr">ATR</span></td><td>Telefone de contato.</td></tr>
+    <tr><td class="attr-name">email</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>E-mail da empresa.</td></tr>
+  </table></div>
+  <div class="note"><b>Chave primária:</b> id_empresa.</div>
+</section>
+
+<section id="pagamentos" class="sheet">
+  <div class="sheet-header"><h3>Pagamentos</h3><table class="title-block"><tr><th>Folha</th><td>03</td></tr><tr><th>Entidade</th><td>PAGAMENTOS</td></tr></table></div>
+  <p class="lead">Registra os pagamentos realizados pela empresa, incluindo valor, data, comprovante, formato e situação da operação.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">id_pagamento</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único do pagamento.</td></tr>
+    <tr><td class="attr-name">valor_pago</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor efetivamente pago.</td></tr>
+    <tr><td class="attr-name">data_pagamento</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Data em que o pagamento foi realizado.</td></tr>
+    <tr><td class="attr-name">comprovante_pagamento</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Referência ou caminho do comprovante.</td></tr>
+    <tr><td class="attr-name">formato_pagamento</td><td class="attr-type">VARCHAR(50)</td><td><span class="tag tag-atr">ATR</span></td><td>Formato utilizado para realizar o pagamento.</td></tr>
+    <tr><td class="attr-name">status_pagamento</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação atual do pagamento.</td></tr>
+  </table></div>
+  <div class="note"><b>Chave primária:</b> id_pagamento.</div>
+</section>
+
+<section id="funcionarios" class="sheet">
+  <div class="sheet-header"><h3>Funcionários</h3><table class="title-block"><tr><th>Folha</th><td>04</td></tr><tr><th>Entidade</th><td>FUNCIONARIOS</td></tr></table></div>
+  <p class="lead">Armazena os dados dos funcionários vinculados à empresa, incluindo identificação, função, salário, recebimento e benefícios.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">id_funcionario</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Identificador interno auxiliar do funcionário.</td></tr>
+    <tr><td class="attr-name">nome_funcionario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome completo do funcionário.</td></tr>
+    <tr><td class="attr-name">cpf</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-pk">PK</span></td><td>CPF único utilizado como chave primária.</td></tr>
+    <tr><td class="attr-name">cargo</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Cargo ou função exercida pelo funcionário.</td></tr>
+    <tr><td class="attr-name">salario_definido</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Salário definido para o funcionário.</td></tr>
+    <tr><td class="attr-name">data_recebimento_salario</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Data prevista ou registrada para recebimento do salário.</td></tr>
+    <tr><td class="attr-name">beneficio_funcionario</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Benefícios associados ao funcionário.</td></tr>
+  </table></div>
+  <div class="note"><b>Chave primária:</b> cpf.</div>
+</section>
+
+<section id="extras" class="sheet">
+  <div class="sheet-header"><h3>Extras</h3><table class="title-block"><tr><th>Folha</th><td>05</td></tr><tr><th>Entidade</th><td>EXTRAS</td></tr></table></div>
+  <p class="lead">Armazena informações complementares de horas e valores relacionadas aos funcionários, incluindo horas extras e horas devidas.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">cpf</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-pk">PK</span> <span class="tag tag-fk">FK</span></td><td>CPF do funcionário ao qual o registro pertence.</td></tr>
+    <tr><td class="attr-name">nome_funcionario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome correspondente ao funcionário relacionado.</td></tr>
+    <tr><td class="attr-name">horas_extras</td><td class="attr-type">DECIMAL(5,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Quantidade de horas extras registradas.</td></tr>
+    <tr><td class="attr-name">valor_bruto</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor bruto calculado para o registro.</td></tr>
+    <tr><td class="attr-name">valor_descontado</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor descontado.</td></tr>
+    <tr><td class="attr-name">valor_liquido</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor líquido resultante.</td></tr>
+    <tr><td class="attr-name">horas_funcionario_deve</td><td class="attr-type">DECIMAL(5,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Quantidade de horas devidas pelo funcionário.</td></tr>
+  </table></div>
+  <div class="note"><b>Chave primária:</b> cpf. O modelo atual representa relação 1:1 com FUNCIONARIOS.</div>
+</section>
+
+<section id="terceirizadas" class="sheet">
+  <div class="sheet-header"><h3>Terceirizadas</h3><table class="title-block"><tr><th>Folha</th><td>06</td></tr><tr><th>Entidade</th><td>TERCEIRIZADAS</td></tr></table></div>
+  <p class="lead">Armazena os dados das empresas terceirizadas que prestam serviços para a empresa principal.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Identificador interno auxiliar da empresa terceirizada.</td></tr>
+    <tr><td class="attr-name">nome_empresa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome da empresa terceirizada.</td></tr>
+    <tr><td class="attr-name">cnpj_empresa</td><td class="attr-type">CHAR(14)</td><td><span class="tag tag-pk">PK</span></td><td>CNPJ único da empresa terceirizada.</td></tr>
+    <tr><td class="attr-name">valor_servico_prestado</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor do serviço prestado pela terceirizada.</td></tr>
+  </table></div>
+  <div class="note"><b>Chave primária:</b> cnpj_empresa.</div>
+</section>
+
+<section id="obra" class="sheet">
+  <div class="sheet-header"><h3>Obra</h3><table class="title-block"><tr><th>Folha</th><td>07</td></tr><tr><th>Entidade</th><td>OBRA</td></tr></table></div>
+  <p class="lead">Armazena as principais informações relacionadas às obras administradas pela empresa.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Identificador interno auxiliar da obra.</td></tr>
+    <tr><td class="attr-name">nome_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-pk">PK</span></td><td>Nome utilizado para identificar a obra.</td></tr>
+    <tr><td class="attr-name">endereco_obra</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Endereço onde a obra está localizada.</td></tr>
+    <tr><td class="attr-name">tempo_inicio</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data ou horário de início previsto ou realizado.</td></tr>
+    <tr><td class="attr-name">tempo_fim</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data ou horário de término da obra.</td></tr>
+    <tr><td class="attr-name">status</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação atual da obra.</td></tr>
+    <tr><td class="attr-name">descricao</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Descrição geral da obra.</td></tr>
+    <tr><td class="attr-name">horario_entrada</td><td class="attr-type">TIME</td><td><span class="tag tag-atr">ATR</span></td><td>Horário de entrada previsto ou definido.</td></tr>
+    <tr><td class="attr-name">horario_saida</td><td class="attr-type">TIME</td><td><span class="tag tag-atr">ATR</span></td><td>Horário de saída previsto ou definido.</td></tr>
+  </table></div>
+  <div class="note"><b>Chave primária:</b> nome_obra.</div>
+</section>
+
+<section id="gerenciamento" class="sheet">
+  <div class="sheet-header"><h3>Gerenciamento</h3><table class="title-block"><tr><th>Folha</th><td>08</td></tr><tr><th>Entidade</th><td>GERENCIAMENTO</td></tr></table></div>
+  <p class="lead">Armazena os responsáveis pelo gerenciamento de uma obra, incluindo engenheiro, arquiteto e mestre de obra.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">nome_engenheiro</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome do engenheiro responsável pela obra.</td></tr>
+    <tr><td class="attr-name">nome_arquiteto</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome do arquiteto responsável pela obra.</td></tr>
+    <tr><td class="attr-name">nome_mestre_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome do mestre de obra responsável.</td></tr>
+  </table></div>
+  <div class="note"><b>Chave primária:</b> não definida no modelo atual. <br><b>Cardinalidade:</b> 1:1 com OBRA, conforme documentação atual.</div>
+</section>
+
+<section id="tarefa-obra" class="sheet">
+  <div class="sheet-header"><h3>Tarefa_Obra</h3><table class="title-block"><tr><th>Folha</th><td>09</td></tr><tr><th>Entidade</th><td>TAREFA_OBRA</td></tr></table></div>
+  <p class="lead">Armazena as tarefas vinculadas às obras, permitindo acompanhar nome, descrição, data de execução e status.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">id_tarefa</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único da tarefa.</td></tr>
+    <tr><td class="attr-name">nome_tarefa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome da atividade ou tarefa.</td></tr>
+    <tr><td class="attr-name">descricao_tarefa</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Descrição detalhada da atividade.</td></tr>
+    <tr><td class="attr-name">data_execucao</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Data prevista ou registrada para execução.</td></tr>
+    <tr><td class="attr-name">status_tarefa</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação atual da tarefa.</td></tr>
+  </table></div>
+  <div class="note"><b>Chave primária:</b> id_tarefa.</div>
+</section>
+
+<section id="icone" class="sheet">
+  <div class="sheet-header"><h3>Ícone</h3><table class="title-block"><tr><th>Folha</th><td>10</td></tr><tr><th>Entidade</th><td>ICONE</td></tr></table></div>
+  <p class="lead">Armazena os ícones utilizados pela aplicação, centralizando seus dados visuais e descritivos.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">id_icone</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único do ícone.</td></tr>
+    <tr><td class="attr-name">nome_icone</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome utilizado para identificar o ícone.</td></tr>
+    <tr><td class="attr-name">descricao</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Descrição da finalidade do ícone.</td></tr>
+    <tr><td class="attr-name">imagem_icone</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Referência ou caminho da imagem do ícone.</td></tr>
+  </table></div>
+  <div class="note"><b>Chave primária:</b> id_icone.</div>
+</section>
+
+<section id="relacionamentos" class="sheet">
+  <div class="sheet-header"><h3>Relacionamentos</h3><table class="title-block"><tr><th>Folha</th><td>11</td></tr></table></div>
+  <p class="lead">Os relacionamentos abaixo seguem a estrutura e as cardinalidades definidas no modelo atual do projeto.</p>
+
+  <div class="rel-block"><h4>EMPRESA — PAGAMENTOS</h4><div class="rel-card"><strong>1:N</strong> — Uma empresa pode possuir vários pagamentos. Cada pagamento pertence à empresa responsável pelo registro.</div></div>
+  <div class="rel-block"><h4>EMPRESA — FUNCIONARIOS</h4><div class="rel-card"><strong>1:N</strong> — Uma empresa pode possuir vários funcionários.</div></div>
+  <div class="rel-block"><h4>FUNCIONARIOS — EXTRAS</h4><div class="rel-card"><strong>1:1</strong> — No modelo atual, cada funcionário possui no máximo um registro de EXTRAS identificado pelo mesmo CPF.</div></div>
+  <div class="rel-block"><h4>EMPRESA — TERCEIRIZADAS</h4><div class="rel-card"><strong>1:N</strong> — Uma empresa pode se relacionar com várias empresas terceirizadas.</div></div>
+  <div class="rel-block"><h4>EMPRESA — OBRA</h4><div class="rel-card"><strong>1:N</strong> — Uma empresa pode possuir várias obras.</div></div>
+  <div class="rel-block"><h4>OBRA — GERENCIAMENTO</h4><div class="rel-card"><strong>1:1</strong> — Cada obra possui um registro de gerenciamento no modelo atual.</div></div>
+  <div class="rel-block"><h4>OBRA — TAREFA_OBRA</h4><div class="rel-card"><strong>1:N</strong> — Uma obra pode possuir várias tarefas.</div></div>
+  <div class="rel-block"><h4>EMPRESA — ICONE</h4><div class="rel-card"><strong>1:N</strong> — Uma empresa pode possuir vários ícones cadastrados.</div></div>
+</section>
+
+<section id="regras" class="sheet">
+  <div class="sheet-header"><h3>Regras de Negócio</h3><table class="title-block"><tr><th>Folha</th><td>12</td></tr></table></div>
+  <div class="stamp-grid">
+    <div class="stamp"><span class="rn-code">RN01</span><p>A entidade EMPRESA é a entidade principal e centraliza os relacionamentos com pagamentos, funcionários, terceirizadas, obras e ícones.</p></div>
+    <div class="stamp"><span class="rn-code">RN02</span><p>Cada pagamento deve possuir um id_pagamento único.</p></div>
+    <div class="stamp"><span class="rn-code">RN03</span><p>Cada funcionário deve possuir CPF único, utilizado como chave primária.</p></div>
+    <div class="stamp"><span class="rn-code">RN04</span><p>EXTRAS utiliza o CPF como chave primária e deve estar vinculado ao funcionário correspondente.</p></div>
+    <div class="stamp"><span class="rn-code">RN05</span><p>Cada empresa terceirizada deve possuir CNPJ único.</p></div>
+    <div class="stamp"><span class="rn-code">RN06</span><p>Cada obra é identificada pelo atributo nome_obra.</p></div>
+    <div class="stamp"><span class="rn-code">RN07</span><p>Cada tarefa deve possuir id_tarefa único e estar associada a uma obra.</p></div>
+    <div class="stamp"><span class="rn-code">RN08</span><p>Cada ícone deve possuir id_icone único.</p></div>
+    <div class="stamp"><span class="rn-code">RN09</span><p>Valores monetários não devem aceitar valores negativos quando isso não fizer sentido para a operação.</p></div>
+    <div class="stamp"><span class="rn-code">RN10</span><p>Horas extras e horas devidas não devem aceitar valores negativos.</p></div>
+    <div class="stamp"><span class="rn-code">RN11</span><p>Status de pagamentos, obras e tarefas devem utilizar valores padronizados pelo sistema.</p></div>
+  </div>
+</section>
+
+<section id="modelagem" class="sheet">
+  <div class="sheet-header"><h3>Modelagem Conceitual</h3><table class="title-block"><tr><th>Folha</th><td>13</td></tr></table></div>
+  <p class="lead"><b>Entidades reconhecidas:</b> EMPRESA, PAGAMENTOS, FUNCIONARIOS, EXTRAS, TERCEIRIZADAS, OBRA, GERENCIAMENTO, TAREFA_OBRA e ICONE.</p>
+
+  <div class="table-wrap">
+  <table class="attrs">
+    <tr><th>Relacionamento</th><th>Cardinalidade</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">EMPRESA → PAGAMENTOS</td><td>1:N</td><td>Uma empresa pode possuir vários pagamentos.</td></tr>
+    <tr><td class="attr-name">EMPRESA → FUNCIONARIOS</td><td>1:N</td><td>Uma empresa pode possuir vários funcionários.</td></tr>
+    <tr><td class="attr-name">FUNCIONARIOS → EXTRAS</td><td>1:1</td><td>Cada funcionário possui, no modelo atual, no máximo um registro de extras.</td></tr>
+    <tr><td class="attr-name">EMPRESA → TERCEIRIZADAS</td><td>1:N</td><td>Uma empresa pode se relacionar com várias terceirizadas.</td></tr>
+    <tr><td class="attr-name">EMPRESA → OBRA</td><td>1:N</td><td>Uma empresa pode possuir várias obras.</td></tr>
+    <tr><td class="attr-name">OBRA → GERENCIAMENTO</td><td>1:1</td><td>Cada obra possui um conjunto de informações de gerenciamento.</td></tr>
+    <tr><td class="attr-name">OBRA → TAREFA_OBRA</td><td>1:N</td><td>Uma obra pode possuir várias tarefas.</td></tr>
+    <tr><td class="attr-name">EMPRESA → ICONE</td><td>1:N</td><td>Uma empresa pode possuir vários ícones.</td></tr>
+  </table>
+  </div>
+
+  <div class="note" style="margin-top:22px">
+    <b>Observação:</b> O modelo atual mantém GERENCIAMENTO sem chave primária definida e utiliza
+    CPF como chave primária em EXTRAS, o que caracteriza a relação 1:1 com FUNCIONARIOS.
+    Conforme a documentação do projeto, caso seja necessário manter histórico de vários registros
+    de extras para o mesmo funcionário, poderá ser criado futuramente um identificador próprio para EXTRAS.
+  </div>
+</section>
+
+<footer>
+  DICIONÁRIO DE DADOS · SISTEMA DE GESTÃO DE OBRAS · EMPREITEIRA EJS · REV. 2.0
+</footer>
+
+</main>
+</body>
+</html>

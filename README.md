@@ -427,23 +427,3 @@ As referências bibliográficas utilizadas pelo grupo deverão ser adicionadas n
 
 ---
 
-## Critérios Atitudinais (20%)
-
-**Estes critérios não constam explicitamente como item de entrega no README.** Eles são avaliados por meio de Avaliação 360º entre os integrantes do grupo.
-
-- **Participação (5%):** envolvimento nas discussões técnicas e nas decisões do grupo.
-- **Comprometimento (5%):** cumprimento de prazos e responsabilidades assumidas.
-- **Colaboração (5%):** respeito às contribuições dos colegas e cooperação na construção do projeto.
-- **Autonomia (5%):** busca independente de soluções e proposta de melhorias.
-
----
-
-## Resumo dos Pesos
-
-| Dimensão | Peso total |
-|---|---|
-| Conceitual (contexto, requisitos/regras, modelagem, justificativa técnica) | 30% |
-| Procedimental (requisitos, fluxogramas, dicionário de dados, DER) | 50% |
-| Atitudinal (participação, comprometimento, colaboração, autonomia) | 20% |
-
-**Entrega final:** `README.md` completo + DER atualizado anexado no repositório GitHub do grupo.

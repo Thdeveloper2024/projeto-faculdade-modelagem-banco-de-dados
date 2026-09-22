@@ -389,7 +389,7 @@ O grupo utilizou uma ferramenta de inteligência artificial como apoio na revis�
 | Item | Registro |
 |---|---|
 | **Ferramenta e etapa** | ChatGPT — Revisão e ajustes feitos nos arquivos README.me; Reiplementação das novas alterações solicitadas pelo professor no dicionario de dados em html e criação das fotos ilustrativas do fluxo Grama e Diagrama. |
-| **Motivação** | e. |
+| **Motivação** | Auxiliar na revisão e atualização da documentação, mantendo a consistência entre o novo DER, o dicionário de dados e as regras de negócio do projeto. |
 | **Prompt utilizado** | Solicitação para reajustar o `README.md` de acordo com o novo diagrama entidade-relacionamento apresentado pelo grupo. |
 | **Resposta recebida** | Reorganização das seções de requisitos, regras de negócio, dicionário de dados, modelagem conceitual, relacionamentos e justificativa técnica. |
 | **Fontes consultadas e verificadas** | O conteúdo foi confrontado com o DER e com as regras fornecidas pelo próprio grupo. |

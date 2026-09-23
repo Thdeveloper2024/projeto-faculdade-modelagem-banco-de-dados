@@ -66,7 +66,8 @@ O README documenta a caracterização da organização, os processos de negócio
 - Criar e acompanhar tarefas vinculadas às obras.
 - Cadastrar e manter ícones utilizados pela aplicação.
 
-Os fluxogramas deverão representar visualmente os processos-chave e demonstrar como eles se integram à entidade principal **EMPRESA** e às entidades dependentes.
+<img width="2339" height="1653" alt="DER_Empreiteira_EJS (1) jpg" src="[https://github.com/user-attachments/assets/5d087f4a-382a-4ad9-bd0f-969b1d6f99fe](https://chatgpt.com/c/6ab3d1a1-a6d4-83e9-9ca0-edaf49dd3170)" />
+
 
 ---
 

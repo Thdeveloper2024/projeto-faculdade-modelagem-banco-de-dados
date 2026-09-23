@@ -369,7 +369,7 @@ A entidade **ICONE** armazena os ícones utilizados pela empresa na aplicação.
 
 O DER atualizado está representado no arquivo abaixo:
 
-<img width="2339" height="1653" alt="DER_Empreiteira_EJS" src="https://github.com/user-attachments/assets/2a63605b-9ea7-4f27-9ec4-9b455185d6fd" />
+<img width="2339" height="1653" alt="DER_Empreiteira_EJS (1)" src="https://github.com/user-attachments/assets/352e288a-4ad9-4b46-a7f5-b4facfcddfc9" />
 
 
 

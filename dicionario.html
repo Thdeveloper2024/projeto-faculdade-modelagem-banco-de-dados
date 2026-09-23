@@ -259,13 +259,13 @@ footer{
   <p class="lead">Representa a organização principal do sistema e serve como origem dos relacionamentos com pagamentos, funcionários, terceirizadas, obras e ícones.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador interno e único da empresa.</td></tr>
-    <tr><td class="attr-name">nome_empresa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome da empresa.</td></tr>
-    <tr><td class="attr-name">cnpj_empresa</td><td class="attr-type">CHAR(14)</td><td><span class="tag tag-atr">ATR</span></td><td>CNPJ da empresa, quando utilizado.</td></tr>
-    <tr><td class="attr-name">razao_social</td><td class="attr-type">VARCHAR(200)</td><td><span class="tag tag-atr">ATR</span></td><td>Razão social oficial da organização.</td></tr>
-    <tr><td class="attr-name">endereco</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Endereço cadastrado da empresa.</td></tr>
-    <tr><td class="attr-name">telefone</td><td class="attr-type">VARCHAR(20)</td><td><span class="tag tag-atr">ATR</span></td><td>Telefone de contato.</td></tr>
-    <tr><td class="attr-name">email</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>E-mail da empresa.</td></tr>
+    <tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador interno e único da empresa, gerado automaticamente.</td></tr>
+    <tr><td class="attr-name">nome_empresa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que representa o nome da empresa.</td></tr>
+    <tr><td class="attr-name">cnpj_empresa</td><td class="attr-type">CHAR(14)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que guarda o número do CNPJ, armazenando no máximo 14 números.</td></tr>
+    <tr><td class="attr-name">razao_social</td><td class="attr-type">VARCHAR(200)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é utilizado para guardar a razão social da empresa com o nome fantasia.</td></tr>
+    <tr><td class="attr-name">endereco</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o endereço da empresa contendo RUA, NÚMERO, BAIRRO, CIDADE E ESTADO.</td></tr>
+    <tr><td class="attr-name">telefone</td><td class="attr-type">VARCHAR(20)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o telefone de contato da empresa guardando no máximo 20 caracteres, deve permitir o cadastro de múltiplos telefones.</td></tr>
+    <tr><td class="attr-name">email</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o e-mail da empresa, deve permitir o cadastro de múltiplos e-mails.</td></tr>
   </table></div>
   <div class="note"><b>Chave primária:</b> id_empresa.</div>
 </section>
@@ -275,12 +275,12 @@ footer{
   <p class="lead">Registra os pagamentos realizados pela empresa, incluindo valor, data, comprovante, formato e situação da operação.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_pagamento</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único do pagamento.</td></tr>
-    <tr><td class="attr-name">valor_pago</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor efetivamente pago.</td></tr>
-    <tr><td class="attr-name">data_pagamento</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Data em que o pagamento foi realizado.</td></tr>
-    <tr><td class="attr-name">comprovante_pagamento</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Referência ou caminho do comprovante.</td></tr>
-    <tr><td class="attr-name">formato_pagamento</td><td class="attr-type">VARCHAR(50)</td><td><span class="tag tag-atr">ATR</span></td><td>Formato utilizado para realizar o pagamento.</td></tr>
-    <tr><td class="attr-name">status_pagamento</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação atual do pagamento.</td></tr>
+    <tr><td class="attr-name">id_pagamento</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Atributo que guarda o identificador único do pagamento, valor que é gerado automaticamente.</td></tr>
+    <tr><td class="attr-name">valor_pago</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td> Atributo que é utilizado para armazenar o valor que foi pago, deve ser um número decimal com até 10 dígitos e 2 casas decimais.</td></tr>
+    <tr><td class="attr-name">data_pagamento</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a data em que o pagamento foi realizado, armazena no formato dd/mm/yyyy.</td></tr>
+    <tr><td class="attr-name">comprovante_pagamento</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o comprovante do pagamento no caso um arquivo em anexo PDF, caso sejá uma imagem  ela deve ser salva em um arquivo separado do banco de dados, para não sobrecarregar o banco.</td></tr>
+    <tr><td class="attr-name">formato_pagamento</td><td class="attr-type">VARCHAR(50)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo para guardar o formato que foi utilizado para realizar o pagamento, guardando até 50 caracteres.</td></tr>
+    <tr><td class="attr-name">status_pagamento</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td> Atributo que armazena a situação atual do pagamento guardando até 30 caracteres.</td></tr>
   </table></div>
   <div class="note"><b>Chave primária:</b> id_pagamento.</div>
 </section>
@@ -290,13 +290,13 @@ footer{
   <p class="lead">Armazena os dados dos funcionários vinculados à empresa, incluindo identificação, função, salário, recebimento e benefícios.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_funcionario</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Identificador interno auxiliar do funcionário.</td></tr>
-    <tr><td class="attr-name">nome_funcionario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome completo do funcionário.</td></tr>
-    <tr><td class="attr-name">cpf</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-pk">PK</span></td><td>CPF único utilizado como chave primária.</td></tr>
-    <tr><td class="attr-name">cargo</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Cargo ou função exercida pelo funcionário.</td></tr>
-    <tr><td class="attr-name">salario_definido</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Salário definido para o funcionário.</td></tr>
-    <tr><td class="attr-name">data_recebimento_salario</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Data prevista ou registrada para recebimento do salário.</td></tr>
-    <tr><td class="attr-name">beneficio_funcionario</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Benefícios associados ao funcionário.</td></tr>
+    <tr><td class="attr-name">id_funcionario</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que guarda o identificador interno auxiliar do funcionário um codigo que é gerado automaticamente e é unico para cada funcionário.</td></tr>
+    <tr><td class="attr-name">nome_funcionario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o nome completo do funcionário, deve ser permetido apenas o nome completo, caso não seja o nome completo, deve exibir uma mensagem de erro, valor maximo de 150 caracteres.</td></tr>
+    <tr><td class="attr-name">cpf</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-pk">PK</span></td><td>Atributo que armazena o CPF do funcionário, deve permitir apenas 11 caracteres, sendo único e utilizado como chave primária.</td></tr>
+    <tr><td class="attr-name">cargo</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o cargo ou função exercida pelo funcionário, deve permitir até 100 caracteres.</td></tr>
+    <tr><td class="attr-name">salario_definido</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o salário definido para o funcionário, com até 10 dígitos no total e 2 casas decimais.</td></tr>
+    <tr><td class="attr-name">data_recebimento_salario</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a data prevista ou registrada para recebimento do salário, deve ser uma data valida com formato dd/mm/yyyy.</td></tr>
+    <tr><td class="attr-name">beneficio_funcionario</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena os benefícios associados ao funcionário, deve ser permitido apenas textos.</td></tr>
   </table></div>
   <div class="note"><b>Chave primária:</b> cpf.</div>
 </section>
@@ -306,13 +306,13 @@ footer{
   <p class="lead">Armazena informações complementares de horas e valores relacionadas aos funcionários, incluindo horas extras e horas devidas.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">cpf</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-pk">PK</span> <span class="tag tag-fk">FK</span></td><td>CPF do funcionário ao qual o registro pertence.</td></tr>
-    <tr><td class="attr-name">nome_funcionario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome correspondente ao funcionário relacionado.</td></tr>
-    <tr><td class="attr-name">horas_extras</td><td class="attr-type">DECIMAL(5,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Quantidade de horas extras registradas.</td></tr>
-    <tr><td class="attr-name">valor_bruto</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor bruto calculado para o registro.</td></tr>
-    <tr><td class="attr-name">valor_descontado</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor descontado.</td></tr>
-    <tr><td class="attr-name">valor_liquido</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor líquido resultante.</td></tr>
-    <tr><td class="attr-name">horas_funcionario_deve</td><td class="attr-type">DECIMAL(5,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Quantidade de horas devidas pelo funcionário.</td></tr>
+    <tr><td class="attr-name">cpf</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-pk">PK</span> <span class="tag tag-fk">FK</span></td><td>Atributo que armazena o CPF do funcionário ao qual o registro pertence.</td></tr>
+    <tr><td class="attr-name">nome_funcionario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que guarda o nome correspondente ao funcionário relacionado, deve permitir até 150 caracteres.</td></tr>
+    <tr><td class="attr-name">horas_extras</td><td class="attr-type">DECIMAL(5,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a quantidade de horas extras registradas.</td></tr>
+    <tr><td class="attr-name">valor_bruto</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o valor bruto calculado para o registro, com até 10 dígitos no total e 2 casas decimais.</td></tr>
+    <tr><td class="attr-name">valor_descontado</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que guarda o valor descontado caso o funcionario esteja devendo horas, ou se pegou algum vale durante o período.</td></tr>
+    <tr><td class="attr-name">valor_liquido</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que guarda o valor líquido resultante que o funcionario tem direito a receber, com até 10 dígitos no total e 2 casas decimais.</td></tr>
+    <tr><td class="attr-name">horas_funcionario_deve</td><td class="attr-type">DECIMAL(5,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a quantidade de horas que falta para o cliente atingir a carga horaria dele, principalmente se chegou atrasado ao decorrer do periodo.</td></tr>
   </table></div>
   <div class="note"><b>Chave primária:</b> cpf. O modelo atual representa relação 1:1 com FUNCIONARIOS.</div>
 </section>
@@ -322,10 +322,10 @@ footer{
   <p class="lead">Armazena os dados das empresas terceirizadas que prestam serviços para a empresa principal.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Identificador interno auxiliar da empresa terceirizada.</td></tr>
-    <tr><td class="attr-name">nome_empresa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome da empresa terceirizada.</td></tr>
-    <tr><td class="attr-name">cnpj_empresa</td><td class="attr-type">CHAR(14)</td><td><span class="tag tag-pk">PK</span></td><td>CNPJ único da empresa terceirizada.</td></tr>
-    <tr><td class="attr-name">valor_servico_prestado</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor do serviço prestado pela terceirizada.</td></tr>
+    <tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é utilizado também como identificador interno auxiliar da empresa terceirizada, é um identificador unico e gerado automaticamente.</td></tr>
+    <tr><td class="attr-name">nome_empresa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o nome da empresa terceirizada que presta serviços para a empresa principal, pode ser preenchido com a razão social ou nome fantasia.</td></tr>
+    <tr><td class="attr-name">cnpj_empresa</td><td class="attr-type">CHAR(14)</td><td><span class="tag tag-pk">PK</span></td><td>Atributo que armazena o numero do CNPJ único da empresa terceirizada, é um identificador unico e representa a chave primaria, total de caracteres: 14.</td></tr>
+    <tr><td class="attr-name">valor_servico_prestado</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o valor do serviço prestado pela empresa terceirizada, deve ser um valor positivo e deve conter até 10 dígitos no total e 2 casas decimais.</td></tr>
   </table></div>
   <div class="note"><b>Chave primária:</b> cnpj_empresa.</div>
 </section>
@@ -335,15 +335,15 @@ footer{
   <p class="lead">Armazena as principais informações relacionadas às obras administradas pela empresa.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Identificador interno auxiliar da obra.</td></tr>
-    <tr><td class="attr-name">nome_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-pk">PK</span></td><td>Nome utilizado para identificar a obra.</td></tr>
-    <tr><td class="attr-name">endereco_obra</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Endereço onde a obra está localizada.</td></tr>
-    <tr><td class="attr-name">tempo_inicio</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data ou horário de início previsto ou realizado.</td></tr>
-    <tr><td class="attr-name">tempo_fim</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data ou horário de término da obra.</td></tr>
-    <tr><td class="attr-name">status</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação atual da obra.</td></tr>
-    <tr><td class="attr-name">descricao</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Descrição geral da obra.</td></tr>
-    <tr><td class="attr-name">horario_entrada</td><td class="attr-type">TIME</td><td><span class="tag tag-atr">ATR</span></td><td>Horário de entrada previsto ou definido.</td></tr>
-    <tr><td class="attr-name">horario_saida</td><td class="attr-type">TIME</td><td><span class="tag tag-atr">ATR</span></td><td>Horário de saída previsto ou definido.</td></tr>
+    <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é utilizado como identificador interno auxiliar da obra, é um identificador unico e gerado automaticamente.</td></tr>
+    <tr><td class="attr-name">nome_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-pk">PK</span></td><td>Atributo Nome utilizado para identificar a obra ele é utilizado como chave primária, pois é único para cada obra.</td></tr>
+    <tr><td class="attr-name">endereco_obra</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o endereço onde a obra está localizada no formato "Rua, Número, Bairro, Cidade, Estado", deve poder ser preenchido com até 255 caracteres.</td></tr>
+    <tr><td class="attr-name">tempo_inicio</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é usado para armazenar a data ou horário de início previsto ou realizado, deve ser um valor válido a data deve estar no formato 'dd/MM/yyyy HH:MM:SS'.</td></tr>
+    <tr><td class="attr-name">tempo_fim</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é usado para armazenar a data ou horário de término da obra, deve ser um valor válido a data deve estar no formato 'dd/MM/yyyy HH:MM:SS'.</td></tr>
+    <tr><td class="attr-name">status</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é armazenado a Situação atual da obra, deve conter no maximo 30 caracteres.</td></tr>
+    <tr><td class="attr-name">descricao</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a descrição geral da obra deve conter apenas textos.</td></tr>
+    <tr><td class="attr-name">horario_entrada</td><td class="attr-type">TIME</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é utilizado para armazenar o Horário de entrada previsto ou definido deve ser um valor válido no formato 'HH:MM:SS'.</td></tr>
+    <tr><td class="attr-name">horario_saida</td><td class="attr-type">TIME</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é utilizado para armazenar o Horário de saída previsto ou definido deve ser um valor válido no formato 'HH:MM:SS'.</td></tr>
   </table></div>
   <div class="note"><b>Chave primária:</b> nome_obra.</div>
 </section>
@@ -353,11 +353,11 @@ footer{
   <p class="lead">Armazena os responsáveis pelo gerenciamento de uma obra, incluindo engenheiro, arquiteto e mestre de obra.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">nome_engenheiro</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome do engenheiro responsável pela obra.</td></tr>
-    <tr><td class="attr-name">nome_arquiteto</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome do arquiteto responsável pela obra.</td></tr>
-    <tr><td class="attr-name">nome_mestre_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome do mestre de obra responsável.</td></tr>
+    <tr><td class="attr-name">nome_engenheiro</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o nome do engenheiro responsável pela obra, deve conter no máximo 150 caracteres, e nome e sobrenome.</td></tr>
+    <tr><td class="attr-name">nome_arquiteto</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o nome do arquiteto responsável pela obra, deve conter no maximo 150 caracteres, e nome e sobrenome.</td></tr>
+    <tr><td class="attr-name">nome_mestre_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o nome do mestre de obra responsável, deve conter no maximo 150 caracters, e nome e sobrenome.</td></tr>
   </table></div>
-  <div class="note"><b>Chave primária:</b> não definida no modelo atual. <br><b>Cardinalidade:</b> 1:1 com OBRA, conforme documentação atual.</div>
+  <div class="note"><b>Chave primária:</b> não definida no modelo atual, pois não há um atributo único que identifique cada registro. <br><b>Cardinalidade:</b> 1:1 com OBRA, conforme documentação atual.</div>
 </section>
 
 <section id="tarefa-obra" class="sheet">
@@ -365,11 +365,11 @@ footer{
   <p class="lead">Armazena as tarefas vinculadas às obras, permitindo acompanhar nome, descrição, data de execução e status.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_tarefa</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único da tarefa.</td></tr>
-    <tr><td class="attr-name">nome_tarefa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome da atividade ou tarefa.</td></tr>
-    <tr><td class="attr-name">descricao_tarefa</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Descrição detalhada da atividade.</td></tr>
-    <tr><td class="attr-name">data_execucao</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Data prevista ou registrada para execução.</td></tr>
-    <tr><td class="attr-name">status_tarefa</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação atual da tarefa.</td></tr>
+    <tr><td class="attr-name">id_tarefa</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Atributo que armazena o identificador único da tarefa, deve ser um valor único e não nulo.</td></tr>
+    <tr><td class="attr-name">nome_tarefa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que deve armazenar o nome da atividade ou tarefa, deve conter no máximo 150 caracteres.</td></tr>
+    <tr><td class="attr-name">descricao_tarefa</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que deve armazenar a descrição detalhada da atividade, deve ser em formato de texto.</td></tr>
+    <tr><td class="attr-name">data_execucao</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a data prevista ou registrada para execução, deve ser uma data válida no formato dd/mm/yyyy.</td></tr>
+    <tr><td class="attr-name">status_tarefa</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a situação atual da tarefa, deve conter no máximo 30 caracteres.</td></tr>
   </table></div>
   <div class="note"><b>Chave primária:</b> id_tarefa.</div>
 </section>
@@ -379,10 +379,10 @@ footer{
   <p class="lead">Armazena os ícones utilizados pela aplicação, centralizando seus dados visuais e descritivos.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_icone</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único do ícone.</td></tr>
-    <tr><td class="attr-name">nome_icone</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome utilizado para identificar o ícone.</td></tr>
-    <tr><td class="attr-name">descricao</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Descrição da finalidade do ícone.</td></tr>
-    <tr><td class="attr-name">imagem_icone</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Referência ou caminho da imagem do ícone.</td></tr>
+    <tr><td class="attr-name">id_icone</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Atributo que armazena o identificador único do ícone, deve ser um valor unico e não nulo</td></tr>
+    <tr><td class="attr-name">nome_icone</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é utilizado para armazenar o nome utilizado para identificar o ícone, deve ser um texto com no máximo 100 caracteres.</td></tr>
+    <tr><td class="attr-name">descricao</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a descrição da finalidade do ícone, deve ser um texto.</td></tr>
+    <tr><td class="attr-name">imagem_icone</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a referência ou caminho da imagem do ícone, porém essa imagem deve ser salva em um arquivo a parte fora do banco de dados para não sobrecarregar o sistema.</td></tr>
   </table></div>
   <div class="note"><b>Chave primária:</b> id_icone.</div>
 </section>

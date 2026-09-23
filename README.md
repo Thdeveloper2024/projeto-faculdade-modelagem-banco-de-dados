@@ -1,5 +1,21 @@
 # Modelagem de Banco de Dados para Empreiteira EJS
 
+Membros:
+Leonardo Victor
+Rgm: 47269294
+
+Maurício de Moura junior 
+Rgm: 46898891
+
+Thiago Pinho Macedo Araújo 
+Rgm: 47016604
+
+Anny Isabelly Silva Santos 
+Rgm: 4729005-6
+
+Cauã Victor da Silva Pena
+Rgm: 04677095-0
+
 ## Introdução
 
 Atualmente, a empresa apresenta um baixo número de obras em andamento e ainda possui limitações relacionadas à presença digital e à divulgação de seus serviços e obras realizadas. Além disso, a empresa enfrenta dificuldades no gerenciamento dos horários de entrada e saída dos funcionários, o que pode ocasionar divergências no controle das horas trabalhadas e, consequentemente, nos pagamentos realizados aos colaboradores.

@@ -40,31 +40,30 @@ Dessa forma, o projeto estará concentrado na refatoração do site existente, n
 
 O projeto teve início com a análise dos principais problemas encontrados na empresa e com a identificação de possíveis soluções. A partir dessa análise, foi elaborado um modelo inicial para representar a estrutura das informações e a forma como os dados poderiam ser armazenados.
 
-Com a evolução do projeto, o modelo foi reorganizado para utilizar a entidade **EMPRESA** como elemento central do banco de dados. A partir dela são organizados os pagamentos, funcionários, empresas terceirizadas, obras e ícones. Também foram separadas informações específicas de horas e valores adicionais dos funcionários na entidade **EXTRAS**, e informações específicas das obras nas entidades **GERENCIAMENTO** e **TAREFA_OBRA**.
+Com a evolução do projeto, o modelo foi reorganizado para realizar uma arquitetura de como o banco de dados irá armazenar as informações cadastradas, durante o periodo do desenvolvimento nosso grupo sofreu alguns inpases, pois não compreendeu muito bem o modelo de projeto, até que o estrutor auxiliou nosso grupo com os detalhes do projeto e conseguimos compreender, o desenvolvimento desse projeto foi uma evolção e aprendizado dos erros que ocoreram na realização do processo.
 
-O README documenta a caracterização da organização, os processos de negócio, os requisitos do sistema, as regras de negócio, o dicionário de dados, a modelagem conceitual e as justificativas técnicas adotadas.
+O integrante Thiago que trabalha na empresa realizou uma entrevista com o dono, e mapeou as informações que deveria ser salvas em um banco de dados, pois o mesmo já estava desenvolvendo um site web para a instituição, e ficou mais facil de identificar alguns pontos, a foto da entrevista foi tirada na residencia do dono da empresa, pois a empresa não possui um endereço proprio e uma grande parte das reuniões são realizadas ou na residencia do dono, ou nas obras em execução, nessa entrevista foi feita algumas perguntas ao dono da empresa, como quais são os maiores problemas enfrentados, e foi feito uma apuração que atualmente o dono tem um grnade problema com relação a questão de coneguir 
 
 ### Caracterização da Organização
 
-- **Nome e natureza da organização:** *ERENILDO JOSE DA SILVA CONSTRUCAO - ME / Prestação de serviços na construção civil, com foco em aplicação de revestimentos, resinas e reformas em geral.*
+- **Nome e natureza da organização:** *ERENILDO JOSE DA SILVA CONSTRUCAO - ME / Prestação de serviços na construção civil, com foco em aplicação de revestimentos, resinas, pintura, limpezas após obras e reformas em geral.*
 - **Contexto e porte:** Empresa com fins lucrativos atuando no setor de construção civil e empreitadas. A operação é de médio porte, contando com um volume constante de até 3 obras simultâneas. A equipe envolve cerca de 18 colaboradores no total, sendo composta por 1 engenheiro civil, responsável pela administração e criação de orçamentos, e 17 operários de campo, divididos entre mestres de obras, pedreiros e serventes. O volume mensal de atividades inclui a gestão de diversas tarefas por obra e o processamento de pagamentos e custos operacionais recorrentes.
 - **Problemas e necessidades identificados:** A empresa enfrenta dificuldades no controle de assiduidade e pontualidade dos colaboradores, visto que atrasos frequentes podem ocorrer nos canteiros de obras sem o devido registro ou compensação das horas devidas. Também existem dificuldades no registro de pagamentos, horas extras, valores descontados e valores líquidos. Além disso, a organização possui necessidade de ampliar sua presença digital e melhorar a divulgação de seus serviços e obras realizadas.
-- **Justificativa da escolha:** A escolha desta organização baseou-se no fato de ela apresentar problemas operacionais e de comunicação comuns em empresas do setor de construção civil. O cenário permite a aplicação prática dos conceitos de modelagem de banco de dados em um contexto real de gestão de funcionários, pagamentos, terceirizadas, obras e tarefas.
-- **Evidências da organização:** *Site: https://empreiteira-ejs.vercel.app/index.html / Telefone: 11 98606-9654 / Instagram: https://www.instagram.com/ejs.empreiteira?igsh=MTdxcGNqZXpuNzcydQ%3D%3D&utm_source=qr*
+- **Justificativa da escolha:** A escolha dessa empresa foi dada devido há um dos colaboradores o Thiago está trabalhando na empresa, e ter notado algumas icoerencias com relação ao gerenciamento de obras e funcionarios, o mesmo apresentou a empresa para o grupo e todos toparam aceitar o desafio de desenvolver um banco de dados para armazenar as informações, o dono da empresa atualmente no dia 07/10/2026 ainda anota pagamentos e horas trabalhadas tudo em cadernetas um problema gravisimo a ser resolvido.
+- **Evidências da organização:** *CNPJ: 384180600001 / Site: https://empreiteira-ejs.vercel.app/index.html / Telefone: 11 98606-9654 / Instagram: https://www.instagram.com/ejs.empreiteira?igsh=MTdxcGNqZXpuNzcydQ%3D%3D&utm_source=qr*
 
 ---
 
 ### Processos de Negócio
 
-- Cadastrar e manter os dados da empresa.
-- Registrar pagamentos realizados pela empresa.
-- Cadastrar e gerenciar funcionários.
-- Registrar horas extras, horas devidas e valores relacionados aos funcionários.
-- Cadastrar e gerenciar empresas terceirizadas.
-- Cadastrar e acompanhar obras.
+- Cadastrar obras em execução.
+- Registrar pagamentos feitos aos funcionarios e empresas tercerizadas.
+- Registrar horario de entrada e saida dos funcionarios.
+- Cadastrar dados dos funcionarios.
+- Registrar horas extras prestadas pelos funcionarios.
+- Cadastrar empresas que presta os serviçoes tercerizados para a organização EJS.
 - Registrar os responsáveis pelo gerenciamento de cada obra.
 - Criar e acompanhar tarefas vinculadas às obras.
-- Cadastrar e manter ícones utilizados pela aplicação.
 
 <img width="2084" height="3750" alt="image" src="https://github.com/user-attachments/assets/ba67b041-3fb9-4189-bf49-148699a4220e" />
 
@@ -76,7 +75,7 @@ O README documenta a caracterização da organização, os processos de negócio
 
 #### Requisitos Funcionais
 
-- **RF-01:** O sistema deve permitir o cadastro e a manutenção das informações da empresa.
+- **RF-01:** O sistema deve permitir o cadastro e a edição dos dados.
 - **RF-02:** O sistema deve permitir o cadastro de funcionários, armazenando identificador, nome, CPF, cargo, salário definido, data de recebimento do salário e benefícios.
 - **RF-03:** O sistema deve permitir o registro das informações adicionais dos funcionários na entidade **EXTRAS**, incluindo horas extras, valor bruto, valor descontado, valor líquido e horas que o funcionário deve.
 - **RF-04:** O sistema deve permitir o registro e o gerenciamento dos pagamentos da empresa, armazenando valor pago, data, comprovante, formato de pagamento e status.
@@ -97,7 +96,6 @@ O README documenta a caracterização da organização, os processos de negócio
 
 ### Regras de Negócio
 
-- A entidade **EMPRESA** será a entidade principal do modelo e centralizará os relacionamentos com pagamentos, funcionários, terceirizadas, obras e ícones.
 - Cada pagamento deverá possuir um `id_pagamento` único.
 - Cada funcionário deverá possuir um CPF único, utilizado como chave primária da entidade **FUNCIONARIOS**.
 - A entidade **EXTRAS** utilizará o CPF como chave primária e estará vinculada ao funcionário correspondente.
@@ -105,11 +103,13 @@ O README documenta a caracterização da organização, os processos de negócio
 - Cada obra será identificada pelo atributo `nome_obra`, utilizado como chave primária da entidade **OBRA**.
 - Cada obra poderá possuir informações de gerenciamento contendo engenheiro, arquiteto e mestre de obra.
 - Cada tarefa de obra deverá possuir um `id_tarefa` único e deverá estar associada a uma obra.
-- Cada ícone deverá possuir um `id_icone` único.
 - Valores monetários devem ser armazenados em formato adequado e não devem aceitar valores negativos quando isso não fizer sentido para a operação.
 - Horas extras e horas devidas não devem aceitar valores negativos.
 - Os status de pagamentos, obras e tarefas devem utilizar valores padronizados pelo sistema.
-
+- As horas extras será o resultado do valor hora de saida menos hora de entrada, se ultrapassar da carga horaria do funcionario o valor utrapasado deve contar como hora extra.
+- Todos os CPF terá no maximo 11 caracters.
+- Todos os CNPJ terá no maximo 14 caracters.
+  
 #### Restrições Organizacionais
 
 A modelagem deverá considerar que a empresa trabalha com funcionários próprios e empresas terceirizadas. Essas duas categorias são representadas separadamente para evitar a mistura de informações de pessoas físicas com informações de pessoas jurídicas.

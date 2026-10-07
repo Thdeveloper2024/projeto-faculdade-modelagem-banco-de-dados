@@ -100,15 +100,16 @@ O integrante Thiago que trabalha na empresa realizou uma entrevista com o dono, 
 - Cada funcionário deverá possuir um CPF único, utilizado como chave primária da entidade **FUNCIONARIOS**.
 - A entidade **EXTRAS** utilizará o CPF como chave primária e estará vinculada ao funcionário correspondente.
 - Cada empresa terceirizada deverá possuir um CNPJ único, utilizado como chave primária da entidade **TERCEIRIZADAS**.
-- Cada obra será identificada pelo atributo `nome_obra`, utilizado como chave primária da entidade **OBRA**.
-- Cada obra poderá possuir informações de gerenciamento contendo engenheiro, arquiteto e mestre de obra.
+- Cada obra será identificada pelo atributo `cod_obra`, utilizado como chave primária da entidade **OBRA**.
+- Cada obra sempre tera um representante responsavel pela obra.
 - Cada tarefa de obra deverá possuir um `id_tarefa` único e deverá estar associada a uma obra.
 - Valores monetários devem ser armazenados em formato adequado e não devem aceitar valores negativos quando isso não fizer sentido para a operação.
 - Horas extras e horas devidas não devem aceitar valores negativos.
 - Os status de pagamentos, obras e tarefas devem utilizar valores padronizados pelo sistema.
-- As horas extras será o resultado do valor hora de saida menos hora de entrada, se ultrapassar da carga horaria do funcionario o valor utrapasado deve contar como hora extra.
 - Todos os CPF terá no maximo 11 caracters.
 - Todos os CNPJ terá no maximo 14 caracters.
+- Um funcionario só é cadastrado se todos os campos forem preenchidos.
+- O nome do funcionario deve conter primeiro nome e sobrenome.
   
 #### Restrições Organizacionais
 
@@ -130,7 +131,6 @@ O sistema tem como objetivo organizar e gerenciar informações relacionadas à 
 
 O modelo de dados apresenta as seguintes entidades:
 
-- **EMPRESA**
 - **PAGAMENTOS**
 - **FUNCIONARIOS**
 - **EXTRAS**
@@ -138,33 +138,14 @@ O modelo de dados apresenta as seguintes entidades:
 - **OBRA**
 - **GERENCIAMENTO**
 - **TAREFA_OBRA**
-- **ICONE**
 
-A entidade **EMPRESA** ocupa a posição principal do modelo. As entidades **PAGAMENTOS**, **FUNCIONARIOS**, **TERCEIRIZADAS**, **OBRA** e **ICONE** são relacionadas diretamente à empresa. A entidade **EXTRAS** depende de **FUNCIONARIOS**, enquanto **GERENCIAMENTO** e **TAREFA_OBRA** dependem de **OBRA**.
+As entidades **PAGAMENTOS**, **FUNCIONARIOS**, **TERCEIRIZADAS** e **OBRA** são relacionadas diretamente à empresa. A entidade **EXTRAS** depende de **FUNCIONARIOS**, enquanto **GERENCIAMENTO** e **TAREFA_OBRA** dependem de **OBRA**.
 
 ---
 
 ## 2. Entidades e Atributos
 
-### 2.1 EMPRESA
-
-A entidade **EMPRESA** representa a organização principal do sistema e serve como origem dos relacionamentos com as demais entidades principais.
-
-| Atributo | Descrição | Tipo sugerido | Regra de negócio associada |
-|---|---|---|---|
-| `id_empresa` | Identificador interno da empresa. | INT, chave primária | Deve ser único e obrigatório. |
-| `nome_empresa` | Nome da empresa. | VARCHAR(150) | Deve ser informado. |
-| `cnpj_empresa` | CNPJ da empresa. | CHAR(14), UNIQUE | Deve ser único quando utilizado. |
-| `razao_social` | Razão social da empresa. | VARCHAR(200) | Deve representar o nome empresarial oficial. |
-| `endereco` | Endereço da empresa. | VARCHAR(255) | Deve representar a localização cadastrada. |
-| `telefone` | Telefone de contato. | VARCHAR(20) | Deve possuir formato válido. |
-| `email` | E-mail da empresa. | VARCHAR(150) | Deve possuir formato válido. |
-
-**Chave primária:** `id_empresa`.
-
----
-
-### 2.2 PAGAMENTOS
+### 2.1 PAGAMENTOS
 
 A entidade **PAGAMENTOS** registra os pagamentos realizados pela empresa.
 
@@ -181,7 +162,7 @@ A entidade **PAGAMENTOS** registra os pagamentos realizados pela empresa.
 
 ---
 
-### 2.3 FUNCIONARIOS
+### 2.2 FUNCIONARIOS
 
 A entidade **FUNCIONARIOS** armazena os dados dos funcionários vinculados à empresa.
 
@@ -199,7 +180,7 @@ A entidade **FUNCIONARIOS** armazena os dados dos funcionários vinculados à em
 
 ---
 
-### 2.4 EXTRAS
+### 2.3 EXTRAS
 
 A entidade **EXTRAS** armazena as informações complementares de horas e valores relacionadas aos funcionários.
 
@@ -219,7 +200,7 @@ A entidade **EXTRAS** armazena as informações complementares de horas e valore
 
 ---
 
-### 2.5 TERCEIRIZADAS
+### 2.4 TERCEIRIZADAS
 
 A entidade **TERCEIRIZADAS** armazena os dados das empresas terceirizadas que prestam serviços para a empresa principal.
 
@@ -234,7 +215,7 @@ A entidade **TERCEIRIZADAS** armazena os dados das empresas terceirizadas que pr
 
 ---
 
-### 2.6 OBRA
+### 2.5 OBRA
 
 A entidade **OBRA** armazena as principais informações relacionadas às obras administradas pela empresa.
 
@@ -254,7 +235,7 @@ A entidade **OBRA** armazena as principais informações relacionadas às obras 
 
 ---
 
-### 2.7 GERENCIAMENTO
+### 2.6 GERENCIAMENTO
 
 A entidade **GERENCIAMENTO** armazena os responsáveis pelo gerenciamento de uma obra.
 
@@ -270,7 +251,7 @@ A entidade **GERENCIAMENTO** armazena os responsáveis pelo gerenciamento de uma
 
 ---
 
-### 2.8 TAREFA_OBRA
+### 2.7 TAREFA_OBRA
 
 A entidade **TAREFA_OBRA** armazena as tarefas relacionadas às obras.
 
@@ -286,26 +267,10 @@ A entidade **TAREFA_OBRA** armazena as tarefas relacionadas às obras.
 
 ---
 
-### 2.9 ICONE
-
-A entidade **ICONE** armazena os ícones utilizados pela empresa na aplicação.
-
-| Atributo | Descrição | Tipo sugerido | Regra de negócio associada |
-|---|---|---|---|
-| `id_icone` | Identificador único do ícone. | INT, chave primária | Deve ser único e obrigatório. |
-| `nome_icone` | Nome do ícone. | VARCHAR(100) | Deve facilitar a identificação do recurso visual. |
-| `descricao` | Descrição da finalidade do ícone. | TEXT | Pode detalhar a finalidade do ícone. |
-| `imagem_icone` | Referência ou caminho da imagem. | VARCHAR(255) | Deve apontar para o recurso visual correspondente. |
-
-**Chave primária:** `id_icone`.
-
----
-
 ## Modelagem Conceitual — Entidades, Atributos e Relacionamentos
 
 ### Entidades Reconhecidas
 
-- **EMPRESA:** representa a empresa principal do sistema.
 - **PAGAMENTOS:** representa os pagamentos registrados pela empresa.
 - **FUNCIONARIOS:** representa os funcionários vinculados à empresa.
 - **EXTRAS:** representa horas extras, horas devidas e valores complementares dos funcionários.
@@ -313,11 +278,9 @@ A entidade **ICONE** armazena os ícones utilizados pela empresa na aplicação.
 - **OBRA:** representa as obras administradas pela empresa.
 - **GERENCIAMENTO:** representa os responsáveis pelo gerenciamento das obras.
 - **TAREFA_OBRA:** representa as tarefas executadas dentro das obras.
-- **ICONE:** representa os ícones utilizados na aplicação.
 
 ### Chaves Primárias
 
-- **EMPRESA:** `id_empresa`.
 - **PAGAMENTOS:** `id_pagamento`.
 - **FUNCIONARIOS:** `cpf`.
 - **EXTRAS:** `cpf`.
@@ -325,11 +288,9 @@ A entidade **ICONE** armazena os ícones utilizados pela empresa na aplicação.
 - **OBRA:** `nome_obra`.
 - **GERENCIAMENTO:** chave primária não definida no diagrama atual.
 - **TAREFA_OBRA:** `id_tarefa`.
-- **ICONE:** `id_icone`.
 
 ### Relacionamentos Pertinentes
 
-- **EMPRESA — possui — PAGAMENTOS:** uma empresa pode possuir vários pagamentos.
 - **EMPRESA — possui — FUNCIONARIOS:** uma empresa pode possuir vários funcionários.
 - **FUNCIONARIOS — possui — EXTRAS:** cada funcionário possui, no modelo atual, no máximo um registro de extras identificado pelo mesmo CPF.
 - **EMPRESA — possui — TERCEIRIZADAS:** uma empresa pode se relacionar com várias empresas terceirizadas.

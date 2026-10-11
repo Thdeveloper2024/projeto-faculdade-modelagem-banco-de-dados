@@ -333,7 +333,8 @@ A entidade **TAREFA_OBRA** armazena as tarefas relacionadas às obras.
 O DER atualizado está representado no arquivo abaixo:
 https://app.brmodeloweb.com/publicview/6acbaf1a0186ebdccd4c90fb
 
- width="977" height="765" alt="image" src="https://github.com/user-attachments/assets/d16ffbb6-aa4d-42ba-876d-600b296f4fe5" />
+ <img width="977" height="765" alt="image" src="https://github.com/user-attachments/assets/15a0920f-ead0-433b-a824-bd41e8d93285" />
+
 
 
 

@@ -332,7 +332,7 @@ A entidade **TAREFA_OBRA** armazena as tarefas relacionadas às obras.
 
 O DER atualizado está representado no arquivo abaixo:
 
-<img width="2339" height="1653" alt="DER_Empreiteira_EJS (1) jpg" src="https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/Captura%20de%20tela%202026-10-11%20124506.png?raw=true" />
+<img width="2339" height="1653" alt="DER_Empreiteira_EJS (1) jpg" src="[https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/Captura%20de%20tela%202026-10-11%20124506.png?raw=true](https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/der-empreteira.png?raw=true)" />
 
 
 

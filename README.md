@@ -331,8 +331,9 @@ A entidade **TAREFA_OBRA** armazena as tarefas relacionadas às obras.
 ### Diagrama Entidade-Relacionamento (DER)
 
 O DER atualizado está representado no arquivo abaixo:
+https://app.brmodeloweb.com/publicview/6acbaf1a0186ebdccd4c90fb
 
-<img width="2339" height="1653" alt="DER_Empreiteira_EJS (1) jpg" src="<img width="977" height="765" alt="image" src="https://github.com/user-attachments/assets/c0488304-e65d-4c18-b47e-dc4f89874bb0" />
+width="977" height="765" alt="image" src="https://github.com/user-attachments/assets/c0488304-e65d-4c18-b47e-dc4f89874bb0" />
 " />
 
 

@@ -71,7 +71,7 @@ O integrante Thiago que trabalha na empresa realizou uma entrevista com o dono, 
 | Apuração de horas extras e descontos | Financeiro | Com base nos registros de ponto e nas informações de faltas e ausências, são apuradas as horas extras e os descontos aplicáveis, respeitando as regras trabalhistas e os critérios de remuneração adotados pela empresa. Os valores calculados são encaminhados para processamento da folha e pagamento. |
 | Alocação de funcionários às obras | Gestão de obras | O responsável pela gestão de obras verifica as necessidades de cada projeto e distribui os funcionários conforme suas funções, qualificações, disponibilidade e cronograma, ajustando a equipe de acordo com o andamento dos serviços. |
 
-<img width="2084" height="3750" alt="image" src="https://github.com/user-attachments/assets/ba67b041-3fb9-4189-bf49-148699a4220e" />
+<img width="2084" height="3750" alt="image" src="https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/fluxo-grama.png" />
 
 
 ---

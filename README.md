@@ -104,45 +104,59 @@ O integrante Thiago que trabalha na empresa realizou uma entrevista com o dono, 
 
 ---
 
-### Regras de Negócio
+# Regras de Negócio 
 
-**RN-01 — Aprovação de orçamento:** Uma obra somente poderá avançar para a formalização do contrato após a aprovação do orçamento pelo cliente.
-**RN-02 — Formalização de contrato:** Antes do início da execução dos serviços, deverá existir um contrato formalizado com o cliente, contendo o escopo da obra, os valores acordados, os prazos e as condições de pagamento.
-**RN-03 — Responsabilidade pela obra:** Toda obra deverá possuir um responsável designado pela empresa, encarregado de acompanhar a execução dos serviços e verificar o cumprimento do planejamento.
-**RN-04 — Planejamento da obra:** A execução deverá seguir um planejamento com etapas, tarefas, prazos e recursos necessários, podendo ser atualizado conforme as necessidades identificadas durante a obra.
-**RN-05 — Alocação de funcionários:** Os funcionários deverão ser alocados às obras de acordo com suas funções, qualificações, disponibilidade e necessidades operacionais.
-**RN-06 — Controle de tarefas:** Toda tarefa deverá estar vinculada a uma obra e possuir um responsável ou encarregado pelo acompanhamento, além de informações sobre prazo e situação de execução.
-**RN-07 — Conclusão de tarefas:** Uma tarefa somente deverá ser considerada concluída após a realização do serviço e a verificação pelo responsável designado, conforme os critérios estabelecidos para a atividade.
-**RN-08 — Aquisição de materiais:** A empresa deverá identificar os materiais necessários para cada etapa da obra e informar ao cliente as quantidades e especificações previstas, considerando a responsabilidade de compra acordada entre as partes.
-**RN-09 — Compras emergenciais:** Quando houver necessidade de aquisição emergencial de materiais pela EJS Construção, a compra deverá ser registrada e acompanhada do respectivo comprovante fiscal, que será encaminhado ao cliente conforme o procedimento acordado.
-**RN-10 — Contratação de terceirizados:** A contratação de empresas terceirizadas deverá considerar a necessidade do serviço, a análise das propostas recebidas, os custos e as condições oferecidas, respeitando a aprovação interna e os termos acordados.
-**RN-11 — Controle de pagamentos:** Os pagamentos a funcionários e empresas terceirizadas deverão ser conferidos com base nos valores devidos, nos registros disponíveis e nas condições acordadas antes de sua realização.
-**RN-12 — Controle de recebimentos:** Os recebimentos dos clientes deverão seguir os valores, vencimentos e condições estabelecidos no contrato, mantendo os registros atualizados para acompanhamento financeiro de cada obra.
-**RN-13 — Registro de ponto:** Os horários de entrada e saída dos funcionários deverão ser registrados e associados ao funcionário e à data correspondente, permitindo a apuração da jornada de trabalho.
-**RN-14 — Apuração da jornada:** As horas trabalhadas deverão ser calculadas com base nos registros de ponto, considerando a jornada prevista, os intervalos aplicáveis e as regras trabalhistas pertinentes.
-**RN-15 — Horas extras e faltas:** As horas extras, faltas, atrasos e ausências deverão ser apurados a partir dos registros de jornada e das justificativas aplicáveis, respeitando a legislação trabalhista e os critérios de remuneração adotados pela empresa.
-**RN-16 — Cálculo de valores devidos:** Os valores de remuneração, adicionais e descontos deverão ser calculados conforme os registros disponíveis, as condições contratuais e as regras legais aplicáveis, evitando cobranças ou descontos duplicados.
-**RN-17 — Cadastro de funcionários:** Todo funcionário deverá possuir um cadastro individual com os dados obrigatórios necessários à identificação, à gestão administrativa e ao processamento de sua remuneração.
-**RN-18 — Identificação de funcionários:** Cada funcionário deverá possuir um CPF válido, utilizado para identificação individual e prevenção de cadastros duplicados.
-**RN-19 — Identificação de empresas terceirizadas:** Cada empresa terceirizada deverá ser identificada por um CNPJ válido, evitando duplicidade de cadastro.
-**RN-20 — Controle financeiro por obra:** As receitas e despesas relacionadas a cada obra deverão ser registradas de maneira que permitam acompanhar os custos e avaliar a utilização dos recursos financeiros.
-**RN-21 — Padronização de status:** Os status de obras, tarefas e pagamentos deverão seguir opções padronizadas, permitindo acompanhar suas situações de forma consistente.
-**RN-22 — Integridade dos registros:** Os registros financeiros, administrativos e operacionais deverão manter informações consistentes e vinculadas às respectivas obras, funcionários, clientes ou empresas terceirizadas, conforme aplicável.
-### Regras de Negócio — Complemento conforme os critérios de avaliação
-**RN-23 — Cálculo do valor líquido:** O valor líquido devido ao funcionário deverá ser calculado pela fórmula: valor líquido = valor bruto − descontos + adicionais aplicáveis, considerando que as horas extras e demais adicionais já estejam incluídos ou sejam contabilizados separadamente, sem duplicidade. Os valores apurados deverão respeitar as regras de remuneração e a legislação aplicável.
-**RN-24 — Registro diário de ponto:** Os horários de entrada e saída deverão ser registrados diariamente para cada funcionário, associados à data e à obra em que o serviço foi realizado. Os intervalos de trabalho também deverão ser registrados quando necessários à apuração da jornada.
-**RN-25 — Tratamento de atrasos:** Os atrasos deverão ser apurados com base na jornada prevista e nos registros de ponto, observando as tolerâncias estabelecidas pela legislação trabalhista aplicável e por eventuais instrumentos coletivos. A empresa deverá definir e documentar sua política de tratamento de atrasos.
-**RN-26 — Horas devidas:** As horas devidas deverão ser apuradas com base na jornada prevista e nos registros de ponto, considerando as justificativas e as ocorrências registradas. Eventuais descontos deverão respeitar a legislação trabalhista e as regras aplicáveis, sem gerar descontos automáticos indevidos.
-**RN-27 — Pagamento de horas extras:** As horas extras deverão ser calculadas com base na jornada registrada e na jornada contratual, aplicando o adicional mínimo previsto na legislação vigente ou percentual superior estabelecido em instrumento coletivo ou condição mais favorável aplicável.
-**RN-28 — Comprovantes e responsáveis por pagamentos:** Todo pagamento realizado pela EJS Construção deverá possuir um responsável identificado, registro do valor, data, destinatário e comprovante correspondente. Quando o pagamento ocorrer por meio que não gere comprovante convencional, deverá existir um registro alternativo adequado para demonstrar a operação.
-**RN-29 — Pagamento de empresas terceirizadas:** O pagamento de serviços terceirizados deverá ocorrer após a conferência e aprovação da medição ou da conclusão da etapa contratada, conforme os critérios, prazos e condições definidos no contrato com a empresa prestadora.
-**RN-30 — Autorização para início da obra:** Nenhuma obra deverá ser iniciada sem a aprovação do orçamento pelo cliente e a formalização do contrato, além das autorizações e condições prévias necessárias à execução do serviço.
-**RN-31 — Responsabilidade técnica da obra:** Cada obra deverá possuir o responsável técnico legalmente habilitado, com registro profissional válido e emissão da Anotação de Responsabilidade Técnica (ART), quando exigível, conforme as normas aplicáveis à atividade.
-**RN-32 — Segurança do trabalho:** A execução das obras deverá cumprir as normas de segurança e saúde no trabalho aplicáveis, incluindo a NR-18 quando pertinente, com adoção das medidas preventivas exigidas e fornecimento, orientação e utilização dos equipamentos de proteção individual (EPIs) adequados aos riscos da atividade.
-**RN-33 — Proteção de dados pessoais:** Os dados pessoais dos funcionários, incluindo CPF e informações salariais, deverão ser acessados somente por pessoas autorizadas e utilizados para finalidades legítimas relacionadas às atividades da empresa, com medidas de segurança e tratamento em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD).
-**RN-34 — Aprovação de compras de materiais:** As compras de materiais realizadas pela empresa deverão ser previamente aprovadas pelo responsável autorizado, considerando a necessidade da obra, o orçamento disponível e os valores apresentados. Compras emergenciais deverão ser justificadas, registradas e submetidas à aprovação conforme o procedimento interno estabelecido.
+## Regras Operacionais
 
+- **RN-01 — Aprovação de orçamento:** Uma obra somente poderá avançar para a formalização do contrato após a aprovação do orçamento pelo cliente.
+- **RN-02 — Formalização de contrato:** Antes do início da execução dos serviços, deverá existir um contrato formalizado com o cliente, contendo o escopo da obra, os valores acordados, os prazos e as condições de pagamento.
+- **RN-03 — Responsabilidade pela obra:** Toda obra deverá possuir um responsável designado pela empresa, encarregado de acompanhar a execução dos serviços e verificar o cumprimento do planejamento.
+- **RN-04 — Planejamento da obra:** A execução deverá seguir um planejamento com etapas, tarefas, prazos e recursos necessários, podendo ser atualizado conforme as necessidades identificadas durante a obra.
+- **RN-05 — Alocação de funcionários:** Os funcionários deverão ser alocados às obras de acordo com suas funções, qualificações, disponibilidade e necessidades operacionais.
+- **RN-06 — Controle de tarefas:** Toda tarefa deverá estar vinculada a uma obra e possuir um responsável ou encarregado pelo acompanhamento, além de informações sobre prazo e situação de execução.
+- **RN-07 — Conclusão de tarefas:** Uma tarefa somente deverá ser considerada concluída após a realização do serviço e a verificação pelo responsável designado, conforme os critérios estabelecidos para a atividade.
+- **RN-08 — Aquisição de materiais:** A empresa deverá identificar os materiais necessários para cada etapa da obra e informar ao cliente as quantidades e especificações previstas, considerando a responsabilidade de compra acordada entre as partes.
+- **RN-09 — Compras emergenciais:** Quando houver necessidade de aquisição emergencial de materiais pela EJS Construção, a compra deverá ser registrada e acompanhada do respectivo comprovante fiscal, que será encaminhado ao cliente conforme o procedimento acordado.
+- **RN-10 — Contratação de terceirizados:** A contratação de empresas terceirizadas deverá considerar a necessidade do serviço, a análise das propostas recebidas, os custos e as condições oferecidas, respeitando a aprovação interna e os termos acordados.
+- **RN-11 — Controle de pagamentos:** Os pagamentos a funcionários e empresas terceirizadas deverão ser conferidos com base nos valores devidos, nos registros disponíveis e nas condições acordadas antes de sua realização.
+- **RN-12 — Controle de recebimentos:** Os recebimentos dos clientes deverão seguir os valores, vencimentos e condições estabelecidos no contrato, mantendo os registros atualizados para acompanhamento financeiro de cada obra.
 
+## Regras de Controle de Ponto e Remuneração
+
+- **RN-13 — Registro de ponto:** Os horários de entrada e saída dos funcionários deverão ser registrados e associados ao funcionário e à data correspondente, permitindo a apuração da jornada de trabalho.
+- **RN-14 — Apuração da jornada:** As horas trabalhadas deverão ser calculadas com base nos registros de ponto, considerando a jornada prevista, os intervalos aplicáveis e as regras trabalhistas pertinentes.
+- **RN-15 — Horas extras e faltas:** As horas extras, faltas, atrasos e ausências deverão ser apurados a partir dos registros de jornada e das justificativas aplicáveis, respeitando a legislação trabalhista e os critérios de remuneração adotados pela empresa.
+- **RN-16 — Cálculo de valores devidos:** Os valores de remuneração, adicionais e descontos deverão ser calculados conforme os registros disponíveis, as condições contratuais e as regras legais aplicáveis, evitando cobranças ou descontos duplicados.
+- **RN-17 — Cadastro de funcionários:** Todo funcionário deverá possuir um cadastro individual com os dados obrigatórios necessários à identificação, à gestão administrativa e ao processamento de sua remuneração.
+- **RN-18 — Identificação de funcionários:** Cada funcionário deverá possuir um CPF válido, utilizado para identificação individual e prevenção de cadastros duplicados.
+
+## Regras Financeiras e de Terceirização
+
+- **RN-19 — Identificação de empresas terceirizadas:** Cada empresa terceirizada deverá ser identificada por um CNPJ válido, evitando duplicidade de cadastro.
+- **RN-20 — Controle financeiro por obra:** As receitas e despesas relacionadas a cada obra deverão ser registradas de maneira que permitam acompanhar os custos e avaliar a utilização dos recursos financeiros.
+- **RN-21 — Padronização de status:** Os status de obras, tarefas e pagamentos deverão seguir opções padronizadas, permitindo acompanhar suas situações de forma consistente.
+- **RN-22 — Integridade dos registros:** Os registros financeiros, administrativos e operacionais deverão manter informações consistentes e vinculadas às respectivas obras, funcionários, clientes ou empresas terceirizadas, conforme aplicável.
+- **RN-23 — Cálculo do valor líquido:** O valor líquido devido ao funcionário deverá ser calculado considerando o valor bruto, os descontos e os adicionais aplicáveis, sem duplicidade de lançamentos. Quando todos os adicionais já estiverem incluídos no valor bruto, deverá ser aplicada a fórmula: valor líquido = valor bruto − descontos.
+- **RN-24 — Comprovantes e responsáveis por pagamentos:** Todo pagamento realizado pela EJS Construção deverá possuir um responsável identificado, registro do valor, data, destinatário e comprovante correspondente. Quando o pagamento ocorrer por meio que não gere comprovante convencional, deverá existir um registro alternativo adequado para demonstrar a operação.
+- **RN-25 — Pagamento de empresas terceirizadas:** O pagamento de serviços terceirizados deverá ocorrer após a conferência e aprovação da medição ou da conclusão da etapa contratada, conforme os critérios, prazos e condições definidos no contrato com a empresa prestadora.
+
+## Regras de Aprovação e Execução de Obras
+
+- **RN-26 — Autorização para início da obra:** Nenhuma obra deverá ser iniciada sem a aprovação do orçamento pelo cliente e a formalização do contrato, além das autorizações e condições prévias necessárias à execução do serviço.
+- **RN-27 — Responsabilidade técnica da obra:** Cada obra deverá possuir o responsável técnico legalmente habilitado, com registro profissional válido e emissão da Anotação de Responsabilidade Técnica (ART), quando exigível, conforme as normas aplicáveis à atividade.
+- **RN-28 — Segurança do trabalho:** A execução das obras deverá cumprir as normas de segurança e saúde no trabalho aplicáveis, incluindo a NR-18 quando pertinente, com adoção das medidas preventivas exigidas e fornecimento, orientação e utilização dos equipamentos de proteção individual (EPIs) adequados aos riscos da atividade.
+
+## Regras de Proteção de Dados e Compras
+
+- **RN-29 — Proteção de dados pessoais:** Os dados pessoais dos funcionários, incluindo CPF e informações salariais, deverão ser acessados somente por pessoas autorizadas e utilizados para finalidades legítimas relacionadas às atividades da empresa, com medidas de segurança e tratamento em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD).
+- **RN-30 — Aprovação de compras de materiais:** As compras de materiais realizadas pela empresa deverão ser previamente aprovadas pelo responsável autorizado, considerando a necessidade da obra, o orçamento disponível e os valores apresentados. Compras emergenciais deverão ser justificadas, registradas e submetidas à aprovação conforme o procedimento interno estabelecido.
+
+## Regras Complementares de Ponto e Remuneração
+
+- **RN-31 — Registro diário de ponto:** Os horários de entrada e saída deverão ser registrados diariamente para cada funcionário, associados à data e à obra em que o serviço foi realizado. Os intervalos de trabalho também deverão ser registrados quando necessários à apuração da jornada.
+- **RN- 32 — Tratamento de atrasos:** Os atrasos deverão ser apurados com base na jornada prevista e nos registros de ponto, observando as tolerâncias estabelecidas pela legislação trabalhista aplicável e por eventuais instrumentos coletivos. A empresa deverá definir e documentar sua política de tratamento de atrasos.
+- **RN-33 — Horas devidas:** As horas devidas deverão ser apuradas com base na jornada prevista e nos registros de ponto, considerando as justificativas e as ocorrências registradas. Eventuais descontos deverão respeitar a legislação trabalhista e as regras aplicáveis, sem gerar descontos automáticos indevidos.
+- **RN-34 — Pagamento de horas extras:** As horas extras deverão ser calculadas com base na jornada registrada e na jornada contratual, aplicando o adicional mínimo previsto na legislação vigente ou percentual superior estabelecido em instrumento coletivo ou condição mais favorável aplicável.
 
 #### Restrições Organizacionais
 

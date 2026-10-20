@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dicionário de Dados — Sistema de Gestão de Obras | EJS</title>
+<title>Dicionário de Dados — Sistema de Gestão de Obras | EJS — Revisão 3.0</title>
 <style>
 :root{
   --navy-deep:#0c1c2e;
@@ -156,6 +156,7 @@ td.attr-type{font-size:11.5px;color:var(--ink-light)}
   letter-spacing:1px;display:block;margin-bottom:6px
 }
 .stamp p{color:var(--ink);font-family:var(--font-mono);font-size:11px;line-height:1.5;margin:0}
+h4{font-family:var(--font-display);font-size:18px;color:var(--ink);margin:22px 0 10px}
 .note{
   border-left:4px solid var(--amber);padding:12px 16px;
   background:rgba(201,129,47,.08);font-size:13.5px;line-height:1.6
@@ -201,16 +202,19 @@ footer{
     <a href="#obra"><span class="idx-num">07</span>Obra</a>
     <a href="#gerenciamento"><span class="idx-num">08</span>Gerenciamento</a>
     <a href="#tarefa-obra"><span class="idx-num">09</span>Tarefa_Obra</a>
-    <a href="#icone"><span class="idx-num">10</span>Ícone</a>
-    <a href="#relacionamentos"><span class="idx-num">11</span>Relacionamentos</a>
-    <a href="#regras"><span class="idx-num">12</span>Regras de negócio</a>
-    <a href="#modelagem"><span class="idx-num">13</span>Modelagem conceitual</a>
+    <a href="#registro-ponto"><span class="idx-num">11</span>Registro de ponto</a>
+    <a href="#log-acesso"><span class="idx-num">12</span>Log de acesso</a>
+    <a href="#convencoes"><span class="idx-num">13</span>Convenções e segurança</a>
+    <a href="#fluxo-dados"><span class="idx-num">14</span>Fluxo de dados</a>
+    <a href="#relacionamentos"><span class="idx-num">15</span>Relacionamentos</a>
+    <a href="#regras"><span class="idx-num">16</span>Regras de negócio</a>
+    <a href="#modelagem"><span class="idx-num">17</span>Modelo conceitual</a>
   </nav>
 
   <div class="sidebar-foot">
     MODELO ENTIDADE-RELACIONAMENTO<br>
-    9 ENTIDADES · 8 RELACIONAMENTOS<br>
-    REV. 2.0 · MODELO ATUAL
+    10 ENTIDADES · 11 RELACIONAMENTOS<br>
+    REV. 3.0 · MODELO AMPLIADO
   </div>
 </aside>
 
@@ -229,15 +233,15 @@ footer{
     Empreiteira EJS, organizado de acordo com o modelo atual do projeto. O sistema foi estruturado
     para centralizar informações administrativas e operacionais relacionadas à empresa,
     pagamentos, funcionários, horas adicionais, empresas terceirizadas, obras, gerenciamento,
-    tarefas e ícones utilizados pela aplicação.
+    tarefas, registros de ponto e trilhas de auditoria de acesso.
   </p>
   <p class="lead">
     A entidade <b>EMPRESA</b> ocupa a posição central do modelo. A partir dela são organizadas
-    as entidades <b>PAGAMENTOS</b>, <b>FUNCIONARIOS</b>, <b>TERCEIRIZADAS</b>, <b>OBRA</b> e
-    <b>ICONE</b>. A entidade <b>FUNCIONARIOS</b> possui a entidade dependente <b>EXTRAS</b>,
-    enquanto <b>OBRA</b> possui <b>GERENCIAMENTO</b> e <b>TAREFA_OBRA</b>.
+    as entidades <b>PAGAMENTOS</b>, <b>FUNCIONARIOS</b>, <b>TERCEIRIZADAS</b> e <b>OBRA</b>.
+    A entidade <b>FUNCIONARIOS</b> possui a entidade dependente <b>EXTRAS</b>,
+    enquanto <b>OBRA</b> possui <b>GERENCIAMENTO</b>, <b>TAREFA_OBRA</b> e <b>REGISTRO_PONTO</b>. A entidade <b>LOG_ACESSO</b> registra operações relevantes realizadas por usuários autenticados.
   </p>
-  <div class="meta-line">9 ENTIDADES · 8 RELACIONAMENTOS · MODELO ATUALIZADO</div>
+  <div class="meta-line">10 ENTIDADES · 11 RELACIONAMENTOS · MODELO ATUALIZADO</div>
 </section>
 
 <section id="legenda" class="sheet">
@@ -256,7 +260,7 @@ footer{
 
 <section id="empresa" class="sheet">
   <div class="sheet-header"><h3>Empresa</h3><table class="title-block"><tr><th>Folha</th><td>02</td></tr><tr><th>Entidade</th><td>EMPRESA</td></tr></table></div>
-  <p class="lead">Representa a organização principal do sistema e serve como origem dos relacionamentos com pagamentos, funcionários, terceirizadas, obras e ícones.</p>
+  <p class="lead">Representa a organização principal do sistema e serve como origem dos relacionamentos com pagamentos, funcionários, terceirizadas e obras.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador interno e único da empresa, gerado automaticamente.</td></tr>
@@ -271,7 +275,8 @@ footer{
 </section>
 
 <section id="pagamentos" class="sheet">
-  <div class="sheet-header"><h3>Pagamentos</h3><table class="title-block"><tr><th>Folha</th><td>03</td></tr><tr><th>Entidade</th><td>PAGAMENTOS</td></tr></table></div>
+  <div class="sheet-header"><h3>Pagamentos</h3><table class="title-block"><tr><th>Folha</th><td>03</td></tr><tr><th>Entidade</th><td>PAGAMENTOS</td></tr><tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Empresa à qual o pagamento está vinculado; referencia EMPRESA.id_empresa.</td></tr>
+  </table></div>
   <p class="lead">Registra os pagamentos realizados pela empresa, incluindo valor, data, comprovante, formato e situação da operação.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
@@ -286,7 +291,8 @@ footer{
 </section>
 
 <section id="funcionarios" class="sheet">
-  <div class="sheet-header"><h3>Funcionários</h3><table class="title-block"><tr><th>Folha</th><td>04</td></tr><tr><th>Entidade</th><td>FUNCIONARIOS</td></tr></table></div>
+  <div class="sheet-header"><h3>Funcionários</h3><table class="title-block"><tr><th>Folha</th><td>04</td></tr><tr><th>Entidade</th><td>FUNCIONARIOS</td></tr><tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Empresa à qual o funcionário está vinculado; referencia EMPRESA.id_empresa.</td></tr>
+  </table></div>
   <p class="lead">Armazena os dados dos funcionários vinculados à empresa, incluindo identificação, função, salário, recebimento e benefícios.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
@@ -318,25 +324,27 @@ footer{
 </section>
 
 <section id="terceirizadas" class="sheet">
-  <div class="sheet-header"><h3>Terceirizadas</h3><table class="title-block"><tr><th>Folha</th><td>06</td></tr><tr><th>Entidade</th><td>TERCEIRIZADAS</td></tr></table></div>
+  <div class="sheet-header"><h3>Terceirizadas</h3><table class="title-block"><tr><th>Folha</th><td>06</td></tr><tr><th>Entidade</th><td>TERCEIRIZADAS</td></tr><tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Empresa contratante que mantém o cadastro; referencia EMPRESA.id_empresa.</td></tr>
+  </table></div>
   <p class="lead">Armazena os dados das empresas terceirizadas que prestam serviços para a empresa principal.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é utilizado também como identificador interno auxiliar da empresa terceirizada, é um identificador unico e gerado automaticamente.</td></tr>
-    <tr><td class="attr-name">nome_empresa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o nome da empresa terceirizada que presta serviços para a empresa principal, pode ser preenchido com a razão social ou nome fantasia.</td></tr>
-    <tr><td class="attr-name">cnpj_empresa</td><td class="attr-type">CHAR(14)</td><td><span class="tag tag-pk">PK</span></td><td>Atributo que armazena o numero do CNPJ único da empresa terceirizada, é um identificador unico e representa a chave primaria, total de caracteres: 14.</td></tr>
+    <tr><td class="attr-name">id_terceirizada</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK (recomendado)</span></td><td>Identificador interno único da empresa terceirizada. Recomenda-se usar este campo como chave primária e manter cnpj_terceirizada como chave alternativa única.</td></tr>
+    <tr><td class="attr-name">nome_terceirizada</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome empresarial ou nome fantasia do fornecedor terceirizado.</td></tr>
+    <tr><td class="attr-name">cnpj_terceirizada</td><td class="attr-type">CHAR(14)</td><td><span class="tag tag-atr">UNIQUE</span></td><td>CNPJ válido com 14 dígitos, único por empresa terceirizada. Recomenda-se que seja chave alternativa, não a chave primária técnica.</td></tr>
     <tr><td class="attr-name">valor_servico_prestado</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o valor do serviço prestado pela empresa terceirizada, deve ser um valor positivo e deve conter até 10 dígitos no total e 2 casas decimais.</td></tr>
   </table></div>
   <div class="note"><b>Chave primária:</b> cnpj_empresa.</div>
 </section>
 
 <section id="obra" class="sheet">
-  <div class="sheet-header"><h3>Obra</h3><table class="title-block"><tr><th>Folha</th><td>07</td></tr><tr><th>Entidade</th><td>OBRA</td></tr></table></div>
+  <div class="sheet-header"><h3>Obra</h3><table class="title-block"><tr><th>Folha</th><td>07</td></tr><tr><th>Entidade</th><td>OBRA</td></tr><tr><td class="attr-name">id_empresa</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Empresa responsável pela obra; referencia EMPRESA.id_empresa.</td></tr>
+  </table></div>
   <p class="lead">Armazena as principais informações relacionadas às obras administradas pela empresa.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é utilizado como identificador interno auxiliar da obra, é um identificador unico e gerado automaticamente.</td></tr>
-    <tr><td class="attr-name">nome_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-pk">PK</span></td><td>Atributo Nome utilizado para identificar a obra ele é utilizado como chave primária, pois é único para cada obra.</td></tr>
+    <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK (recomendado)</span></td><td>Atributo que é utilizado como identificador interno auxiliar da obra, é um identificador unico e gerado automaticamente.</td></tr>
+    <tr><td class="attr-name">nome_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome descritivo da obra. Recomenda-se utilizar id_obra como chave primária e manter nome_obra como atributo comum, pois nomes de obras podem se repetir.</td></tr>
     <tr><td class="attr-name">endereco_obra</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena o endereço onde a obra está localizada no formato "Rua, Número, Bairro, Cidade, Estado", deve poder ser preenchido com até 255 caracteres.</td></tr>
     <tr><td class="attr-name">tempo_inicio</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é usado para armazenar a data ou horário de início previsto ou realizado, deve ser um valor válido a data deve estar no formato 'dd/MM/yyyy HH:MM:SS'.</td></tr>
     <tr><td class="attr-name">tempo_fim</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é usado para armazenar a data ou horário de término da obra, deve ser um valor válido a data deve estar no formato 'dd/MM/yyyy HH:MM:SS'.</td></tr>
@@ -349,7 +357,8 @@ footer{
 </section>
 
 <section id="gerenciamento" class="sheet">
-  <div class="sheet-header"><h3>Gerenciamento</h3><table class="title-block"><tr><th>Folha</th><td>08</td></tr><tr><th>Entidade</th><td>GERENCIAMENTO</td></tr></table></div>
+  <div class="sheet-header"><h3>Gerenciamento</h3><table class="title-block"><tr><th>Folha</th><td>08</td></tr><tr><th>Entidade</th><td>GERENCIAMENTO</td></tr><tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span> <span class="tag tag-fk">FK</span></td><td>Identificador da obra gerenciada; PK/FK para garantir relação 1:1 com OBRA.</td></tr>
+  </table></div>
   <p class="lead">Armazena os responsáveis pelo gerenciamento de uma obra, incluindo engenheiro, arquiteto e mestre de obra.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
@@ -361,7 +370,8 @@ footer{
 </section>
 
 <section id="tarefa-obra" class="sheet">
-  <div class="sheet-header"><h3>Tarefa_Obra</h3><table class="title-block"><tr><th>Folha</th><td>09</td></tr><tr><th>Entidade</th><td>TAREFA_OBRA</td></tr></table></div>
+  <div class="sheet-header"><h3>Tarefa_Obra</h3><table class="title-block"><tr><th>Folha</th><td>09</td></tr><tr><th>Entidade</th><td>TAREFA_OBRA</td></tr><tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Obra à qual a tarefa pertence; referencia OBRA.id_obra.</td></tr>
+  </table></div>
   <p class="lead">Armazena as tarefas vinculadas às obras, permitindo acompanhar nome, descrição, data de execução e status.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
@@ -374,17 +384,75 @@ footer{
   <div class="note"><b>Chave primária:</b> id_tarefa.</div>
 </section>
 
-<section id="icone" class="sheet">
-  <div class="sheet-header"><h3>Ícone</h3><table class="title-block"><tr><th>Folha</th><td>10</td></tr><tr><th>Entidade</th><td>ICONE</td></tr></table></div>
-  <p class="lead">Armazena os ícones utilizados pela aplicação, centralizando seus dados visuais e descritivos.</p>
+<section id="registro-ponto" class="sheet">
+  <div class="sheet-header"><h3>Registro de Ponto</h3><table class="title-block"><tr><th>Folha</th><td>11</td></tr><tr><th>Entidade</th><td>REGISTRO_PONTO</td></tr></table></div>
+  <p class="lead">Entidade operacional que registra a jornada dos funcionários por dia e obra. Cada marcação deve permitir identificar funcionário, data, tipo de marcação e horário registrado. O registro é a base para apuração de jornada, atrasos e horas extras.</p>
   <div class="table-wrap"><table class="attrs">
     <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">id_icone</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Atributo que armazena o identificador único do ícone, deve ser um valor unico e não nulo</td></tr>
-    <tr><td class="attr-name">nome_icone</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que é utilizado para armazenar o nome utilizado para identificar o ícone, deve ser um texto com no máximo 100 caracteres.</td></tr>
-    <tr><td class="attr-name">descricao</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a descrição da finalidade do ícone, deve ser um texto.</td></tr>
-    <tr><td class="attr-name">imagem_icone</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Atributo que armazena a referência ou caminho da imagem do ícone, porém essa imagem deve ser salva em um arquivo a parte fora do banco de dados para não sobrecarregar o sistema.</td></tr>
+    <tr><td class="attr-name">id_ponto</td><td class="attr-type">BIGINT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único de cada marcação de ponto.</td></tr>
+    <tr><td class="attr-name">cpf_funcionario</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-fk">FK</span></td><td>CPF do funcionário relacionado; referencia FUNCIONARIOS.cpf.</td></tr>
+    <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Identificador da obra onde o trabalho foi realizado; referencia OBRA.id_obra.</td></tr>
+    <tr><td class="attr-name">data_ponto</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Data local da jornada registrada.</td></tr>
+    <tr><td class="attr-name">tipo_marcacao</td><td class="attr-type">VARCHAR(20)</td><td><span class="tag tag-atr">ATR</span></td><td>Tipo padronizado: ENTRADA, INICIO_INTERVALO, FIM_INTERVALO ou SAIDA.</td></tr>
+    <tr><td class="attr-name">data_hora_marcacao</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data e hora efetivas da marcação, armazenadas com regra de fuso horário documentada.</td></tr>
+    <tr><td class="attr-name">origem_marcacao</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Origem do registro, por exemplo aplicativo, terminal ou lançamento autorizado.</td></tr>
+    <tr><td class="attr-name">justificativa</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Justificativa de correção ou ocorrência, quando aplicável; deve manter histórico de alterações.</td></tr>
   </table></div>
-  <div class="note"><b>Chave primária:</b> id_icone.</div>
+  <div class="note"><b>Relacionamentos:</b> FUNCIONARIOS 1:N REGISTRO_PONTO; OBRA 1:N REGISTRO_PONTO. O registro de ponto é uma entidade operacional nova proposta para atender ao controle diário por funcionário e obra.</div>
+</section>
+
+<section id="log-acesso" class="sheet">
+  <div class="sheet-header"><h3>Log de Acesso e Auditoria</h3><table class="title-block"><tr><th>Folha</th><td>12</td></tr><tr><th>Entidade</th><td>LOG_ACESSO</td></tr></table></div>
+  <p class="lead">Entidade de auditoria que registra ações relevantes realizadas no sistema, especialmente consultas e alterações em dados pessoais, salariais, pagamentos, obras e ponto. Deve apoiar a rastreabilidade, a segurança e a investigação de incidentes.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">id_log</td><td class="attr-type">BIGINT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único do evento de auditoria.</td></tr>
+    <tr><td class="attr-name">id_usuario</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR/FK*</span></td><td>Identificador do usuário autenticado. Deve ser FK para USUARIO quando essa entidade existir; não foi incluída no modelo atual.</td></tr>
+    <tr><td class="attr-name">data_hora_evento</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data e hora do evento, usando política de fuso horário documentada.</td></tr>
+    <tr><td class="attr-name">operacao</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Ação executada: LOGIN, CONSULTA, INSERCAO, ALTERACAO, EXCLUSAO ou EXPORTACAO.</td></tr>
+    <tr><td class="attr-name">entidade_afetada</td><td class="attr-type">VARCHAR(60)</td><td><span class="tag tag-atr">ATR</span></td><td>Entidade lógica envolvida, por exemplo FUNCIONARIOS, PAGAMENTOS ou REGISTRO_PONTO.</td></tr>
+    <tr><td class="attr-name">registro_referencia</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Identificador do registro afetado, sem copiar dados pessoais desnecessários para o log.</td></tr>
+    <tr><td class="attr-name">resultado</td><td class="attr-type">VARCHAR(20)</td><td><span class="tag tag-atr">ATR</span></td><td>Resultado padronizado, como SUCESSO ou FALHA.</td></tr>
+    <tr><td class="attr-name">detalhe_evento</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Descrição mínima necessária para auditoria; não deve armazenar senhas, tokens ou dados sensíveis em excesso.</td></tr>
+  </table></div>
+  <div class="note"><b>Nota de modelagem:</b> para uma implementação completa de acesso por perfil e operação, recomenda-se criar também USUARIO, PERFIL, PERMISSAO e PERFIL_PERMISSAO (entidade associativa). LOG_ACESSO registra eventos; não substitui a tabela de permissões.</div>
+</section>
+
+<section id="convencoes" class="sheet">
+  <div class="sheet-header"><h3>Convenções, Plataforma e Segurança</h3><table class="title-block"><tr><th>Folha</th><td>13</td></tr></table></div>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Item</th><th>Convenção</th><th>Aplicação</th><th>Observação</th></tr>
+    <tr><td class="attr-name">Versão</td><td>DD-EJS v3.0</td><td>Revisão deste dicionário</td><td>Atualizado para incluir registro de ponto, auditoria, fluxo de dados e segurança.</td></tr>
+    <tr><td class="attr-name">SGBD</td><td>A confirmar</td><td>Banco de dados relacional</td><td>Proposta de referência: MySQL 8.0; confirmar com a implementação real antes de declarar como definitivo.</td></tr>
+    <tr><td class="attr-name">Codificação</td><td>utf8mb4</td><td>Texto e caracteres</td><td>Proposta de configuração para suportar português e Unicode.</td></tr>
+    <tr><td class="attr-name">Collation</td><td>utf8mb4_0900_ai_ci</td><td>Comparação e ordenação de texto</td><td>Proposta para MySQL 8.0; escolher outra compatível caso o SGBD seja diferente.</td></tr>
+    <tr><td class="attr-name">Entidades/tabelas</td><td>snake_case, singular</td><td>Ex.: empresa, obra, registro_ponto, log_acesso</td><td>Na documentação atual alguns nomes legados permanecem no plural; alinhar nomes físicos antes de aplicar migrations.</td></tr>
+    <tr><td class="attr-name">Atributos</td><td>snake_case sem acentos</td><td>Ex.: id_obra, data_hora_evento, cpf_funcionario</td><td>Usar nomes consistentes, sem espaços e sem caracteres acentuados.</td></tr>
+    <tr><td class="attr-name">Prefixos</td><td>id_, cpf_, cnpj_, data_, hora_, valor_, status_, nome_, descricao_</td><td>Identificação semântica dos atributos</td><td>FK deve indicar a entidade de origem, por exemplo cpf_funcionario e id_obra. PK/FK/UK/NN são marcadores de restrição, não parte obrigatória do nome.</td></tr>
+    <tr><td class="attr-name">Tipos formais</td><td>INT, BIGINT, CHAR(n), VARCHAR(n), TEXT, DATE, TIME, DATETIME, DECIMAL(p,s), BOOLEAN</td><td>Definição dos domínios</td><td>DATE e DATETIME são armazenados em formato nativo; dd/mm/aaaa é apenas formato de exibição.</td></tr>
+    <tr><td class="attr-name">Chaves</td><td>PK, FK, UK, NN</td><td>Primária, estrangeira, única e não nula</td><td>As FKs devem ter integridade referencial e índices adequados.</td></tr>
+    <tr><td class="attr-name">Notação formal</td><td>ENTIDADE(PK atributo, FK atributo, atributo: tipo [restrições])</td><td>Leitura do esquema relacional</td><td>1:N significa um para muitos; 1:1 significa um para um; N:M exige entidade associativa.</td></tr>
+  </table></div>
+  <h4>Controle de acesso por operação</h4>
+  <p class="lead">Aplicar o princípio do menor privilégio. Perfis sugeridos: Administrador, Financeiro, Administrativo e Gestão de Obras. Cada permissão deve definir usuário/perfil, entidade, operação (consultar, inserir, alterar, excluir ou exportar) e escopo permitido. Dados de CPF, salários, extras e pagamentos devem ser restritos a funções autorizadas.</p>
+  <h4>LGPD e retenção</h4>
+  <p class="lead">Coletar e tratar somente os dados necessários às finalidades documentadas; restringir acesso; proteger cópias de segurança; registrar acessos relevantes; definir prazos de retenção e descarte; e evitar gravar senhas, tokens ou valores completos de dados sensíveis no log. A política final deve ser validada pela empresa conforme a legislação aplicável.</p>
+</section>
+
+<section id="fluxo-dados" class="sheet">
+  <div class="sheet-header"><h3>Fluxo de Dados</h3><table class="title-block"><tr><th>Folha</th><td>14</td></tr></table></div>
+  <p class="lead">O fluxo abaixo descreve como os dados entram, são validados, armazenados, utilizados nos processos da EJS e auditados.</p>
+  <div class="stamp-grid">
+    <div class="stamp"><span class="rn-code">01 · ENTRADA</span><p>Usuário autorizado registra funcionário, obra, tarefa, pagamento ou marcação de ponto.</p></div>
+    <div class="stamp"><span class="rn-code">02 · VALIDAÇÃO</span><p>O sistema valida campos obrigatórios, formatos, valores não negativos, status permitidos e vínculos com registros existentes.</p></div>
+    <div class="stamp"><span class="rn-code">03 · AUTORIZAÇÃO</span><p>O perfil e a permissão da operação são verificados antes de consultar ou alterar dados restritos.</p></div>
+    <div class="stamp"><span class="rn-code">04 · PERSISTÊNCIA</span><p>Os dados validados são gravados nas entidades correspondentes com integridade referencial e transações quando aplicável.</p></div>
+    <div class="stamp"><span class="rn-code">05 · PROCESSAMENTO</span><p>Os registros de ponto alimentam a apuração de jornada; tarefas acompanham a obra; pagamentos são conferidos com comprovantes e aprovações.</p></div>
+    <div class="stamp"><span class="rn-code">06 · AUDITORIA</span><p>Operações relevantes são registradas em LOG_ACESSO com usuário, data/hora, operação, entidade, referência e resultado.</p></div>
+    <div class="stamp"><span class="rn-code">07 · CONSULTA/RELATÓRIO</span><p>Relatórios apresentam apenas dados compatíveis com as permissões do usuário e a finalidade autorizada.</p></div>
+    <div class="stamp"><span class="rn-code">08 · RETENÇÃO</span><p>Dados e logs são mantidos pelo período definido pela empresa e pelas obrigações legais; depois são eliminados ou anonimizados quando cabível.</p></div>
+  </div>
+  <div class="note" style="margin-top:22px"><b>Expressão formal resumida:</b> Entrada → Validação → Autorização → Persistência → Processamento → Auditoria → Consulta/Relatório → Retenção/Descarte.</div>
 </section>
 
 <section id="relacionamentos" class="sheet">
@@ -398,54 +466,66 @@ footer{
   <div class="rel-block"><h4>EMPRESA — OBRA</h4><div class="rel-card"><strong>1:N</strong> — Uma empresa pode possuir várias obras.</div></div>
   <div class="rel-block"><h4>OBRA — GERENCIAMENTO</h4><div class="rel-card"><strong>1:1</strong> — Cada obra possui um registro de gerenciamento no modelo atual.</div></div>
   <div class="rel-block"><h4>OBRA — TAREFA_OBRA</h4><div class="rel-card"><strong>1:N</strong> — Uma obra pode possuir várias tarefas.</div></div>
-  <div class="rel-block"><h4>EMPRESA — ICONE</h4><div class="rel-card"><strong>1:N</strong> — Uma empresa pode possuir vários ícones cadastrados.</div></div>
+  <div class="rel-block"><h4>FUNCIONARIOS — REGISTRO_PONTO</h4><div class="rel-card"><strong>1:N</strong> — Um funcionário pode possuir várias marcações de ponto ao longo dos dias.</div></div>
+  <div class="rel-block"><h4>OBRA — REGISTRO_PONTO</h4><div class="rel-card"><strong>1:N</strong> — Uma obra pode estar relacionada a várias marcações de ponto de funcionários alocados nela.</div></div>
+  <div class="rel-block"><h4>USUARIO — LOG_ACESSO</h4><div class="rel-card"><strong>1:N (proposto)</strong> — Um usuário pode gerar vários eventos de auditoria. A entidade USUARIO precisa ser criada para implementar a FK de forma definitiva.</div></div>
+  <div class="rel-block"><h4>PERFIL — PERMISSAO</h4><div class="rel-card"><strong>N:M (proposto)</strong> — Um perfil pode possuir várias permissões e uma permissão pode pertencer a vários perfis; implementar por entidade associativa PERFIL_PERMISSAO.</div></div>
 </section>
 
 <section id="regras" class="sheet">
-  <div class="sheet-header"><h3>Regras de Negócio</h3><table class="title-block"><tr><th>Folha</th><td>12</td></tr></table></div>
+  <div class="sheet-header"><h3>Regras de Negócio e Integridade</h3><table class="title-block"><tr><th>Folha</th><td>16</td></tr></table></div>
   <div class="stamp-grid">
-    <div class="stamp"><span class="rn-code">RN01</span><p>A entidade EMPRESA é a entidade principal e centraliza os relacionamentos com pagamentos, funcionários, terceirizadas, obras e ícones.</p></div>
-    <div class="stamp"><span class="rn-code">RN02</span><p>Cada pagamento deve possuir um id_pagamento único.</p></div>
-    <div class="stamp"><span class="rn-code">RN03</span><p>Cada funcionário deve possuir CPF único, utilizado como chave primária.</p></div>
-    <div class="stamp"><span class="rn-code">RN04</span><p>EXTRAS utiliza o CPF como chave primária e deve estar vinculado ao funcionário correspondente.</p></div>
-    <div class="stamp"><span class="rn-code">RN05</span><p>Cada empresa terceirizada deve possuir CNPJ único.</p></div>
-    <div class="stamp"><span class="rn-code">RN06</span><p>Cada obra é identificada pelo atributo nome_obra.</p></div>
-    <div class="stamp"><span class="rn-code">RN07</span><p>Cada tarefa deve possuir id_tarefa único e estar associada a uma obra.</p></div>
-    <div class="stamp"><span class="rn-code">RN08</span><p>Cada ícone deve possuir id_icone único.</p></div>
-    <div class="stamp"><span class="rn-code">RN09</span><p>Valores monetários não devem aceitar valores negativos quando isso não fizer sentido para a operação.</p></div>
-    <div class="stamp"><span class="rn-code">RN10</span><p>Horas extras e horas devidas não devem aceitar valores negativos.</p></div>
-    <div class="stamp"><span class="rn-code">RN11</span><p>Status de pagamentos, obras e tarefas devem utilizar valores padronizados pelo sistema.</p></div>
+    <div class="stamp"><span class="rn-code">RN01</span><p>Obra só inicia após orçamento aprovado, contrato formalizado e autorizações aplicáveis.</p></div>
+    <div class="stamp"><span class="rn-code">RN02</span><p>Toda tarefa pertence a uma obra e possui status padronizado e responsável pelo acompanhamento.</p></div>
+    <div class="stamp"><span class="rn-code">RN03</span><p>Registro de ponto deve identificar funcionário, data e obra, incluindo marcações de entrada e saída e intervalos aplicáveis.</p></div>
+    <div class="stamp"><span class="rn-code">RN04</span><p>Horas, valores e descontos devem ser não negativos; valor líquido considera bruto, descontos e adicionais sem duplicidade.</p></div>
+    <div class="stamp"><span class="rn-code">RN05</span><p>Horas extras são apuradas conforme jornada registrada, legislação vigente e instrumentos coletivos aplicáveis.</p></div>
+    <div class="stamp"><span class="rn-code">RN06</span><p>Pagamento deve ter responsável, destinatário, valor, data e comprovante ou registro alternativo adequado.</p></div>
+    <div class="stamp"><span class="rn-code">RN07</span><p>Serviço terceirizado deve ser medido e aprovado antes do pagamento, conforme contrato.</p></div>
+    <div class="stamp"><span class="rn-code">RN08</span><p>Compras de materiais exigem aprovação prévia; emergências devem ser justificadas e registradas.</p></div>
+    <div class="stamp"><span class="rn-code">RN09</span><p>Obra deve ter responsável técnico habilitado e ART quando exigível; as normas de segurança e EPIs aplicáveis devem ser observados.</p></div>
+    <div class="stamp"><span class="rn-code">RN10</span><p>CPF e dados salariais devem ser acessíveis somente a usuários autorizados e tratados conforme a LGPD.</p></div>
+    <div class="stamp"><span class="rn-code">RN11</span><p>Registros devem manter integridade referencial, status padronizados e vínculo com a obra, funcionário, cliente ou fornecedor pertinente.</p></div>
+    <div class="stamp"><span class="rn-code">RN12</span><p>Ações relevantes de consulta, inclusão, alteração, exclusão e exportação devem gerar evento de auditoria, sem gravar segredos no log.</p></div>
   </div>
 </section>
 
 <section id="modelagem" class="sheet">
-  <div class="sheet-header"><h3>Modelagem Conceitual</h3><table class="title-block"><tr><th>Folha</th><td>13</td></tr></table></div>
-  <p class="lead"><b>Entidades reconhecidas:</b> EMPRESA, PAGAMENTOS, FUNCIONARIOS, EXTRAS, TERCEIRIZADAS, OBRA, GERENCIAMENTO, TAREFA_OBRA e ICONE.</p>
-
-  <div class="table-wrap">
-  <table class="attrs">
-    <tr><th>Relacionamento</th><th>Cardinalidade</th><th>Descrição</th></tr>
-    <tr><td class="attr-name">EMPRESA → PAGAMENTOS</td><td>1:N</td><td>Uma empresa pode possuir vários pagamentos.</td></tr>
-    <tr><td class="attr-name">EMPRESA → FUNCIONARIOS</td><td>1:N</td><td>Uma empresa pode possuir vários funcionários.</td></tr>
-    <tr><td class="attr-name">FUNCIONARIOS → EXTRAS</td><td>1:1</td><td>Cada funcionário possui, no modelo atual, no máximo um registro de extras.</td></tr>
-    <tr><td class="attr-name">EMPRESA → TERCEIRIZADAS</td><td>1:N</td><td>Uma empresa pode se relacionar com várias terceirizadas.</td></tr>
-    <tr><td class="attr-name">EMPRESA → OBRA</td><td>1:N</td><td>Uma empresa pode possuir várias obras.</td></tr>
-    <tr><td class="attr-name">OBRA → GERENCIAMENTO</td><td>1:1</td><td>Cada obra possui um conjunto de informações de gerenciamento.</td></tr>
-    <tr><td class="attr-name">OBRA → TAREFA_OBRA</td><td>1:N</td><td>Uma obra pode possuir várias tarefas.</td></tr>
-    <tr><td class="attr-name">EMPRESA → ICONE</td><td>1:N</td><td>Uma empresa pode possuir vários ícones.</td></tr>
-  </table>
+  <div class="sheet-header"><h3>Modelo Conceitual e Leitura Formal</h3><table class="title-block"><tr><th>Folha</th><td>17</td></tr></table></div>
+  <p class="lead"><b>Entidades do modelo documentado:</b> EMPRESA, PAGAMENTOS, FUNCIONARIOS, EXTRAS, TERCEIRIZADAS, OBRA, GERENCIAMENTO, TAREFA_OBRA, REGISTRO_PONTO e LOG_ACESSO. USUARIO, PERFIL, PERMISSAO e PERFIL_PERMISSAO são extensões recomendadas para autenticação e autorização completas; precisam ser incorporadas ao diagrama físico caso sejam implementadas.</p>
+  <h4>Expressão formal do esquema (proposta de normalização)</h4>
+  <div class="rel-card">
+    EMPRESA(<b>PK id_empresa</b>, nome_empresa, cnpj_empresa, razao_social, endereco, telefone, email)<br>
+    PAGAMENTOS(<b>PK id_pagamento</b>, valor_pago, data_pagamento, comprovante_pagamento, formato_pagamento, status_pagamento, <b>FK id_empresa</b>)<br>
+    FUNCIONARIOS(<b>PK cpf</b>, id_funcionario, nome_funcionario, cargo, salario_definido, data_recebimento_salario, beneficio_funcionario)<br>
+    EXTRAS(<b>PK/FK cpf</b>, horas_extras, valor_bruto, valor_descontado, valor_liquido, horas_funcionario_deve)<br>
+    TERCEIRIZADAS(<b>PK id_terceirizada</b>, <b>UK cnpj_terceirizada</b>, nome_terceirizada, valor_servico_prestado, <b>FK id_empresa</b>)<br>
+    OBRA(<b>PK id_obra</b>, nome_obra, endereco_obra, tempo_inicio, tempo_fim, status_obra, descricao_obra, horario_entrada, horario_saida, <b>FK id_empresa</b>)<br>
+    GERENCIAMENTO(<b>PK/FK id_obra</b>, nome_engenheiro, nome_arquiteto, nome_mestre_obra, dados_responsabilidade_tecnica)<br>
+    TAREFA_OBRA(<b>PK id_tarefa</b>, nome_tarefa, descricao_tarefa, data_execucao, status_tarefa, <b>FK id_obra</b>)<br>
+    REGISTRO_PONTO(<b>PK id_ponto</b>, <b>FK cpf_funcionario</b>, <b>FK id_obra</b>, data_ponto, tipo_marcacao, data_hora_marcacao, origem_marcacao, justificativa)<br>
+    LOG_ACESSO(<b>PK id_log</b>, id_usuario, data_hora_evento, operacao, entidade_afetada, registro_referencia, resultado, detalhe_evento)
   </div>
-
-  <div class="note" style="margin-top:22px">
-    <b>Observação:</b> O modelo atual mantém GERENCIAMENTO sem chave primária definida e utiliza
-    CPF como chave primária em EXTRAS, o que caracteriza a relação 1:1 com FUNCIONARIOS.
-    Conforme a documentação do projeto, caso seja necessário manter histórico de vários registros
-    de extras para o mesmo funcionário, poderá ser criado futuramente um identificador próprio para EXTRAS.
-  </div>
+  <h4>Leitura das entidades e cardinalidades</h4>
+  <div class="table-wrap"><table class="attrs">
+    <tr><th>Relacionamento</th><th>Cardinalidade</th><th>Leitura</th></tr>
+    <tr><td>EMPRESA — PAGAMENTOS</td><td>1:N</td><td>Uma empresa pode registrar muitos pagamentos; cada pagamento pertence a uma empresa.</td></tr>
+    <tr><td>EMPRESA — FUNCIONARIOS</td><td>1:N</td><td>Uma empresa pode ter muitos funcionários; cada funcionário está vinculado à empresa.</td></tr>
+    <tr><td>FUNCIONARIOS — EXTRAS</td><td>1:0..1 no modelo atual</td><td>Um funcionário pode ter zero ou um registro agregado de extras. Para histórico mensal, usar id_extra e relação 1:N.</td></tr>
+    <tr><td>EMPRESA — TERCEIRIZADAS</td><td>1:N</td><td>Uma empresa pode cadastrar muitas terceirizadas.</td></tr>
+    <tr><td>EMPRESA — OBRA</td><td>1:N</td><td>Uma empresa pode administrar várias obras.</td></tr>
+    <tr><td>OBRA — GERENCIAMENTO</td><td>1:1</td><td>Cada obra possui um registro de gerenciamento; id_obra deve ser PK/FK da entidade dependente.</td></tr>
+    <tr><td>OBRA — TAREFA_OBRA</td><td>1:N</td><td>Uma obra pode possuir muitas tarefas; cada tarefa pertence a uma obra.</td></tr>
+    <tr><td>FUNCIONARIOS — REGISTRO_PONTO</td><td>1:N</td><td>Um funcionário pode ter muitas marcações de ponto.</td></tr>
+    <tr><td>OBRA — REGISTRO_PONTO</td><td>1:N</td><td>Uma obra pode ter marcações de vários funcionários.</td></tr>
+    <tr><td>USUARIO — LOG_ACESSO</td><td>1:N, proposto</td><td>Um usuário pode gerar muitos eventos de auditoria.</td></tr>
+    <tr><td>PERFIL — PERMISSAO</td><td>N:M, associativa</td><td>Relacionamento implementado por PERFIL_PERMISSAO quando a gestão de permissões for construída.</td></tr>
+  </table></div>
+  <div class="note" style="margin-top:22px"><b>Compatibilidade com o banco real:</b> esta expressão formal explicita ajustes recomendados (como id_obra como PK e FKs de relacionamento). Antes de implementar, alinhar os nomes e as chaves com o diagrama físico e as tabelas já existentes. Não aplicar renomeações sem migration e backup.</div>
 </section>
 
 <footer>
-  DICIONÁRIO DE DADOS · SISTEMA DE GESTÃO DE OBRAS · EMPREITEIRA EJS · REV. 2.0
+  DICIONÁRIO DE DADOS · SISTEMA DE GESTÃO DE OBRAS · EJS · REV. 3.0
 </footer>
 
 </main>

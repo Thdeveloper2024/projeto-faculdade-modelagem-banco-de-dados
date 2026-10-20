@@ -56,17 +56,22 @@ O integrante Thiago que trabalha na empresa realizou uma entrevista com o dono, 
 
 ### Processos de Negócio
 
-- Cadastrar obras em execução.
-- Registrar pagamentos feitos aos funcionarios e empresas tercerizadas.
-- Registrar horario de entrada e saida dos funcionarios.
-- Cadastrar dados dos funcionarios.
-- Registrar horas extras prestadas pelos funcionarios.
-- Cadastrar empresas que presta os serviçoes tercerizados para a organização EJS.
-- Registrar os responsáveis pelo gerenciamento de cada obra.
-- Criar e acompanhar tarefas vinculadas às obras.
+| Processo | Grupo | Descritivo |
+|---|---|---|
+| Atendimento de clientes | Vendas | O processo inicia quando o cliente entra em contato com a EJS Construção por meio do site, telefone ou indicação. A empresa identifica as necessidades do cliente, coleta as informações iniciais e encaminha a solicitação para avaliação e elaboração do orçamento. |
+| Elaboração de orçamento de obra | Vendas | O engenheiro analisa as características da obra, realiza ou avalia as medições necessárias, estima os custos de materiais, mão de obra e serviços terceirizados e define as condições de pagamento. O orçamento é apresentado ao cliente para aprovação. |
+| Formalização do contrato | Vendas | Após a aprovação do orçamento pelo cliente, a empresa formaliza o contrato, registrando o escopo dos serviços, os valores acordados, as condições de pagamento, os prazos e as responsabilidades das partes. Com a formalização, a obra é encaminhada para planejamento e execução. |
+| Execução e acompanhamento da obra | Gestão de obras | O engenheiro ou mestre de obras organiza as atividades, acompanha a execução dos serviços, verifica o cumprimento do planejamento e controla a qualidade do trabalho. Quando necessário, identifica atrasos, necessidades de materiais e ajustes operacionais. |
+| Faturamento e recebimento de clientes | Financeiro | O setor financeiro acompanha os valores e vencimentos estabelecidos no contrato, registra as cobranças e os recebimentos e controla os recursos destinados às despesas operacionais e aos custos das obras. |
+| Compra e fornecimento de materiais | Compras | A empresa identifica os materiais necessários para cada etapa da obra e informa as quantidades e especificações ao cliente, que normalmente realiza a compra. Quando surgem necessidades emergenciais, o financeiro, em conjunto com a gestão da obra, pode realizar a aquisição, encaminhando a respectiva nota fiscal ao cliente. |
+| Contratação de empresas terceirizadas | Compras | A empresa identifica a necessidade de serviços especializados, solicita e compara propostas de prestadores terceirizados, avalia os valores e as condições oferecidas e seleciona o fornecedor mais adequado. Após a aprovação, são formalizadas as condições da contratação e a programação do serviço. |
+| Pagamento de funcionários e terceirizados | Financeiro | O setor financeiro verifica os valores devidos, confere as informações necessárias e registra os pagamentos realizados aos funcionários e às empresas terceirizadas, mantendo os comprovantes e os registros financeiros correspondentes. |
+| Cadastro e manutenção de funcionários | Administrativo | O setor administrativo registra e mantém atualizados os dados dos funcionários, incluindo informações pessoais, funcionais, contratuais e necessárias à gestão da equipe. |
+| Controle de ponto dos funcionários | Administrativo | A empresa registra os horários de entrada e saída dos funcionários por meio do cartão de ponto ou de outro mecanismo adotado. Os registros são organizados por funcionário e data para apuração da jornada, das faltas e das horas extras. |
+| Apuração de horas extras e descontos | Financeiro | Com base nos registros de ponto e nas informações de faltas e ausências, são apuradas as horas extras e os descontos aplicáveis, respeitando as regras trabalhistas e os critérios de remuneração adotados pela empresa. Os valores calculados são encaminhados para processamento da folha e pagamento. |
+| Alocação de funcionários às obras | Gestão de obras | O responsável pela gestão de obras verifica as necessidades de cada projeto e distribui os funcionários conforme suas funções, qualificações, disponibilidade e cronograma, ajustando a equipe de acordo com o andamento dos serviços. |
 
 <img width="2084" height="3750" alt="image" src="https://github.com/user-attachments/assets/ba67b041-3fb9-4189-bf49-148699a4220e" />
-
 
 
 ---

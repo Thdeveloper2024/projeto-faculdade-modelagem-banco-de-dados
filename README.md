@@ -172,8 +172,6 @@ O modelo atual está limitado às entidades definidas no DER.
 
 # Dicionário de Dados — Sistema de Gestão de Obras
 
-# Dicionário de Dados — Sistema de Gestão de Obras
-
 ## 1. Visão Geral
 
 O sistema tem como objetivo organizar e gerenciar informações relacionadas aos pagamentos, funcionários, horas extras e horas devidas, empresas terceirizadas, obras, gerenciamento das obras, tarefas, registros de acesso e controle de ponto dos funcionários.

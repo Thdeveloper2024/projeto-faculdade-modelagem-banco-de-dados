@@ -403,8 +403,6 @@ As entidades LOG_ACESSO e REGISTRO_PONTO foram descritas com base em uma estrutu
 - O CPF de EXTRAS deve corresponder a um funcionário existente.
 - O CNPJ da empresa terceirizada deve ser único.
 - O nome da obra deve identificar uma única obra.
-- Cada tarefa deve possuir um `id_tarefa` único.
-- Cada ícone deve possuir um `id_icone` único.
 - Uma tarefa deve estar relacionada a uma obra existente.
 - Um registro de gerenciamento deve estar relacionado a uma obra existente.
 - Os valores bruto, descontado e líquido registrados em EXTRAS devem manter consistência entre si.

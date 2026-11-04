@@ -416,7 +416,7 @@ As entidades LOG_ACESSO e REGISTRO_PONTO foram descritas com base em uma estrutu
 
 O DER atualizado está representado abaixo:
 
-[Visualizar diagrama no BRModelo Web](https://app.brmodeloweb.com/publicview/6acbaf1a0186ebdccd4c90fb)
+[Visualizar diagrama no BRModelo Web](https://github.com/user-attachments/assets/diagrama.png)
 
 ![Diagrama Entidade-Relacionamento (DER)](https://github.com/user-attachments/assets/diagrama.png)
 

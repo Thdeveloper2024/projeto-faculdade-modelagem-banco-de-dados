@@ -417,7 +417,7 @@ As entidades LOG_ACESSO e REGISTRO_PONTO foram descritas com base em uma estrutu
 O DER atualizado está representado no arquivo abaixo:
 https://app.brmodeloweb.com/publicview/6acbaf1a0186ebdccd4c90fb
 
- <img width="977" height="765" alt="image" src="https://github.com/user-attachments/assets/15a0920f-ead0-433b-a824-bd41e8d93285" />
+ <img width="977" height="765" alt="image" src="https://github.com/user-attachments/assets/diagrama.png" />
 
 ---
 

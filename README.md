@@ -3,9 +3,6 @@
 Membros:
 
 
-Leonardo Victor
-Rgm: 47269294
-
 Maurício de Moura junior 
 Rgm: 46898891
 

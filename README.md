@@ -84,18 +84,18 @@ O integrante Thiago que trabalha na empresa realizou uma entrevista com o dono, 
 
 O sistema deve permitir cadastrar editar e excluir os seguintes dados.
 
-Dados:
+**Dados:**
 
--Nome completo;
--CPF;
--cargo;
--salario definido (Salario que deve ser definido pelo Administrador com autorização);
--Data definida de recebimento de salario;
--Beneficios dos funcionarios (Como direito de vale transporte e outros);
--O sistema devera permitir consultar os dados, porém apenas pessoas autorizadas podem consultar esses dados;
--O sistema devera checar se nome do funcionario foi preenchido completo;
--O sistema devera checar se o CPF foi preenchido completo, e se contém 11 caracters, deve também fazer uma verificação se o CPF realmente existe;.
--**O sistema deve permitir excluir ou editar os dados;**
+- Nome completo;
+- CPF;
+- cargo;
+- salario definido (Salario que deve ser definido pelo Administrador com autorização);
+- Data definida de recebimento de salario;
+- Beneficios dos funcionarios (Como direito de vale transporte e outros);
+- O sistema devera permitir consultar os dados, porém apenas pessoas autorizadas podem consultar esses dados;
+- O sistema devera checar se nome do funcionario foi preenchido completo;
+- O sistema devera checar se o CPF foi preenchido completo, e se contém 11 caracters, deve também fazer uma verificação se o CPF realmente existe;
+- O sistema deve permitir excluir ou editar os dados;
 - Todos os campos são obrigatorios;
 
 - **RF-02:** O sistema deve permitir o cadastro de funcionários, armazenando identificador, nome, CPF, cargo, salário definido, data de recebimento do salário e benefícios.

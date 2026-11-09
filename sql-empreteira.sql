@@ -167,6 +167,3 @@ CREATE TABLE log_acesso (
     PRIMARY KEY (id_log)
 ) ENGINE = InnoDB;
 
--- ============================================================
-
-);

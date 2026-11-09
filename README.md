@@ -177,9 +177,9 @@ Os dois dicionarios conceitual e em formato html estão em outros dois arquivos 
 
 O DER atualizado está representado abaixo:
 
-[Visualizar diagrama no GitHub](https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/diagrama.png)
+[Visualizar diagrama no GitHub](https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/der.png)
 
-![Diagrama Entidade-Relacionamento (DER)](https://raw.githubusercontent.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/main/diagrama.png)
+![Diagrama Entidade-Relacionamento (DER)](https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/der.png)
 
 ---
 

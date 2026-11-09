@@ -94,9 +94,9 @@ Dados:
 -Beneficios dos funcionarios (Como direito de vale transporte e outros);
 -O sistema devera permitir consultar os dados, porém apenas pessoas autorizadas podem consultar esses dados;
 -O sistema devera checar se nome do funcionario foi preenchido completo;
--O sistema devera checar se o CPF foi preenchido completo, e se contém 11 caracters, deve também fazer uma verificação se o CPF realmente existe;
--O sistema deve permitir excluir ou editar os dados;
--Todos os campos são obrigatorios;
+-O sistema devera checar se o CPF foi preenchido completo, e se contém 11 caracters, deve também fazer uma verificação se o CPF realmente existe;.
+-**O sistema deve permitir excluir ou editar os dados;**
+- Todos os campos são obrigatorios;
 
 - **RF-02:** O sistema deve permitir o cadastro de funcionários, armazenando identificador, nome, CPF, cargo, salário definido, data de recebimento do salário e benefícios.
 - **RF-03:** O sistema deve permitir o registro das informações adicionais dos funcionários na entidade **EXTRAS**, incluindo horas extras, valor bruto, valor descontado, valor líquido e horas que o funcionário deve.

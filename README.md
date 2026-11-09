@@ -181,6 +181,10 @@ O DER atualizado está representado abaixo:
 
 ![Diagrama Entidade-Relacionamento (DER)](https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/der.png)
 
+1 - Alteração: Foi criada novas entidades que forám transformadas em tabelas, as novas entidades forám as seguintes (Extras, gerenciamento, registro de pontos e logs de acesso), pois foi notado que caso não tivesse a tabela extras, não iria conseguirmos saber quais foram as os horarios de entrada e saida, e sem isso não iriamos conseguir saber o valor de horas devidas e pendentes pelos funcionarios, depois foi criada a tabela de gerenciamento, pois precisamos armazenar os dados separadamente para não haver mistura de informações e para ter uma organização dos dados, foi criada a tabela de registro_pontos, para saber os dias que os funcionarios foram e os dias que faltarám, ela armazena dados inportantes para o controle de faltas, e uma tabela de logs_acesso, para o administrador principal conseguir fazer analises de seguranças e visualizar quem acessou cada coisa.
+
+2 - Alteração: Definimo as cardinalidades com mais clareza, pois no modelo anterior a maioria estáva 1:1 e adicionamos os relacionamentos corretos entre as tabelas.
+
 ---
 
 ### Justificativa Técnica

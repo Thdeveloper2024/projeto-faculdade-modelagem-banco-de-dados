@@ -164,6 +164,13 @@ Os dados financeiros diretamente relacionados a horas adicionais dos funcionári
 As informações específicas de uma obra foram distribuídas entre **OBRA**, **GERENCIAMENTO** e **TAREFA_OBRA**, permitindo separar os dados gerais da obra, seus responsáveis e suas atividades.
 
 O modelo atual está limitado às entidades definidas no DER.
+---
+**Dicionário de Dados**
+
+Os dois dicionarios conceitual e em formato html estão em outros dois arquivos separados, para manter uma melhor organização do projeto.
+
+- dicionario.html — dicionário navegável, alinhado ao DER.
+- dicionario-conceitual.md — dicionário conceitual.
 
 ---
 

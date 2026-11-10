@@ -189,8 +189,6 @@ O DER atualizado está representado abaixo:
 
 ### Justificativa Técnica
 
-# JUSTIFICATIVA TÉCNICA
-
 O projeto teve início a partir da análise dos principais problemas identificados na empresa EJS Construção, com o objetivo de compreender suas necessidades operacionais e propor soluções tecnológicas que contribuíssem para a organização e o gerenciamento das informações. Durante o levantamento inicial, o proprietário relatou dificuldades no controle dos horários de entrada e saída dos funcionários, uma vez que os registros eram realizados manualmente em folhas de papel, que eventualmente eram perdidas, ocasionando dificuldades na consulta e no acompanhamento das informações. Diante dessa situação, identificou-se a necessidade de desenvolver uma solução informatizada que permitisse armazenar, organizar e consultar esses registros de maneira centralizada e segura.
 
 A partir desse levantamento, foram identificados os principais requisitos para o desenvolvimento do sistema e da estrutura do banco de dados. Um dos integrantes do grupo, que também atua na empresa, contribuiu diretamente para essa etapa, realizando o levantamento das necessidades operacionais e apresentando os principais pontos que deveriam ser considerados durante o desenvolvimento da solução.

@@ -207,13 +207,17 @@ Durante o desenvolvimento, também foram realizadas alterações e aprimoramento
 
 Além disso, foram corrigidas as informações de contato e apresentação da empresa, após orientações do professor sobre a necessidade de utilizar uma imagem mais profissional. A documentação referente à utilização de inteligência artificial também foi complementada, recebendo informações mais específicas sobre sua aplicação no desenvolvimento do projeto. Por fim, o dicionário de dados, desenvolvido em HTML, passou por atualizações para contemplar os novos requisitos e as adequações solicitadas durante as avaliações.
 
-### JUSTIFICATIVAS TÉCNICAS DAS DECISÕES
+### Justificativas técnicas das decisões 
+
+---
 
 A modelagem do banco de dados da EJS Construção foi desenvolvida com o objetivo de organizar, armazenar e controlar as informações relacionadas à administração das obras, aos funcionários, às terceirizadas, aos pagamentos e aos registros de acesso ao sistema.
 
 As decisões técnicas foram tomadas considerando a necessidade de manter a integridade das informações, evitar duplicidade de registros, facilitar consultas e estabelecer relacionamentos entre as entidades. A seguir, são apresentadas as justificativas para a escolha das chaves primárias, chaves estrangeiras, restrições e decisões arquiteturais utilizadas no modelo.
 
 ### Justificativa das chaves primárias
+
+---
 
 As chaves primárias foram definidas para garantir que cada registro possua um identificador único dentro de sua respectiva tabela. Sempre que possível, foram utilizados campos numéricos com identificação automática, facilitando a inserção, localização e manutenção dos registros.
 
@@ -243,6 +247,8 @@ As chaves primárias foram definidas para garantir que cada registro possua um i
 
 ### Justificativa das chaves estrangeiras e dos relacionamentos
 
+---
+
 As chaves estrangeiras foram utilizadas para estabelecer conexões entre as tabelas, garantindo que os registros relacionados mantenham referências válidas. Essa estrutura permite integrar as informações e evitar que sejam registrados relacionamentos com dados inexistentes.
 
 Os principais relacionamentos definidos no modelo são:
@@ -269,6 +275,8 @@ Esses relacionamentos permitem que as informações sejam consultadas de maneira
 
 ### Justificativa das restrições aplicadas
 
+---
+
 As restrições foram consideradas para preservar a consistência e a confiabilidade das informações armazenadas no banco de dados.
 
 **Unicidade:** as chaves primárias garantem que cada registro tenha um identificador exclusivo. Além disso, campos como `cpf_funcionario`, `cnpj_empresa` e `login_usuario` devem possuir valores únicos, evitando cadastros duplicados de funcionários, terceirizadas e usuários.
@@ -286,6 +294,8 @@ As restrições foram consideradas para preservar a consistência e a confiabili
 **Tipos e tamanhos dos campos:** os atributos receberam tipos de dados e tamanhos compatíveis com as informações armazenadas. Como exemplos, foram definidos campos `INT` para identificadores, `VARCHAR` para textos, `DATE` para datas, `TIME` para horários e `NUMERIC` para valores monetários e quantidades decimais.
 
 ### Justificativa das decisões arquiteturais
+
+---
 
 A arquitetura do banco de dados foi organizada por meio da separação das informações em tabelas específicas, de acordo com suas finalidades. Essa divisão facilita a administração dos dados, reduz a repetição de informações e permite que cada área da empresa tenha seus registros organizados.
 

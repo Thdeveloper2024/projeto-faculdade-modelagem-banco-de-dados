@@ -272,7 +272,7 @@ Por fim, o projeto demonstra como a tecnologia, a modelagem de banco de dados e 
 
 ## Referências Bibliográficas
 
-As referências bibliográficas utilizadas pelo grupo deverão ser adicionadas nesta seção conforme as fontes efetivamente consultadas durante o desenvolvimento do trabalho.
+[Normas ABNT utilizadas para desenvolver a justificativa tecnica.](https://www.pucminas.br/biblioteca/DocumentoBiblioteca/ABNT-GUIA-COMPLETO-Elaborar-formatar-trabalho-cientifico.pdf)
 
 ---
 

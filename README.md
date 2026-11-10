@@ -168,8 +168,8 @@ As informações específicas de uma obra foram distribuídas entre **OBRA**, **
 
 Os dois dicionarios conceitual e em formato html estão em outros dois arquivos separados, para manter uma melhor organização do projeto.
 
-- [dicionario.html](https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/dicionario-conceitual.md) — dicionário navegável, alinhado ao DER.
-- [dicionario-conceitual.md](https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/dicionario.html) — dicionário conceitual.
+- [dicionario.html](https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/dicionario.html) — dicionário navegável, alinhado ao DER.
+- [dicionario-conceitual.md](https://github.com/Thdeveloper2024/projeto-faculdade-modelagem-banco-de-dados/blob/main/dicionario-conceitual.md) — dicionário conceitual.
 
 ---
 

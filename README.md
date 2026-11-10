@@ -207,6 +207,104 @@ Durante o desenvolvimento, também foram realizadas alterações e aprimoramento
 
 Além disso, foram corrigidas as informações de contato e apresentação da empresa, após orientações do professor sobre a necessidade de utilizar uma imagem mais profissional. A documentação referente à utilização de inteligência artificial também foi complementada, recebendo informações mais específicas sobre sua aplicação no desenvolvimento do projeto. Por fim, o dicionário de dados, desenvolvido em HTML, passou por atualizações para contemplar os novos requisitos e as adequações solicitadas durante as avaliações.
 
+# JUSTIFICATIVAS TÉCNICAS DAS DECISÕES
+
+A modelagem do banco de dados da EJS Construção foi desenvolvida com o objetivo de organizar, armazenar e controlar as informações relacionadas à administração das obras, aos funcionários, às terceirizadas, aos pagamentos e aos registros de acesso ao sistema.
+
+As decisões técnicas foram tomadas considerando a necessidade de manter a integridade das informações, evitar duplicidade de registros, facilitar consultas e estabelecer relacionamentos entre as entidades. A seguir, são apresentadas as justificativas para a escolha das chaves primárias, chaves estrangeiras, restrições e decisões arquiteturais utilizadas no modelo.
+
+## Justificativa das chaves primárias
+
+As chaves primárias foram definidas para garantir que cada registro possua um identificador único dentro de sua respectiva tabela. Sempre que possível, foram utilizados campos numéricos com identificação automática, facilitando a inserção, localização e manutenção dos registros.
+
+- **EXTRAS – `id_extra`:** foi escolhido como chave primária por ser um identificador exclusivo para cada registro de horas extras. Sua utilização permite localizar individualmente cada lançamento, independentemente do funcionário relacionado.
+
+- **FUNCIONARIOS – `id_funcionario`:** foi definido como chave primária para identificar cada funcionário. O CPF também possui característica de identificação única, podendo ser utilizado para pesquisas e consultas, porém a utilização de um identificador próprio facilita a organização e a manutenção dos registros.
+
+- **LOG_ACESSO – `id_log`:** foi escolhido como chave primária por identificar individualmente cada evento registrado no histórico de acessos. Dessa forma, diferentes registros de um mesmo usuário podem ser armazenados sem conflitos.
+
+- **USUARIOS – `id_usuario`:** foi definido como chave primária para identificar cada usuário cadastrado no sistema. O campo `login_usuario` também possui característica de unicidade, podendo identificar o usuário durante o processo de autenticação, mas o ID foi escolhido como identificador principal da tabela.
+
+- **REGISTRO_PONTO – `id_ponto`:** foi escolhido para identificar individualmente cada marcação de ponto realizada pelos funcionários, permitindo armazenar diversos registros para um mesmo funcionário e uma mesma obra.
+
+- **PAGAMENTOS – `id_pagamentos`:** foi definido como identificador único de cada pagamento registrado, permitindo localizar e controlar individualmente as movimentações financeiras.
+
+- **OBRA – `id_obra`:** foi escolhido para identificar cada obra cadastrada. Embora o nome da obra possa ser utilizado como referência em pesquisas, o identificador numérico oferece maior praticidade para estabelecer relacionamentos com outras tabelas.
+
+- **GERENCIAMENTO – `id_obra`:** essa tabela não possui um identificador independente, pois utiliza o próprio identificador da obra como chave primária e estrangeira. Essa decisão permite relacionar os responsáveis pelo gerenciamento diretamente à obra correspondente, incluindo engenheiro, arquiteto e mestre de obra.
+
+- **TERCEIRIZADAS – `cnpj_empresa`:** foi escolhido como identificador único da empresa terceirizada, pois o CNPJ permite distinguir cada empresa cadastrada.
+
+- **TAREFA_OBRA – `id_tarefa`:** foi definido como chave primária para identificar individualmente cada tarefa cadastrada, possibilitando localizar e acompanhar sua execução dentro de uma obra.
+
+- **CONTRATA – `id_obra` e `cnpj_empresa`:** foram utilizados conjuntamente como chave primária composta, pois essa tabela representa o relacionamento entre obras e empresas terceirizadas. A combinação dos dois campos identifica cada vínculo entre uma obra e uma empresa.
+
+- **PAGAMENTO_TERCEIRIZADA – `id_pagamentos` e `cnpj_empresa`:** foram definidos como chave primária composta, permitindo relacionar um pagamento à empresa terceirizada correspondente.
+
+## Justificativa das chaves estrangeiras e dos relacionamentos
+
+As chaves estrangeiras foram utilizadas para estabelecer conexões entre as tabelas, garantindo que os registros relacionados mantenham referências válidas. Essa estrutura permite integrar as informações e evitar que sejam registrados relacionamentos com dados inexistentes.
+
+Os principais relacionamentos definidos no modelo são:
+
+- **EXTRAS:** possui a chave estrangeira `id_funcionario`, que estabelece a ligação com a tabela FUNCIONARIOS. Essa relação permite identificar a qual funcionário pertencem as horas extras, os valores brutos, os descontos e os valores líquidos registrados.
+
+- **LOG_ACESSO:** possui a chave estrangeira `id_usuario`, responsável por relacionar os registros de acesso aos usuários cadastrados. Assim, é possível identificar qual usuário realizou determinado evento no sistema.
+
+- **REGISTRO_PONTO:** possui as chaves estrangeiras `cpf_funcionario` e `id_obra`, relacionando cada marcação de ponto ao funcionário e à obra correspondentes. Essa estrutura permite acompanhar os horários de entrada e saída dos funcionários em cada obra.
+
+- **PAGAMENTOS:** possui as chaves estrangeiras `id_obra` e `cpf_funcionario`, permitindo relacionar os pagamentos às obras e aos funcionários correspondentes.
+
+- **OBRA:** possui a chave estrangeira `cpf_funcionario`, que estabelece o vínculo entre a obra e o funcionário responsável indicado no modelo.
+
+- **GERENCIAMENTO:** utiliza `id_obra` como chave primária e estrangeira, relacionando os responsáveis pelo gerenciamento à obra correspondente. Essa estrutura permite registrar as informações do engenheiro, arquiteto e mestre de obra responsáveis.
+
+- **TAREFA_OBRA:** possui a chave estrangeira `id_obra`, permitindo relacionar cada tarefa à obra na qual será executada. Dessa maneira, uma obra pode possuir várias tarefas cadastradas.
+
+- **CONTRATA:** utiliza `id_obra` e `cnpj_empresa` como chaves estrangeiras, relacionando as obras às empresas terceirizadas contratadas. A tabela foi criada para representar esse relacionamento entre as duas entidades.
+
+- **PAGAMENTO_TERCEIRIZADA:** possui `id_pagamentos` e `cnpj_empresa` como chaves estrangeiras, estabelecendo a ligação entre os pagamentos e as empresas terceirizadas que os recebem.
+
+Esses relacionamentos permitem que as informações sejam consultadas de maneira integrada, reduzindo a necessidade de repetir dados e facilitando o controle administrativo e financeiro da empresa.
+
+## Justificativa das restrições aplicadas
+
+As restrições foram consideradas para preservar a consistência e a confiabilidade das informações armazenadas no banco de dados.
+
+**Unicidade:** as chaves primárias garantem que cada registro tenha um identificador exclusivo. Além disso, campos como `cpf_funcionario`, `cnpj_empresa` e `login_usuario` devem possuir valores únicos, evitando cadastros duplicados de funcionários, terceirizadas e usuários.
+
+**Obrigatoriedade:** os campos utilizados como chaves primárias não podem permanecer sem valor, pois são necessários para identificar cada registro. As chaves estrangeiras também devem respeitar as regras de preenchimento definidas para cada relacionamento, evitando referências inválidas.
+
+**Integridade referencial:** as chaves estrangeiras garantem que os relacionamentos apontem para registros existentes nas tabelas de origem. Por exemplo, não deve existir um registro de ponto associado a um funcionário ou a uma obra que não estejam cadastrados.
+
+**Valores numéricos e monetários:** os campos destinados ao armazenamento de salários, pagamentos, horas extras, descontos e valores líquidos utilizam tipos numéricos apropriados, permitindo armazenar valores decimais e realizar operações matemáticas.
+
+**Valores não negativos:** os campos relacionados a valores financeiros e quantidades de horas devem respeitar a regra de não permitir valores negativos, evitando inconsistências nos registros financeiros e trabalhistas.
+
+**Datas e horários:** foram utilizados tipos específicos para armazenar datas, horários e registros temporais. Essa escolha permite controlar datas de execução das obras, pagamentos e marcações de ponto, além de registrar os momentos em que os usuários acessam o sistema.
+
+**Tipos e tamanhos dos campos:** os atributos receberam tipos de dados e tamanhos compatíveis com as informações armazenadas. Como exemplos, foram definidos campos `INT` para identificadores, `VARCHAR` para textos, `DATE` para datas, `TIME` para horários e `NUMERIC` para valores monetários e quantidades decimais.
+
+## Justificativa das decisões arquiteturais
+
+A arquitetura do banco de dados foi organizada por meio da separação das informações em tabelas específicas, de acordo com suas finalidades. Essa divisão facilita a administração dos dados, reduz a repetição de informações e permite que cada área da empresa tenha seus registros organizados.
+
+A tabela FUNCIONARIOS concentra os dados cadastrais dos colaboradores, enquanto EXTRAS e REGISTRO_PONTO armazenam informações relacionadas à jornada de trabalho. Essa separação permite acompanhar os registros de ponto e controlar as horas extras sem misturar essas informações aos dados cadastrais dos funcionários.
+
+A tabela OBRA funciona como uma das principais entidades do modelo, pois centraliza informações sobre as construções e estabelece relacionamentos com tarefas, funcionários, gerenciamento, pagamentos e empresas terceirizadas.
+
+A tabela TAREFA_OBRA foi criada para permitir o acompanhamento individual das atividades realizadas em cada construção. Já GERENCIAMENTO concentra os dados dos responsáveis técnicos e administrativos relacionados à obra.
+
+Para o controle financeiro, foi criada a tabela PAGAMENTOS, responsável por armazenar informações como valor, data, comprovante, formato e situação do pagamento. A tabela PAGAMENTO_TERCEIRIZADA complementa essa estrutura, permitindo relacionar os pagamentos às empresas terceirizadas.
+
+A tabela CONTRATA foi utilizada para representar o relacionamento entre obras e empresas terceirizadas. Essa separação permite registrar os vínculos entre as duas entidades sem precisar repetir os dados cadastrais das empresas em cada obra.
+
+A tabela USUARIOS foi separada das demais entidades para organizar os dados de autenticação e os níveis de acesso ao sistema. Essa decisão permite estabelecer diferentes permissões de utilização, de acordo com as responsabilidades de cada usuário. Por exemplo, usuários do setor financeiro não devem ter acesso indiscriminado a informações pessoais e sensíveis dos funcionários.
+
+Por fim, a tabela LOG_ACESSO foi criada para armazenar o histórico de eventos realizados pelos usuários, permitindo identificar o responsável por cada registro de acesso e manter informações importantes para auditoria e segurança do sistema.
+
+Dessa forma, as decisões arquiteturais adotadas buscam proporcionar uma estrutura organizada, segura e de fácil manutenção, atendendo às necessidades administrativas e operacionais da EJS Construção e permitindo futuras ampliações do sistema.
+
 Como possibilidades de evolução, caso o proprietário tenha interesse em dar continuidade ao projeto, pretende-se implementar novas funcionalidades que ampliem a integração entre a empresa e seus clientes. Entre as melhorias planejadas está a criação de uma tabela específica para o cadastro de clientes, possibilitando que eles tenham acesso à plataforma para consultar seus contratos, acompanhar o andamento das obras e realizar pagamentos das parcelas correspondentes às etapas de execução.
 
 Também está prevista a implementação de um ambiente de comunicação por meio de um chat integrado à plataforma, com a criação automática de um grupo específico para cada obra. Esse ambiente poderá reunir engenheiros, arquitetos, mestres de obras e clientes, permitindo o compartilhamento de informações e atualizações sobre as atividades realizadas. Com isso, pretende-se proporcionar maior transparência na comunicação e no acompanhamento dos serviços contratados.

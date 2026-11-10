@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dicionário de Dados — Sistema de Gestão de Obras | EJS — Revisão 3.1</title>
+<title>Dicionário de Dados — Sistema de Gestão de Obras | EJS — Revisão 3.2</title>
 <style>
 :root{
   --navy-deep:#0c1c2e;
@@ -168,10 +166,10 @@ footer{
 <aside>
   <div class="brand">
     <svg width="38" height="38" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="21" cy="14" r="6" stroke="#c9812f" stroke-width="2"/>
-      <line x1="21" y1="20" x2="10" y2="37" stroke="#eef0e7" stroke-width="2"/>
-      <line x1="21" y1="20" x2="32" y2="37" stroke="#eef0e7" stroke-width="2"/>
-      <line x1="14.6" y1="33" x2="27.4" y2="33" stroke="#eef0e7" stroke-width="2"/>
+      <circle cx="21" cy="14" r="6" stroke="#c9812f" stroke-width="2"></circle>
+      <line x1="21" y1="20" x2="10" y2="37" stroke="#eef0e7" stroke-width="2"></line>
+      <line x1="21" y1="20" x2="32" y2="37" stroke="#eef0e7" stroke-width="2"></line>
+      <line x1="14.6" y1="33" x2="27.4" y2="33" stroke="#eef0e7" stroke-width="2"></line>
     </svg>
     <h1>Sistema de Gestão de Obras</h1>
   </div>
@@ -188,6 +186,7 @@ footer{
     <a href="#obra"><span class="idx-num">07</span>Obra</a>
     <a href="#gerenciamento"><span class="idx-num">08</span>Gerenciamento</a>
     <a href="#tarefa-obra"><span class="idx-num">09</span>Tarefa_Obra</a>
+    <a href="#usuarios"><span class="idx-num">10</span>Usuários</a>
     <a href="#registro-ponto"><span class="idx-num">11</span>Registro de ponto</a>
     <a href="#log-acesso"><span class="idx-num">12</span>Log de acesso</a>
     <a href="#convencoes"><span class="idx-num">13</span>Convenções e segurança</a>
@@ -198,7 +197,7 @@ footer{
   <div class="sidebar-foot">
     MODELO ENTIDADE-RELACIONAMENTO<br>
     SISTEMA DE GESTÃO DE OBRAS<br>
-    REV. 3.1 · DOCUMENTO REVISADO
+    REV. 3.2 · DOCUMENTO REVISADO
   </div>
 </aside>
 
@@ -208,15 +207,15 @@ footer{
   <div class="sheet-header">
     <h2>Dicionário de Dados</h2>
     <table class="title-block">
-      <tr><th>Folha</th><td>00</td></tr>
+      <tbody><tr><th>Folha</th><td>00</td></tr>
       <tr><th>Conteúdo</th><td>Visão geral</td></tr>
-    </table>
+    </tbody></table>
   </div>
   <p class="lead">
     Este documento apresenta o <b>Dicionário de Dados — Sistema de Gestão de Obras</b> da Empreiteira EJS, organizado conforme o modelo relacional revisado. O sistema centraliza informações administrativas, operacionais e financeiras de obras, equipes, registros de jornada, orçamentos e auditoria de segurança.
   </p>
   <p class="lead">
-    A estrutura abrange as entidades principais <b>PAGAMENTOS</b>, <b>FUNCIONARIOS</b>, <b>EXTRAS</b>, <b>TERCEIRIZADAS</b>, <b>OBRA</b>, <b>GERENCIAMENTO</b>, <b>TAREFA_OBRA</b>, <b>REGISTRO_PONTO</b> e <b>LOG_ACESSO</b>.
+    A estrutura abrange as entidades principais <b>PAGAMENTOS</b>, <b>FUNCIONARIOS</b>, <b>EXTRAS</b>, <b>TERCEIRIZADAS</b>, <b>OBRA</b>, <b>GERENCIAMENTO</b>, <b>TAREFA_OBRA</b>, <b>USUARIOS</b>, <b>REGISTRO_PONTO</b> e <b>LOG_ACESSO</b>.
   </p>
   <div class="meta-line">ENTIDADES PRINCIPAIS · PADRÃO MYSQL · CONFORME LGPD</div>
 </section>
@@ -224,7 +223,7 @@ footer{
 <section id="legenda" class="sheet">
   <div class="sheet-header">
     <h3>Legenda</h3>
-    <table class="title-block"><tr><th>Folha</th><td>01</td></tr></table>
+    <table class="title-block"><tbody><tr><th>Folha</th><td>01</td></tr></tbody></table>
   </div>
   <div class="legend-grid">
     <div class="legend-item"><b>PK — Chave Primária</b><br>Atributo que identifica de forma única cada registro da entidade.</div>
@@ -236,10 +235,10 @@ footer{
 </section>
 
 <section id="pagamentos" class="sheet">
-  <div class="sheet-header"><h3>Pagamentos</h3><table class="title-block"><tr><th>Folha</th><td>03</td></tr><tr><th>Entidade</th><td>PAGAMENTOS</td></tr></table></div>
+  <div class="sheet-header"><h3>Pagamentos</h3><table class="title-block"><tbody><tr><th>Folha</th><td>03</td></tr><tr><th>Entidade</th><td>PAGAMENTOS</td></tr></tbody></table></div>
   <p class="lead">Registra movimentações financeiras da empresa: recebimentos de clientes por obras e pagamentos realizados a funcionários e empresas terceirizadas.</p>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">id_pagamento</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único do pagamento, gerado automaticamente (AUTO_INCREMENT).</td></tr>
     <tr><td class="attr-name">cpf_funcionario</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-fk">FK</span></td><td>CPF do funcionário beneficiário (referencia FUNCIONARIOS.cpf).</td></tr>
     <tr><td class="attr-name">id_terceirizada</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Empresa terceirizada beneficiária (referencia TERCEIRIZADAS.id_terceirizada).</td></tr>
@@ -249,15 +248,15 @@ footer{
     <tr><td class="attr-name">comprovante_pagamento</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Caminho/URL do comprovante em PDF ou imagem anexa.</td></tr>
     <tr><td class="attr-name">formato_pagamento</td><td class="attr-type">VARCHAR(50)</td><td><span class="tag tag-atr">ATR</span></td><td>Forma de pagamento (PIX, Transferência, Boleto).</td></tr>
     <tr><td class="attr-name">status_pagamento</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação do pagamento (PENDENTE, CONCLUIDO, CANCELADO).</td></tr>
-  </table></div>
+  </tbody></table></div>
   <div class="note"><b>Chave primária:</b> id_pagamento.</div>
 </section>
 
 <section id="funcionarios" class="sheet">
-  <div class="sheet-header"><h3>Funcionários</h3><table class="title-block"><tr><th>Folha</th><td>04</td></tr><tr><th>Entidade</th><td>FUNCIONARIOS</td></tr></table></div>
+  <div class="sheet-header"><h3>Funcionários</h3><table class="title-block"><tbody><tr><th>Folha</th><td>04</td></tr><tr><th>Entidade</th><td>FUNCIONARIOS</td></tr></tbody></table></div>
   <p class="lead">Armazena os dados cadastrais e contratuais dos funcionários da empresa.</p>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">cpf</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-pk">PK</span></td><td>CPF do funcionário (apenas números), único por registro.</td></tr>
     <tr><td class="attr-name">id_funcionario</td><td class="attr-type">INT</td><td><span class="tag tag-atr">ATR</span></td><td>Código interno auxiliar único gerado pelo sistema.</td></tr>
     <tr><td class="attr-name">nome_funcionario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome completo do funcionário.</td></tr>
@@ -268,15 +267,15 @@ footer{
     <tr><td class="attr-name">data_recebimento_salario</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Data agendada ou efetiva do pagamento salarial.</td></tr>
     <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Obra em que o funcionário está alocado atualmente.</td></tr>
     <tr><td class="attr-name">beneficio_funcionario</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Descrição dos benefícios concedidos.</td></tr>
-  </table></div>
+  </tbody></table></div>
   <div class="note"><b>Chave primária:</b> cpf.</div>
 </section>
 
 <section id="extras" class="sheet">
-  <div class="sheet-header"><h3>Extras</h3><table class="title-block"><tr><th>Folha</th><td>05</td></tr><tr><th>Entidade</th><td>EXTRAS</td></tr></table></div>
+  <div class="sheet-header"><h3>Extras</h3><table class="title-block"><tbody><tr><th>Folha</th><td>05</td></tr><tr><th>Entidade</th><td>EXTRAS</td></tr></tbody></table></div>
   <p class="lead">Armazena apurações de horas extras e horas faltantes acumuladas para a folha de pagamento.</p>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">cpf</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-pk">PK</span> <span class="tag tag-fk">FK</span></td><td>CPF do funcionário (referencia FUNCIONARIOS.cpf).</td></tr>
     <tr><td class="attr-name">nome_funcionario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome do funcionário para referência operacional.</td></tr>
     <tr><td class="attr-name">horas_extras</td><td class="attr-type">DECIMAL(5,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Quantidade total de horas extras autorizadas acumuladas.</td></tr>
@@ -284,28 +283,28 @@ footer{
     <tr><td class="attr-name">valor_bruto</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor acumulado total antes dos descontos.</td></tr>
     <tr><td class="attr-name">valor_descontado</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor referente a horas faltantes ou vales adiantados.</td></tr>
     <tr><td class="attr-name">valor_liquido</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor líquido final a receber.</td></tr>
-  </table></div>
+  </tbody></table></div>
   <div class="note"><b>Chave primária:</b> cpf. Relacionamento 1:1 com FUNCIONARIOS.</div>
 </section>
 
 <section id="terceirizadas" class="sheet">
-  <div class="sheet-header"><h3>Terceirizadas</h3><table class="title-block"><tr><th>Folha</th><td>06</td></tr><tr><th>Entidade</th><td>TERCEIRIZADAS</td></tr></table></div>
+  <div class="sheet-header"><h3>Terceirizadas</h3><table class="title-block"><tbody><tr><th>Folha</th><td>06</td></tr><tr><th>Entidade</th><td>TERCEIRIZADAS</td></tr></tbody></table></div>
   <p class="lead">Cadastra as empresas prestadoras de serviços terceirizados parceiras da empreiteira.</p>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">id_terceirizada</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único gerado automaticamente pelo sistema.</td></tr>
     <tr><td class="attr-name">nome_terceirizada</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Razão Social ou Nome Fantasia da empresa terceirizada.</td></tr>
     <tr><td class="attr-name">cnpj_terceirizada</td><td class="attr-type">CHAR(14)</td><td><span class="tag tag-atr">UNIQUE</span></td><td>CNPJ da empresa terceirizada (14 dígitos).</td></tr>
     <tr><td class="attr-name">valor_servico_prestado</td><td class="attr-type">DECIMAL(10,2)</td><td><span class="tag tag-atr">ATR</span></td><td>Valor contratado/cotado para prestação do serviço.</td></tr>
-  </table></div>
+  </tbody></table></div>
   <div class="note"><b>Chave primária:</b> id_terceirizada.</div>
 </section>
 
 <section id="obra" class="sheet">
-  <div class="sheet-header"><h3>Obra</h3><table class="title-block"><tr><th>Folha</th><td>07</td></tr><tr><th>Entidade</th><td>OBRA</td></tr></table></div>
+  <div class="sheet-header"><h3>Obra</h3><table class="title-block"><tbody><tr><th>Folha</th><td>07</td></tr><tr><th>Entidade</th><td>OBRA</td></tr></tbody></table></div>
   <p class="lead">Armazena os dados das obras gerenciadas pela empresa, incluindo prazos e horários padrão de jornada.</p>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único da obra.</td></tr>
     <tr><td class="attr-name">nome_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome identificador do projeto da obra.</td></tr>
     <tr><td class="attr-name">endereco_obra</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Endereço completo da obra.</td></tr>
@@ -316,43 +315,61 @@ footer{
     <tr><td class="attr-name">tempo_fim</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data e hora previstas para conclusão.</td></tr>
     <tr><td class="attr-name">status</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação da obra (PLANEJAMENTO, EM_ANDAMENTO, CONCLUIDA).</td></tr>
     <tr><td class="attr-name">descricao</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Escopo e detalhes técnicos da obra.</td></tr>
-  </table></div>
+  </tbody></table></div>
   <div class="note"><b>Chave primária:</b> id_obra.</div>
 </section>
 
 <section id="gerenciamento" class="sheet">
-  <div class="sheet-header"><h3>Gerenciamento</h3><table class="title-block"><tr><th>Folha</th><td>08</td></tr><tr><th>Entidade</th><td>GERENCIAMENTO</td></tr></table></div>
+  <div class="sheet-header"><h3>Gerenciamento</h3><table class="title-block"><tbody><tr><th>Folha</th><td>08</td></tr><tr><th>Entidade</th><td>GERENCIAMENTO</td></tr></tbody></table></div>
   <p class="lead">Registra os responsáveis técnicos pela liderança e condução de cada obra.</p>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span> <span class="tag tag-fk">FK</span></td><td>Identificador da obra gerenciada (referencia OBRA.id_obra).</td></tr>
     <tr><td class="attr-name">nome_engenheiro</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome completo do Engenheiro responsável.</td></tr>
     <tr><td class="attr-name">nome_arquiteto</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome completo do Arquiteto responsável.</td></tr>
     <tr><td class="attr-name">nome_mestre_obra</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome completo do Mestre de Obras.</td></tr>
-  </table></div>
+  </tbody></table></div>
   <div class="note"><b>Chave primária:</b> id_obra. Relacionamento 1:1 com a entidade OBRA.</div>
 </section>
 
 <section id="tarefa-obra" class="sheet">
-  <div class="sheet-header"><h3>Tarefa_Obra</h3><table class="title-block"><tr><th>Folha</th><td>09</td></tr><tr><th>Entidade</th><td>TAREFA_OBRA</td></tr></table></div>
+  <div class="sheet-header"><h3>Tarefa_Obra</h3><table class="title-block"><tbody><tr><th>Folha</th><td>09</td></tr><tr><th>Entidade</th><td>TAREFA_OBRA</td></tr></tbody></table></div>
   <p class="lead">Gerencia o cronograma e o conjunto de tarefas executadas no decorrer das obras.</p>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">id_tarefa</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único da tarefa.</td></tr>
     <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Obra a qual a tarefa pertence (referencia OBRA.id_obra).</td></tr>
     <tr><td class="attr-name">nome_tarefa</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome ou título descritivo da atividade.</td></tr>
     <tr><td class="attr-name">descricao_tarefa</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Detalhamento das etapas de execução.</td></tr>
     <tr><td class="attr-name">data_execucao</td><td class="attr-type">DATE</td><td><span class="tag tag-atr">ATR</span></td><td>Data prevista para realização.</td></tr>
     <tr><td class="attr-name">status_tarefa</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação da tarefa (PENDENTE, EM_EXECUCAO, CONCLUIDA).</td></tr>
-  </table></div>
+  </tbody></table></div>
   <div class="note"><b>Chave primária:</b> id_tarefa.</div>
 </section>
 
+
+<section id="usuarios" class="sheet">
+  <div class="sheet-header"><h3>Usuários</h3><table class="title-block"><tbody><tr><th>Folha</th><td>10</td></tr><tr><th>Entidade</th><td>USUARIOS</td></tr></tbody></table></div>
+  <p class="lead">Armazena as contas de acesso ao sistema, centralizando as credenciais de autenticação, a identificação dos usuários e seus níveis de permissão. A senha é armazenada exclusivamente em formato de hash, nunca em texto puro.</p>
+  <div class="table-wrap"><table class="attrs">
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tr><td class="attr-name">id_usuario</td><td class="attr-type">INT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único da conta de usuário, gerado automaticamente (AUTO_INCREMENT).</td></tr>
+    <tr><td class="attr-name">nome_usuario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome completo ou nome de identificação do usuário no sistema.</td></tr>
+    <tr><td class="attr-name">email_usuario</td><td class="attr-type">VARCHAR(150)</td><td><span class="tag tag-atr">ATR</span></td><td>Endereço de e-mail utilizado como login. Deve possuir restrição UNIQUE para impedir contas duplicadas.</td></tr>
+    <tr><td class="attr-name">senha_hash</td><td class="attr-type">VARCHAR(255)</td><td><span class="tag tag-atr">ATR</span></td><td>Hash criptográfico da senha, gerado por algoritmo próprio para armazenamento seguro de credenciais.</td></tr>
+    <tr><td class="attr-name">perfil_acesso</td><td class="attr-type">VARCHAR(50)</td><td><span class="tag tag-atr">ATR</span></td><td>Perfil de autorização do usuário (GERENTE_MASTER, ADMINISTRATIVO, LIDER, ENGENHEIRO, MESTRE, ARQUITETO ou FUNCIONARIO).</td></tr>
+    <tr><td class="attr-name">status_usuario</td><td class="attr-type">VARCHAR(20)</td><td><span class="tag tag-atr">ATR</span></td><td>Situação da conta (ATIVO, INATIVO ou BLOQUEADO), utilizada para controlar a possibilidade de acesso.</td></tr>
+    <tr><td class="attr-name">data_criacao</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data e hora em que a conta foi cadastrada no sistema.</td></tr>
+    <tr><td class="attr-name">ultimo_acesso</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data e hora do último login realizado com sucesso; pode permanecer NULL até o primeiro acesso.</td></tr>
+  </tbody></table></div>
+  <div class="note"><b>Chave primária:</b> id_usuario. <b>Restrição adicional:</b> email_usuario deve ser UNIQUE. A senha deve ser armazenada somente como hash.</div>
+</section>
+
 <section id="registro-ponto" class="sheet">
-  <div class="sheet-header"><h3>Registro de Ponto</h3><table class="title-block"><tr><th>Folha</th><td>11</td></tr><tr><th>Entidade</th><td>REGISTRO_PONTO</td></tr></table></div>
+  <div class="sheet-header"><h3>Registro de Ponto</h3><table class="title-block"><tbody><tr><th>Folha</th><td>11</td></tr><tr><th>Entidade</th><td>REGISTRO_PONTO</td></tr></tbody></table></div>
   <p class="lead">Registra a jornada diária dos funcionários com verificação automática de horários da obra e autorização prévia de horas extras.</p>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">id_ponto</td><td class="attr-type">BIGINT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único do registro de marcação.</td></tr>
     <tr><td class="attr-name">cpf_funcionario</td><td class="attr-type">CHAR(11)</td><td><span class="tag tag-fk">FK</span></td><td>CPF do funcionário (referencia FUNCIONARIOS.cpf).</td></tr>
     <tr><td class="attr-name">id_obra</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Obra onde o ponto foi batido (referencia OBRA.id_obra).</td></tr>
@@ -361,52 +378,52 @@ footer{
     <tr><td class="attr-name">data_hora_marcacao</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data e hora exatas da marcação.</td></tr>
     <tr><td class="attr-name">origem_marcacao</td><td class="attr-type">VARCHAR(30)</td><td><span class="tag tag-atr">ATR</span></td><td>Origem (APLICATIVO, TERMINAL_OBRA, LANCAMENTO_AUTORIZADO).</td></tr>
     <tr><td class="attr-name">justificativa</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Justificativa em caso de correções de ponto.</td></tr>
-  </table></div>
+  </tbody></table></div>
   <div class="note"><b>Relacionamentos:</b> FUNCIONARIOS (1:N) REGISTRO_PONTO e OBRA (1:N) REGISTRO_PONTO.</div>
 </section>
 
 <section id="log-acesso" class="sheet">
-  <div class="sheet-header"><h3>Log de Acesso e Auditoria</h3><table class="title-block"><tr><th>Folha</th><td>12</td></tr><tr><th>Entidade</th><td>LOG_ACESSO</td></tr></table></div>
+  <div class="sheet-header"><h3>Log de Acesso e Auditoria</h3><table class="title-block"><tbody><tr><th>Folha</th><td>12</td></tr><tr><th>Entidade</th><td>LOG_ACESSO</td></tr></tbody></table></div>
   <p class="lead">Entidade de segurança e auditoria para rastrear acessos, login de credenciais e edições em dados sensíveis (LGPD).</p>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
+    <tbody><tr><th>Atributo</th><th>Tipo</th><th>Chave</th><th>Descrição</th></tr>
     <tr><td class="attr-name">id_log</td><td class="attr-type">BIGINT</td><td><span class="tag tag-pk">PK</span></td><td>Identificador único do evento de auditoria.</td></tr>
-    <tr><td class="attr-name">id_usuario</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Credencial do usuário autenticado no sistema.</td></tr>
+    <tr><td class="attr-name">id_usuario</td><td class="attr-type">INT</td><td><span class="tag tag-fk">FK</span></td><td>Usuário responsável pelo evento (referencia USUARIOS.id_usuario).</td></tr>
     <tr><td class="attr-name">data_hora_evento</td><td class="attr-type">DATETIME</td><td><span class="tag tag-atr">ATR</span></td><td>Data e hora exata em que o evento ocorreu.</td></tr>
     <tr><td class="attr-name">tipo_acao</td><td class="attr-type">VARCHAR(50)</td><td><span class="tag tag-atr">ATR</span></td><td>Operação executada (SELECT, INSERT, UPDATE, DELETE).</td></tr>
     <tr><td class="attr-name">tabela_afetada</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Nome da tabela acessada ou modificada.</td></tr>
     <tr><td class="attr-name">registro_id</td><td class="attr-type">VARCHAR(100)</td><td><span class="tag tag-atr">ATR</span></td><td>Identificador do registro afetado.</td></tr>
     <tr><td class="attr-name">detalhes_alteracao</td><td class="attr-type">TEXT</td><td><span class="tag tag-atr">ATR</span></td><td>Dados alterados em formato JSON (antes e depois) para rastreabilidade.</td></tr>
-  </table></div>
-  <div class="note"><b>Chave primária:</b> id_log. Monitorado continuamente por Líderes e Gerente Master.</div>
+  </tbody></table></div>
+  <div class="note"><b>Chave primária:</b> id_log. <b>Chave estrangeira:</b> id_usuario → USUARIOS.id_usuario. Monitorado continuamente por Líderes e Gerente Master.</div>
 </section>
 
 <section id="convencoes" class="sheet">
-  <div class="sheet-header"><h3>Convenções e Segurança</h3><table class="title-block"><tr><th>Folha</th><td>13</td></tr></table></div>
+  <div class="sheet-header"><h3>Convenções e Segurança</h3><table class="title-block"><tbody><tr><th>Folha</th><td>13</td></tr></tbody></table></div>
   <p class="lead">Especificações técnicas do ambiente de banco de dados e controle de acesso por níveis de privilégio (RBAC / LGPD).</p>
   
   <h4>Convenções de Banco de Dados</h4>
   <div class="legend-grid">
     <div class="legend-item"><b>SGBD Target</b><br>MySQL 8.0+ (Testes locais em ambiente XAMPP).</div>
-    <div class="legend-item"><b>Collation & Encoding</b><br>utf8mb4_unicode_ci (suporte completo a caracteres especiais).</div>
+    <div class="legend-item"><b>Collation &amp; Encoding</b><br>utf8mb4_unicode_ci (suporte completo a caracteres especiais).</div>
     <div class="legend-item"><b>Notação Formal</b><br>Nomes de tabelas e colunas em minúsculo com separação por underline (<code>snake_case</code>).</div>
-    <div class="legend-item"><b>Versão do Dicionário</b><br>Revisão 3.1 (Atualizada com Log, Ponto e Regras de Negócio).</div>
+    <div class="legend-item"><b>Versão do Dicionário</b><br>Revisão 3.2 (Atualizada com Log, Ponto e Regras de Negócio).</div>
   </div>
 
-  <h4>Matriz de Acesso por Perfil (Segurança & LGPD)</h4>
+  <h4>Matriz de Acesso por Perfil (Segurança &amp; LGPD)</h4>
   <div class="table-wrap"><table class="attrs">
-    <tr><th>Perfil de Acesso</th><th>Acesso a Dados Pessoais</th><th>Acesso Financeiro</th><th>Permissões no Sistema</th></tr>
+    <tbody><tr><th>Perfil de Acesso</th><th>Acesso a Dados Pessoais</th><th>Acesso Financeiro</th><th>Permissões no Sistema</th></tr>
     <tr><td class="attr-name">Gerente Master</td><td>Acesso Total</td><td>Acesso Total</td><td>Acesso irrestrito a todos os dados sensíveis do sistema.</td></tr>
     <tr><td class="attr-name">Administrativo</td><td>Dados Básicos (Nome, CPF, Nasc., Admissão)</td><td>Visualização Restrita</td><td>Gestão cadastral, lançamento de pagamentos e controle de horários. Não visualiza salários base.</td></tr>
     <tr><td class="attr-name">Líderes</td><td>Sem Acesso Directo</td><td>Sem Acesso</td><td>Monitoramento completo de logs de auditoria e painéis operacionais.</td></tr>
     <tr><td class="attr-name">Engenheiros</td><td>Operacional da Obra</td><td>Orçamentos de Obra</td><td>Montagem de orçamentos, cotação com terceirizadas, escalação de equipe e pré-autorização de horas extras.</td></tr>
     <tr><td class="attr-name">Mestres / Arquitetos</td><td>Operacional da Obra</td><td>Sem Acesso</td><td>Alocação de equipe, definição de tarefas e pré-autorização de horas extras na obra.</td></tr>
     <tr><td class="attr-name">Funcionários / Terceiros</td><td>Apenas Próprios Dados</td><td>Apenas Próprios Pagamentos</td><td>Visualização de dias trabalhados, extrato de pagamentos e justificativa de faltas.</td></tr>
-  </table></div>
+  </tbody></table></div>
 </section>
 
 <section id="fluxo-dados" class="sheet">
-  <div class="sheet-header"><h3>Fluxo de Dados</h3><table class="title-block"><tr><th>Folha</th><td>14</td></tr></table></div>
+  <div class="sheet-header"><h3>Fluxo de Dados</h3><table class="title-block"><tbody><tr><th>Folha</th><td>14</td></tr></tbody></table></div>
   <p class="lead">Descrição simplificada dos principais fluxos operacionais e regras de validação do sistema.</p>
 
   <div class="rel-block">
@@ -437,9 +454,15 @@ footer{
 </section>
 
 <section id="relacionamentos" class="sheet">
-  <div class="sheet-header"><h3>Leitura Formal dos Relacionamentos</h3><table class="title-block"><tr><th>Folha</th><td>15</td></tr></table></div>
+  <div class="sheet-header"><h3>Leitura Formal dos Relacionamentos</h3><table class="title-block"><tbody><tr><th>Folha</th><td>15</td></tr></tbody></table></div>
   <p class="lead">Expressões formais de leitura da cardinalidade dos relacionamentos entre as entidades do sistema.</p>
 
+  <div class="rel-block">
+    <div class="rel-card">
+      <strong>USUARIOS $\leftrightarrow$ LOG_ACESSO (1:N):</strong><br>
+      Um USUARIO pode estar associado a zero ou vários registros de LOG_ACESSO; cada registro de LOG_ACESSO referencia obrigatoriamente um único USUARIO.
+    </div>
+  </div>
   <div class="rel-block">
     <div class="rel-card">
       <strong>FUNCIONARIOS $\leftrightarrow$ REGISTRO_PONTO (1:N):</strong><br>
@@ -477,5 +500,5 @@ footer{
 <footer>
   Dicionário de Dados — Sistema de Gestão de Obras · Empreiteira EJS · 2026
 </footer>
-</body>
-</html>
+
+</body></html>

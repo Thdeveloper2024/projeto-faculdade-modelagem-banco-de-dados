@@ -379,6 +379,32 @@ O grupo utilizou uma ferramenta de inteligência artificial como apoio na revis�
 
 ---
 
+| Item | Registro |
+|---|---|
+| **Ferramenta e etapa** | ChatGpt — Criação de uma foto ilustrativa para representar a parte de BI representando como pode ser ilustrado os dados em um dasheboard |
+| **Motivação** |Facilidade para a criação da imagem para ilustrar os dados |
+| **Prompt utilizado** | Crie uma imagem ilustrativa com base nos dados do meu projeto EJS |
+| **Resposta recebida** | A IA criou uma imagem ilustrativa que coloquei no projeto, e envio essa pequena explicação; Dashboard ilustrativo — EJS Construção | Business Intelligence (BI)
+A imagem representa um painel gerencial com indicadores financeiros, operacionais, acompanhamento das obras e alertas para auxiliar a tomada de decisões da empresa.  |
+| **Fontes consultadas e verificadas** | Realizamos a verificação da imagem.  |
+| **Trechos rejeitados ou corrigidos** |  Não teve trecho corrigido, pois o ChatGpt criou de acordo com as informaçôes que já tinha do projeto, então foi criada corretamente  |
+| **Justificativa da escolha final** |  Decidimos criar a imagem através do chat pois é uma ferramenta facil de se utilizar e já tinha uma base de dados boa para a criação, facilitando o desenvolvimento e fazendo com que a produtividade fosse mais rapida |
+| **Reflexão crítica** |  A IA foi utilizada como ferramenta de apoio, e não acho legal a dependencia 100% da ferramenta, pois acaba que não aprendemos nada quando fazemos isso  |
+
+---
+
+| Item | Registro |
+|---|---|
+| **Ferramenta e etapa** | ChatGpt — Criação da foto do fluxo grama |
+| **Motivação** |Facilidade para a criação da imagem para ilustrar os dados |
+| **Prompt utilizado** | Crie uma fluxo grama de acordo com os dados fornecidos, para ilustrar o fluxo, e ai fornecemos a explicação de como funcionava todo o processo da empresa para o chat desenvolver o fluxo  |
+| **Resposta recebida** | A IA criou uma imagem ilustrativa que coloquei no projeto representando o fluxo grama, e informou que criou a imagem e as coisas que tinha na imagem  |
+| **Fontes consultadas e verificadas** | Realizamos a verificação e verificamos se tinha tudo que foi solicitado para a criação.  |
+| **Trechos rejeitados ou corrigidos** |  Não teve trecho corrigido, pois o ChatGpt criou de acordo com as informaçôes que já tinha do projeto, então foi criada corretamente  |
+| **Justificativa da escolha final** |  Decidimos criar a imagem através do chat pois é uma ferramenta facil de se utilizar e já tinha uma base de dados boa para a criação, facilitando o desenvolvimento e fazendo com que a produtividade fosse mais rapida |
+| **Reflexão crítica** |  A IA foi utilizada como ferramenta de apoio, e não acho legal a dependencia 100% da ferramenta, pois acaba que não aprendemos nada quando fazemos isso  |
+
+
 ## Conclusão
 
 O desenvolvimento deste projeto permitiu ao grupo compreender de forma mais ampla as principais necessidades administrativas e operacionais da Empreiteira EJS, além de aplicar, em uma situação próxima da realidade, os conhecimentos relacionados à análise de requisitos, regras de negócio, modelagem de banco de dados e organização das informações.

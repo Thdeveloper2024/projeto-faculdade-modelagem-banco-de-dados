@@ -315,6 +315,8 @@ Por fim, a tabela LOG_ACESSO foi criada para armazenar o histórico de eventos r
 
 Dessa forma, as decisões arquiteturais adotadas buscam proporcionar uma estrutura organizada, segura e de fácil manutenção, atendendo às necessidades administrativas e operacionais da EJS Construção e permitindo futuras ampliações do sistema.
 
+### Implementações futuras
+
 Como possibilidades de evolução, caso o proprietário tenha interesse em dar continuidade ao projeto, pretende-se implementar novas funcionalidades que ampliem a integração entre a empresa e seus clientes. Entre as melhorias planejadas está a criação de uma tabela específica para o cadastro de clientes, possibilitando que eles tenham acesso à plataforma para consultar seus contratos, acompanhar o andamento das obras e realizar pagamentos das parcelas correspondentes às etapas de execução.
 
 Também está prevista a implementação de um ambiente de comunicação por meio de um chat integrado à plataforma, com a criação automática de um grupo específico para cada obra. Esse ambiente poderá reunir engenheiros, arquitetos, mestres de obras e clientes, permitindo o compartilhamento de informações e atualizações sobre as atividades realizadas. Com isso, pretende-se proporcionar maior transparência na comunicação e no acompanhamento dos serviços contratados.
@@ -322,6 +324,28 @@ Também está prevista a implementação de um ambiente de comunicação por mei
 Outra possibilidade de implementação futura consiste na integração de um sistema físico de identificação de funcionários por meio de cartões físicos ou virtuais com tecnologia de aproximação, permitindo o registro dos horários de entrada e saída diretamente por meio de um dispositivo de leitura. Essa implementação complementaria o controle digital de ponto, reduzindo a dependência de registros manuais.
 
 Diante das necessidades identificadas e das soluções propostas, o desenvolvimento do projeto justifica-se pela necessidade de modernizar os processos administrativos e operacionais da EJS Construção, proporcionando maior organização, centralização, segurança e facilidade de acesso às informações. A estrutura do banco de dados representa uma base tecnológica para apoiar o gerenciamento das obras, o controle dos funcionários, o acompanhamento financeiro e a administração dos usuários, contribuindo para a melhoria dos processos internos e possibilitando futuras expansões do sistema.
+
+### Proposta de arquitetura analítica 
+
+Informações estratégicas que podém ser extraidas dos dados:
+
+- Custos por obras: Somar valores de gastos e encontrar gastos ecessivos sem necessidade.
+- Controle de atrasos: Identificar funcionários com atrasos frequentes por meio do registro de ponto.
+- Produtividade dos funcionários: Analisar tarefas realizadas, horas trabalhadas e registros de ponto, e com isso fazer comparações de equipes para ser alocadas em obras.
+- Controle de atrasos: Identificar funcionários com atrasos frequentes por meio do registro de ponto.
+
+### Indicadores e métricas gerenciais
+
+- Custo total por obra (CT= soma Despesas)
+- Desvio orçamentário (DO=Gasto-Orçamento)
+- Custo com extras (CE=soma Valor líquido)
+  
+### Potencial dos dados para BI
+
+Segue abaixo um dashebord ilustrativo e ficticio, apenas para demostrar como os dados podem ser utilizados em um dasheboard para facilitar a utilização e a administração da empresa, por meio de um sistema de gestão, além disso com os dados do banco, pode implementar um sistema de conferencia de metricas por meio de inteligencia artificial, para fazer a verificação de controle de pontos e horas extras automaticamente com a utilização de IA, e a inteligencia artificial mapeando os dados pode encontrar padrões que as vezes os analisadore não ve, e cortar muitos gargalos de gastos e perca de tempo no desenvolvimento das obras.
+
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/9cb48a49-9905-48a6-b3da-c7c21ac4e5b7" />
+
 
 ---
 

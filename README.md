@@ -340,7 +340,7 @@ Informações estratégicas que podém ser extraidas dos dados:
 - Desvio orçamentário (DO=Gasto-Orçamento)
 - Custo com extras (CE=soma Valor líquido)
   
-### Potencial dos dados para BI
+### Potencial dos dados para BI e IA 
 
 Segue abaixo um dashebord ilustrativo e ficticio, apenas para demostrar como os dados podem ser utilizados em um dasheboard para facilitar a utilização e a administração da empresa, por meio de um sistema de gestão, além disso com os dados do banco, pode implementar um sistema de conferencia de metricas por meio de inteligencia artificial, para fazer a verificação de controle de pontos e horas extras automaticamente com a utilização de IA, e a inteligencia artificial mapeando os dados pode encontrar padrões que as vezes os analisadore não ve, e cortar muitos gargalos de gastos e perca de tempo no desenvolvimento das obras.
 
